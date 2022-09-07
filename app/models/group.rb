@@ -6,4 +6,7 @@ class Group < ApplicationRecord
 
   validates :name, length: { minimum: 1, maximum: 20 }
   validates :introduction, length: {maximum: 50 }
+
+  has_one_attached :group_image
+
 end

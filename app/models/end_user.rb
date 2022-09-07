@@ -14,5 +14,8 @@ class EndUser < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
+  validates :encrypted_password, presence: true
+
+  has_one_attached :profile_image
 
 end
