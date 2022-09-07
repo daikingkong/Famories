@@ -4,8 +4,8 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :join_requests, dependent: :destroy
   has_many :group_users, dependent: :destroy
+  has_many :join_requests, dependent: :destroy
   has_many :group_memories, dependent: :destroy
   has_many :memories, dependent: :destroy
   has_many :memories, dependent: :destroy
@@ -13,6 +13,6 @@ class EndUser < ApplicationRecord
   has_many :group, through: :group_users
 
   validates :name, presence: true
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
 
 end
