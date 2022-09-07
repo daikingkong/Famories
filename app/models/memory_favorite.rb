@@ -1,0 +1,2 @@
+class MemoryFavorite < ApplicationRecord
+end

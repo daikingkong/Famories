@@ -1,0 +1,2 @@
+class MemorySearchTag < ApplicationRecord
+end
