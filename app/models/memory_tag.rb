@@ -1,0 +1,2 @@
+class MemoryTag < ApplicationRecord
+end

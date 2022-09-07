@@ -1,0 +1,2 @@
+class GroupMemory < ApplicationRecord
+end

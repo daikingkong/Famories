@@ -1,0 +1,2 @@
+class MemoryComment < ApplicationRecord
+end
