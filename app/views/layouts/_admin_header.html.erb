@@ -1,0 +1,70 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#202A4B;">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <%= image_tag'linkedin_banner_image_1.png', size:"200x120" %>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown", style = "flex-wrap:wrap;">
+        <ul class="navbar-nav ml-auto", style = "margin-left:55%;">
+        <% if admin_signed_in? %>
+          <li>
+            <%= link_to admin_items_path,class: 'nav-link text-light border border-white rounded mr-3' do %>
+              商品一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to admin_customers_path,class: 'nav-link text-light border border-white rounded mr-3' do %>
+              会員一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to admin_path ,class: 'nav-link text-light border border-white rounded mr-3' do %>
+              注文履歴一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to admin_genres_path ,class: 'nav-link text-light border border-white rounded mr-3' do %>
+              ジャンル一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light border border-white rounded' do %>
+              ログアウト
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to about_path,class: 'nav-link text-light border border-white rounded mr-3' do %>
+              About
+            <% end %>
+          </li>
+          <li>
+            <%= link_to items_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
+              商品一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_customer_registration_path,class: 'nav-link text-light border border-white rounded mr-3' do %>
+              新規登録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_admin_session_path ,class: 'nav-link text-light border border-white rounded' do %>
+              ログイン
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+        <div class="search_form mt-3", style = "margin-left:50%;">
+          <%= form_with method: :get, style:"width:200px;" do |f| %>
+            <%= f.text_field :word, placeholder:"Search" %>
+            <%= f.submit "検索", class: "btn", style:"background-color:#eee;" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

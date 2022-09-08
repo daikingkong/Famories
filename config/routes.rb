@@ -46,7 +46,7 @@ Rails.application.routes.draw do
     resources :end_users, only: [:index, :show, :destroy]
     resources :memories, only: [:show, :destroy]
     resources :memory_comments, only: [:index, :destroy]
-    resources :groups, only: [:index, :show] do
+    resources :groups, only: [:index, :show, :destroy] do
       resources :group_memories, only: [:index, :show, :destroy]
     end
   end

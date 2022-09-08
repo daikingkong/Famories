@@ -1,4 +1,4 @@
 top
-        <div class="row">
-          <%= link_to 'ゲストログイン（閲覧用）', end_user_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+        <div>
+          <%= link_to 'log out', destroy_end_user_session_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :delete %>
         </div>
