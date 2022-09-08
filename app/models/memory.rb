@@ -10,4 +10,8 @@ class Memory < ApplicationRecord
 
   has_one_attached :memory_image
 
+  def get_memory_image
+    (memory_image.attached?) ? memory_image : 'no_image.jpg'
+  end
+
 end

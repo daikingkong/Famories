@@ -42,13 +42,14 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get '' => 'admin#homes'
+    get '' => 'homes#top'
     resources :end_users, only: [:index, :show, :destroy]
     resources :memories, only: [:show, :destroy]
     resources :memory_comments, only: [:index, :destroy]
-    resources :groups, only: [:index, :show] do
-      resources :group_memories, only: [:index, :show, :destroy]
+    resources :groups, only: [:index, :show, :destroy] do
+      resources :group_memories, only: [:show, :destroy]
     end
+    resources :group_memories, only: [:index]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

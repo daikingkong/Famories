@@ -1,0 +1,80 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#202A4B;">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <%= image_tag 'no_image.jpg', size:"200x120" %>
+      </a>
+      <div style="color:#FFF; margin-left:200px; width:300px;">
+        <% if end_user_signed_in? %>
+        ようこそ、<%= current_end_user.name %>さん！
+        <% end %>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown", style = "flex-wrap:wrap;">
+        <ul class="navbar-nav ml-auto", style = "margin-left:55%;">
+        <% if end_user_signed_in? %>
+          <li>
+            <%= link_to end_user_path(current_end_user), class: 'nav-link text-light border border-white rounded mr-3' do %>
+              マイページ
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to end_user_favorite_memories_path(current_end_user), class: 'nav-link text-light border border-white rounded mr-3' do %>
+              マイいいね一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to memories_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
+              みんなのメモリー一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to memory_tags_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
+              タグから探す
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to groups_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
+              グループ一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_end_user_session_path, method: :delete,class: 'nav-link text-light border border-white rounded' do %>
+              ログアウト
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to end_user_guest_sign_in_path, class: 'nav-link text-light border border-white rounded mr-3', method: :post do %>
+              ゲストログイン
+            <% end %>
+          </li>
+          <li>
+            <%= link_to about_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
+              About
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_end_user_registration_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
+              新規登録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_end_user_session_path, class: 'nav-link text-light border border-white rounded' do %>
+              ログイン
+            <% end %>
+          </li>
+        <% end %>
+        <div class="search_form mt-3", style = "margin-left:37%;">
+          <%= form_with method: :get, style:"width:200px;" do |f| %>
+            <%= f.text_field :word, placeholder:"Search" %>
+            <%= f.submit "検索", class: "btn", style:"background-color:#eee;" %>
+          <% end %>
+        </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
