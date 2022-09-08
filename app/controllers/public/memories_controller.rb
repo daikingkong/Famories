@@ -17,6 +17,9 @@ class Public::MemoriesController < ApplicationController
   end
 
   def show
+    @memory = Memory.find(params[:id])
+    @memory_comments = @memory.memory_comments.page(params[:page]).per(8)
+    @memory_comment = MemoryComment.new
   end
 
   def edit
