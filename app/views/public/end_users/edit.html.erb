@@ -1,0 +1,26 @@
+会員情報編集
+<%= form_with model:@end_user do |f| %>
+
+  <div class="field">
+    <%= f.label :profile_image %>
+    <%= f.file_field :profile_image, accept: "image/*" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div class="field">
+    <%= f.submit "更新", class:"btn btn-primary", method: :patch %>
+  </div>
+
+  <div class="field">
+    <%= link_to "退会する", end_user_unsubscribe_path(@end_user), class:"btn btn-danger" %>
+  </div>
+
+<% end %>
