@@ -34,6 +34,8 @@ class Public::EndUsersController < ApplicationController
   def favorite_memories
   end
 
+  private
+
   def end_user_params
     params.require(:end_user).permit(:name, :email, :profile_image)
   end
