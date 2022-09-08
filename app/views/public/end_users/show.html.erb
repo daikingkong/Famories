@@ -1,0 +1,43 @@
+<div class="container">
+  <div>
+    <%= image_tag @end_user.get_profile_image, size: "100x100" %>
+    <%= @end_user.name %>
+    <%= link_to "ユーザー編集", edit_end_user_path(@end_user), class:"btn btn-success" %>
+    <% @end_user_groups.each do |end_user_group| %>
+    <div>
+      <table>
+        <tbody>
+            <tr>
+              <th>
+                <h4>マイグループ</h4>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <%= link_to group_path(end_user_group) do %>
+                  <%= end_user_group.name %>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+    <%= link_to "グループ作成", new_group_path, class:"btn btn-success" %>
+  </div>
+  <div>
+    マイメモリー一覧
+    <%= link_to "新しくメモる", new_memory_path, class:"btn btn-success" %>
+    <%= paginate @end_user_memories %>
+  </div>
+  <div>
+    <% @end_user_memories.each do |end_user_memory| %>
+      <%= end_user_memory.memory_tags.name %>
+      <%= link_to memory_path(end_user_memory) do %>
+        <%= image_tag end_user_memory.get_memory_image, size: "50x50" %>
+        <%= end_user_memory.title %>
+      <% end %>
+      <%= end_user_memory.memory_favorites %>
+    <% end %>
+  </div>
+</div>
