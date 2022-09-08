@@ -22,17 +22,22 @@
           </li>
           <li>
             <%=  link_to end_user_favorite_memories_path(current_end_user), class: 'nav-link text-light border border-white rounded mr-3' do %>
-              いいね一覧
+              マイいいね一覧
             <% end %>
           </li>
           <li>
             <%=  link_to memories_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
-              みんなのメモリーを見る
+              みんなのメモリー一覧
             <% end %>
           </li>
           <li>
             <%=  link_to memory_tags_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
               タグから探す
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to groups_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
+              グループ一覧
             <% end %>
           </li>
           <li>

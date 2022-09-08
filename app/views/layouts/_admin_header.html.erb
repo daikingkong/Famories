@@ -12,7 +12,7 @@
         <% if admin_signed_in? %>
           <li>
             <%= link_to admin_path,class: 'nav-link text-light border border-white rounded mr-3' do %>
-              メモリー一覧
+              個人投稿一覧
             <% end %>
           </li>
           <li>
@@ -27,7 +27,7 @@
           </li>
           <li>
             <%=  link_to admin_group_memories_path ,class: 'nav-link text-light border border-white rounded mr-3' do %>
-              グループメモリー一覧
+              全グループ投稿一覧
             <% end %>
           </li>
           <li>
