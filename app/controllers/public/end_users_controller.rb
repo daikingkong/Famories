@@ -11,7 +11,10 @@ class Public::EndUsersController < ApplicationController
     @end_user = EndUser.find(params[:id])
   end
 
-  def updata
+  def update
+    end_user = EndUser.find(params[:id])
+    end_user.update(end_user_params)
+    redirect_to end_user_path(end_user)
   end
 
   def destroy
@@ -24,6 +27,10 @@ class Public::EndUsersController < ApplicationController
   end
 
   def favorite_memories
+  end
+
+  def end_user_params
+    params.require(:end_user).permit(:name, :email, :profile_image)
   end
 
 end
