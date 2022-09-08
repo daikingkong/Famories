@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :end_user do
-    post 'end_user/guest_sign_in' => 'users/sessions#guest_sign_in'
+    post 'end_user/guest_sign_in' => 'public/sessions#guest_sign_in'
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
