@@ -18,9 +18,14 @@ class Public::EndUsersController < ApplicationController
   end
 
   def destroy
+    end_user = EndUser.find(params[:id])
+    end_user.destroy
+    redirect_to thanks_path
   end
 
   def unsubscribe
+    @end_user = EndUser.find(params[:end_user_id])
+
   end
 
   def thanks
