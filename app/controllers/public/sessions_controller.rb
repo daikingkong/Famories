@@ -7,15 +7,15 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = EndUser.guest
     sign_in user
-    redirect_to about_path, notice: 'ゲストユーザーでログインしました。'
+    redirect_to end_user_path(current_end_user), notice: 'ゲストユーザーでログインしました。'
   end
 
   def after_sign_in_path_for(resource)
-    root_path
+    end_user_path(current_end_user)
   end
 
   def after_sign_out_path_for(resource)
-    new_end_user_session_path
+    root_path
   end
 
 
