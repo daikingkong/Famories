@@ -7,4 +7,8 @@ class GroupMemory < ApplicationRecord
 
   has_one_attached :group_memory_image
 
+  def get_group_memory_image
+    (group_memory_image.attached?) ? group_memory_image : 'no_image.jpg'
+  end
+
 end
