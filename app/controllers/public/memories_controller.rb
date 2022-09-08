@@ -2,6 +2,7 @@ class Public::MemoriesController < ApplicationController
   layout "public_application"
 
   def new
+    @memory = Memory.new
   end
 
   def create
