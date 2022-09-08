@@ -8,5 +8,10 @@
 EndUser.create!(
    name: 'テスト太郎',
    email: 'test@example.com',
-   password: 'testtest'
+   password: 'publictest'
+)
+
+Admin.create!(
+   email: 'admin@example.com',
+   password: 'admintest'
 )

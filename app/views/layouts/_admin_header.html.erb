@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#202A4B;">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <%= image_tag'linkedin_banner_image_1.png', size:"200x120" %>
+        <%= image_tag'no_image.jpg', size:"200x120" %>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
         <ul class="navbar-nav ml-auto", style = "margin-left:55%;">
         <% if admin_signed_in? %>
           <li>
-            <%= link_to admin_items_path,class: 'nav-link text-light border border-white rounded mr-3' do %>
+            <%= link_to admin_path,class: 'nav-link text-light border border-white rounded mr-3' do %>
               商品一覧
             <% end %>
           </li>
@@ -37,22 +37,22 @@
           </li>
         <% else %>
           <li>
-            <%= link_to about_path,class: 'nav-link text-light border border-white rounded mr-3' do %>
+            <%= link_to end_user_guest_sign_in_path, class: 'nav-link text-light border border-white rounded mr-3', method: :post do %>
+              ゲストログイン
+            <% end %>
+          </li>
+          <li>
+            <%= link_to about_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
               About
             <% end %>
           </li>
           <li>
-            <%= link_to items_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
-              商品一覧
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_customer_registration_path,class: 'nav-link text-light border border-white rounded mr-3' do %>
+            <%= link_to new_end_user_registration_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
               新規登録
             <% end %>
           </li>
           <li>
-            <%= link_to new_admin_session_path ,class: 'nav-link text-light border border-white rounded' do %>
+            <%= link_to new_end_user_session_path, class: 'nav-link text-light border border-white rounded' do %>
               ログイン
             <% end %>
           </li>
