@@ -14,6 +14,9 @@ class Public::MemoriesController < ApplicationController
   end
 
   def index
+    @memories = Memory.page(params[:page]).per(6)
+    @end_user = current_end_user
+    @groups = @end_user.groups
   end
 
   def show
