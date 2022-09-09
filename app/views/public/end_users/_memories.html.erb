@@ -47,6 +47,7 @@
                 <%= image_tag memory.get_memory_image, size: "200x150" %><br>
                 <%= memory.title %><br>
               <% end %>
+              <%= memory.end_user.name %><br>
               <%= memory.memory_favorites.count %>いいね<br>
             </div>
           <% end %>
