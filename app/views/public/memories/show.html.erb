@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
+      <%= notice %>
       <table class="table">
         <tbody>
           <tr>
@@ -40,13 +41,17 @@
           <tr>
             <td><%= memory_comment.end_user.name %></td>
             <td><%= memory_comment.comment %></td>
-            <td><%= link_to destroy_memory_comment_path(memory_comment), class:"btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+            <td><%= link_to "削除", memory_memory_comment_path(memory_comment), class:"btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
       <div>
-
+        <%= form_with model:@memory_comment, url:memory_memory_comments_path(@memory.id), method: :post do |f| %>
+          <%= f.label :comment, "コメント投稿" %>
+          <%= f.text_field :comment %>
+          <%= f.submit "コメント投稿", class:"btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>
