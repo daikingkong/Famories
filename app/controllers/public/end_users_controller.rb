@@ -3,8 +3,8 @@ class Public::EndUsersController < ApplicationController
 
   def show
     @end_user = EndUser.find(params[:id])
-    @end_user_groups = @end_user.groups
-    @end_user_memories = @end_user.memories.page(params[:page]).per(6)
+    @groups = @end_user.groups
+    @memories = @end_user.memories.page(params[:page]).per(6)
   end
 
   def edit
@@ -32,7 +32,15 @@ class Public::EndUsersController < ApplicationController
   end
 
   def favorite_memories
+    @end_user = current_end_user
+    @groups = @end_user.groups
+     # ログインユーザーの「いいねしたメモリー」を一覧表示するため
+    favorite_memories = MemoryFavorite.where(end_user_id: @end_user.id).pluck(:memory_id)
+    @memories = Memory.find(favorite_memories)
+    @memories = Kaminari.paginate_array(@memories).page(params[:page]).per(6)
   end
+
+  private
 
   def end_user_params
     params.require(:end_user).permit(:name, :email, :profile_image)

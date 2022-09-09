@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_08_124405) do
+ActiveRecord::Schema.define(version: 2022_09_09_132949) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -120,10 +120,13 @@ ActiveRecord::Schema.define(version: 2022_09_08_124405) do
   end
 
   create_table "memory_search_tags", force: :cascade do |t|
-    t.integer "memory_tag_id", null: false
-    t.integer "memory_id", null: false
+    t.integer "memory_id"
+    t.integer "memory_tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["memory_id", "memory_tag_id"], name: "index_memory_search_tags_on_memory_id_and_memory_tag_id", unique: true
+    t.index ["memory_id"], name: "index_memory_search_tags_on_memory_id"
+    t.index ["memory_tag_id"], name: "index_memory_search_tags_on_memory_tag_id"
   end
 
   create_table "memory_tags", force: :cascade do |t|
@@ -134,4 +137,6 @@ ActiveRecord::Schema.define(version: 2022_09_08_124405) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "memory_search_tags", "memories"
+  add_foreign_key "memory_search_tags", "memory_tags"
 end
