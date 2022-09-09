@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-3">
       <%= notice %>
-      <table class="table">
+      <table>
         <tbody>
           <tr>
             <th>投稿ユーザー</th>
@@ -21,8 +21,24 @@
             <td><%= @memory.memo %></td>
           </tr>
           <tr>
+            <td><%= @memory.memory_favorites.count %>いいね</td>
+            <td>
+              <% if @memory.memory_favorited_by?(current_end_user) %>
+                <%= link_to memory_memory_favorites_path(@memory), class:"text-danger", method: :delete do %>
+                <h1><i class="fas fa-heart"></i></h1>
+                <% end %>
+              <% else %>
+                <%= link_to memory_memory_favorites_path(@memory),  class:"text-danger", method: :post do %>
+                <h1><i class="far fa-heart"></i></h1>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
             <td></td>
-            <td><%= link_to "メモリー編集", edit_memory_path(@memory), class:"btn btn-primary" %></td>
+            <td>
+              <%= link_to "メモリー編集", edit_memory_path(@memory), class:"btn btn-primary" %>
+            </td>
           </tr>
         </tbody>
       </table>

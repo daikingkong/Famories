@@ -14,4 +14,8 @@ class Memory < ApplicationRecord
     (memory_image.attached?) ? memory_image : 'no_image.jpg'
   end
 
+  def memory_favorited_by?(end_user)
+    memory_favorites.exists?(end_user_id: end_user.id)
+  end
+
 end
