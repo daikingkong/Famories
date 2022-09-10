@@ -8,10 +8,12 @@ class Public::MemoriesController < ApplicationController
   def create
     memory = Memory.new(memory_params)
     memory.end_user_id = current_end_user.id
-
-    memory.save
-    @end_user = memory.end_user
-    redirect_to end_user_path(@end_user)
+    if memory.save
+      @end_user = memory.end_user
+      redirect_to end_user_path(@end_user)
+    else
+      redirect_to new_memory_path
+    end
   end
 
   def index
