@@ -3,7 +3,7 @@ class Public::EndUsersController < ApplicationController
 
   def show
     @end_user = EndUser.find(params[:id])
-    @groups = @end_user.groups
+    @groups = @end_user.groups.page(params[:page]).per(10)
     @memories = @end_user.memories.page(params[:page]).per(6)
   end
 

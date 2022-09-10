@@ -15,15 +15,17 @@
               <td><%= link_to "ユーザー編集", edit_end_user_path(end_user), class:"btn btn-success" %></td>
             </tr>
             <tr>
-              <th>
+              <td>
                 <h4>マイグループ</h4>
-              </th>
+              </td>
             </tr>
             <% groups.each do |group| %>
               <tr>
                 <td>
                   <%= link_to group_path(group) do %>
+                    <%= image_tag group.get_group_image, size: "39x39" %>
                     <%= group.name %>
+                    #{group.owner_id}
                   <% end %>
                 </td>
               </tr>
