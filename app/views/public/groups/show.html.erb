@@ -1,1 +1,54 @@
-<%= @group.name %>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-12 d-flex flex-wrap justify-content-center">
+
+      <div class="col-3">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><%= image_tag @group.get_group_image, size: "100x100" %></td>
+            </tr>
+
+            <tr>
+              <td><%= @group.name %></td>
+            </tr>
+
+            <tr>
+              <td><%= link_to "グループ編集", edit_group_path(@group), class:"btn btn-success" %></td>
+            </tr>
+
+            <tr>
+              <td>
+                <h4>グループメンバー</h4>
+              </td>
+            </tr>
+
+            <% @group_users.each do |group_user| %>
+              <tr>
+                <td>
+                  <%= link_to group_path(group_user) do %>
+                    <%= image_tag group_user.get_profile_image, size: "39x39" %>
+                    <%= group_user.name %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+
+            <tr>
+              <td><%= link_to "加入リクエスト一覧", group_join_requests_path(@group), class:"btn btn-success" %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-8">
+        <div class="d-flex flex-wrap">
+          <%= @group.name %>のページ
+          <%= link_to "グループに新しくメモる", new_group_group_memory_path(@memories), class:"btn btn-success" %>
+          <%= paginate @memories %>
+        </div>
+        <%= render "public/end_users/memories", memories: @memories %>
+      </div>
+    </div>
+  </div>
+</div>

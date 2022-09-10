@@ -21,6 +21,8 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @group_users = @group.end_users
+    @memories = @group.group_memories.page(params[:page]).per(6)
   end
 
   def edit
