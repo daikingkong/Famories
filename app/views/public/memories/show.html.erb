@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
+
       <%= notice %>
       <table>
         <tbody>
@@ -43,9 +44,11 @@
         </tbody>
       </table>
     </div>
+
     <div class="col-md-7">
       <%= paginate @memory_comments %>
     </div>
+
     <div>
       <table>
         <tbody>
@@ -62,6 +65,7 @@
           <% end %>
         </tbody>
       </table>
+
       <div>
         <%= form_with model:@memory_comment, url:memory_memory_comments_path(@memory.id), method: :post do |f| %>
           <%= f.label :comment, "コメント投稿" %>

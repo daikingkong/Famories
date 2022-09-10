@@ -5,8 +5,8 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   def guest_sign_in
-    user = EndUser.guest
-    sign_in user
+    guestuser = EndUser.guest
+    sign_in guestuser
     redirect_to end_user_path(current_end_user), notice: 'ゲストユーザーでログインしました。'
   end
 
