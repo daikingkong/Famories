@@ -25,7 +25,6 @@ class Public::EndUsersController < ApplicationController
 
   def unsubscribe
     @end_user = EndUser.find(params[:end_user_id])
-
   end
 
   def thanks
@@ -34,7 +33,7 @@ class Public::EndUsersController < ApplicationController
   def favorite_memories
     @end_user = current_end_user
     @groups = @end_user.groups
-     # ログインユーザーの「いいねしたメモリー」を一覧表示するため
+     # ログインユーザーの「いいねしたメモリー一覧」を表示するため
     favorite_memories = MemoryFavorite.where(end_user_id: @end_user.id).pluck(:memory_id)
     @memories = Memory.find(favorite_memories)
     @memories = Kaminari.paginate_array(@memories).page(params[:page]).per(6)

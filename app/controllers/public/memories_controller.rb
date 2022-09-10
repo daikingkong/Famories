@@ -10,9 +10,9 @@ class Public::MemoriesController < ApplicationController
     memory.end_user_id = current_end_user.id
     if memory.save
       @end_user = memory.end_user
-      redirect_to end_user_path(@end_user)
+      redirect_to end_user_path(@end_user), notice: "メモリーを作成しました。"
     else
-      redirect_to new_memory_path
+      redirect_to new_memory_path, notice: "メモリーの作成に失敗しました。"
     end
   end
 
@@ -37,14 +37,14 @@ class Public::MemoriesController < ApplicationController
     if memory.update(memory_params)
       redirect_to memory_path(memory), notice: "メモリーを編集しました。"
     else
-      redirect_to edit_memory_path(memory), notice: "編集に失敗しました。"
+      redirect_to edit_memory_path(memory), notice: "メモリーの編集に失敗しました。"
     end
   end
 
   def destroy
     memory = Memory.find(params[:id])
     memory.destroy
-    redirect_to end_user_path(current_end_user), notice: "削除に失敗しました。"
+    redirect_to end_user_path(current_end_user), notice: "メモリーを削除しました。"
   end
 
   def memory_params

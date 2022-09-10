@@ -7,6 +7,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNavDropdown", style = "flex-wrap:wrap;">
         <ul class="navbar-nav ml-auto", style = "margin-left:55%;">
         <% if admin_signed_in? %>
@@ -63,6 +64,7 @@
           </li>
         <% end %>
         </ul>
+
         <div class="search_form mt-3", style = "margin-left:50%;">
           <%= form_with method: :get, style:"width:200px;" do |f| %>
             <%= f.text_field :word, placeholder:"Search" %>
