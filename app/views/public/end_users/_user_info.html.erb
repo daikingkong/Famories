@@ -1,0 +1,37 @@
+<table class="table">
+  <tbody>
+    <tr>
+      <td><%= image_tag end_user.get_profile_image, size: "100x100" %></td>
+    </tr>
+
+    <tr>
+      <td><%= end_user.name %></td>
+    </tr>
+
+    <tr>
+      <td><%= link_to "ユーザー編集", edit_end_user_path(end_user), class:"btn btn-success" %></td>
+    </tr>
+
+    <tr>
+      <td>
+        <h4>マイグループ</h4>
+      </td>
+    </tr>
+
+    <% user_groups.each do |user_group| %>
+      <tr>
+        <td>
+          <%= link_to group_path(user_group) do %>
+            <%= image_tag user_group.get_group_image, size: "39x39" %>
+            <%= user_group.name %>
+            #{user_group.owner_id}
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td><%= link_to "グループ作成", new_group_path, class:"btn btn-success" %></td>
+    </tr>
+  </tbody>
+</table>

@@ -14,9 +14,13 @@ class Public::GroupsController < ApplicationController
   end
 
   def index
+    @groups = Group.page(params[:page]).per(10)
+    @end_user = current_end_user
+    @user_groups = @end_user.groups.page(params[:page]).per(10)
   end
 
   def show
+    @group = Group.find(params[:id])
   end
 
   def edit
