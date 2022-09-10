@@ -42,7 +42,6 @@
         <div class="d-flex flex-wrap">
           <% memories.each do |memory| %>
             <div class="mx-auto mb-3 text-truncate">
-              <%= memory.memory_tags.name %><br>
               <%= link_to memory_path(memory) do %>
                 <%= image_tag memory.get_memory_image, size: "200x150" %><br>
                 <%= memory.title %><br>
