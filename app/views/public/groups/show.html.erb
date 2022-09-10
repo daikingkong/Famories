@@ -14,7 +14,7 @@
             </tr>
 
             <tr>
-              <td><%= link_to "グループ編集", edit_group_path(@group), class:"btn btn-success" %></td>
+              <td><%= link_to "グループ編集", edit_group_path(@group), class:"btn btn-primary" %></td>
             </tr>
 
             <tr>
@@ -36,6 +36,9 @@
 
             <tr>
               <td><%= link_to "加入リクエスト一覧", group_join_requests_path(@group), class:"btn btn-success" %></td>
+            </tr>
+            <tr>
+              <td><%= link_to "グループ退会", group_unsubscribe_confirm_path(@group), class:"btn btn-danger" %></td>
             </tr>
           </tbody>
         </table>

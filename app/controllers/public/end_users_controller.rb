@@ -23,7 +23,7 @@ class Public::EndUsersController < ApplicationController
     redirect_to thanks_path
   end
 
-  def unsubscribe
+  def unsubscribe_confirm
     @end_user = EndUser.find(params[:end_user_id])
   end
 

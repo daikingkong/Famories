@@ -32,9 +32,17 @@ class Public::GroupsController < ApplicationController
   end
 
   def destroy
+    @group = Group.find(params[:id])
+    unless current_end_user.id == @group.owner_id
+      @group.end_users.destroy(current_end_user)
+      redirect_to end_user_path(current_end_user)
+    else
+      redirect_to request.referer, notice: "オーナーはグループを削除することで退会できます。"
+    end
   end
 
   def unsubscribe_confirm
+    @group = Group.find(params[:group_id])
   end
 
   def group_params
