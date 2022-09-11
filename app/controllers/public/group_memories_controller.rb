@@ -7,9 +7,15 @@ class Public::GroupMemoriesController < ApplicationController
   end
 
   def create
-  end
-
-  def index
+    @group = Group.find(params[:group_id])
+    memory = GroupMemory.new(group_memory_params)
+    memory.end_user_id = current_end_user.id
+    memory.group_id = @group.id
+    if memory.save
+      redirect_to group_path(@group), notice: "メモリーを作成しました。"
+    else
+      redirect_to new_group_group_memory_path(@group), notice: "メモリーの作成に失敗しました。"
+    end
   end
 
   def show
@@ -22,6 +28,10 @@ class Public::GroupMemoriesController < ApplicationController
   end
 
   def destroy
+  end
+
+  def group_memory_params
+    params.require(:group_memory).permit(:title, :memo, :group_id, :end_user_id, :memory_image)
   end
 
 end
