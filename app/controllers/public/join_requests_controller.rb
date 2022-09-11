@@ -2,6 +2,9 @@ class Public::JoinRequestsController < ApplicationController
   layout "public_application"
 
   def index
+    @group = Group.find(params[:group_id])
+    @group_users = @group.end_users
+    @join_requests = @group.join_requests.page(params[:page]).per(10)
   end
 
   def create
