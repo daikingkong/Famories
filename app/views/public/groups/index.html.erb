@@ -22,12 +22,15 @@
                   <td><%= group.name %></td>
                   <td><%= EndUser.find_by(id: group.owner_id).name %></td>
                   <td><%= group.name %></td>
-                  <td>
-                    <%= link_to "加入リクエスト", group_join_requests_path(group), class:"btn btn-primary", method: :post %>
-                  </td>
-                  <td>
-                    <%= link_to "リクエスト解除", group_join_requests_path(group), class:"btn btn-danger", method: :delete %>
-                  </td>
+                  <% if group.already_requested?(current_end_user) %>
+                    <td>
+                      <%= link_to "リクエスト解除", group_join_requests_path(group), class:"btn btn-danger", method: :delete %>
+                    </td>
+                  <% else %>
+                    <td>
+                      <%= link_to "加入リクエスト", group_join_requests_path(group), class:"btn btn-primary", method: :post %>
+                    </td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>

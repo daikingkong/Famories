@@ -14,4 +14,9 @@ class Group < ApplicationRecord
     (group_image.attached?) ? group_image : 'no_image.jpg'
   end
 
+  # 加入リクエストを送っているか判定
+  def already_requested?(end_user)
+    self.join_requests.exists?(end_user_id: end_user.id)
+  end
+
 end
