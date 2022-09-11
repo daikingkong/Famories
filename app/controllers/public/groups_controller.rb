@@ -6,11 +6,14 @@ class Public::GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(group_params)
-    @group.owner_id = current_end_user.id
-    @group.end_users << current_end_user
-    @group.save
-    redirect_to group_path(@group)
+    group = Group.new(group_params)
+    group.owner_id = current_end_user.id
+    group.end_users << current_end_user
+    if group.save
+      redirect_to group_path(group), notice: "グループの作成に成功しました。"
+    else
+      redirect_to new_group_path, notice: "グループの作成に失敗しました。"
+    end
   end
 
   def index
@@ -30,6 +33,12 @@ class Public::GroupsController < ApplicationController
   end
 
   def update
+    group = Group.find(params[:id])
+    if group.update(group_params)
+      redirect_to group_path(group), notice: "グループの編集に成功しました。"
+    else
+      redirect_to edit_group_path(group), notice: "グループの編集に失敗しました。"
+    end
   end
 
   def destroy
