@@ -48,7 +48,7 @@
       <div class="col-8">
         <div class="d-flex flex-wrap">
           <%= @group.name %>のページ
-          <%= link_to "グループに新しくメモる", new_group_group_memory_path(@memories), class:"btn btn-success" %>
+          <%= link_to "グループに新しくメモる", new_group_group_memory_path(@group), class:"btn btn-success" %>
           <%= paginate @memories %>
         </div>
         <%= render "public/end_users/memories", memories: @memories %>
