@@ -64,10 +64,10 @@
                 <td><%= image_tag join_request.end_user.get_profile_image, size: "50x50" %></td>
                 <td><%= join_request.end_user.name %></td>
                 <td>
-                  <%= link_to "承認", group_group_users_path(join_request.group), class:"btn btn-danger", method: :post %>
+                  <%= link_to "承認", group_group_users_path(join_request.group), class:"btn btn-primary", method: :post %>
                 </td>
                 <td>
-                  <%= link_to "拒否", group_group_user_path(join_request.group, join_request.id), class:"btn btn-primary", method: :delete, date: {confirm: "本当に拒否しますか？"} %>
+                  <%= link_to "拒否", group_group_user_path(join_request.group, join_request.id), class:"btn btn-danger", method: :delete, date: {confirm: "本当に拒否しますか？"} %>
                 </td>
               </tr>
             <% end %>
