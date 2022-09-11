@@ -9,8 +9,8 @@ class Public::GroupMemoriesController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
     memory = GroupMemory.new(group_memory_params)
-    memory.end_user_id = current_end_user.id
     memory.group_id = @group.id
+    memory.end_user_id = current_end_user.id
     if memory.save
       redirect_to group_path(@group), notice: "メモリーを作成しました。"
     else
@@ -19,6 +19,8 @@ class Public::GroupMemoriesController < ApplicationController
   end
 
   def show
+    @group = Group.find(params[:group_id])
+    @memory = GroupMemory.find(params[:id])
   end
 
   def edit

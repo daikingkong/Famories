@@ -22,57 +22,16 @@
             <td><%= @memory.memo %></td>
           </tr>
           <tr>
-            <td><%= @memory.memory_favorites.count %>いいね</td>
-            <td>
-              <% if @memory.memory_favorited_by?(current_end_user) %>
-                <%= link_to memory_memory_favorites_path(@memory), class:"text-danger", method: :delete do %>
-                <h1><i class="fas fa-heart"></i></h1>
-                <% end %>
-              <% else %>
-                <%= link_to memory_memory_favorites_path(@memory),  class:"text-danger", method: :post do %>
-                <h1><i class="far fa-heart"></i></h1>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
             <td></td>
             <td>
-              <%= link_to "メモリー編集", edit_memory_path(@memory), class:"btn btn-primary" %>
+              <%= link_to "メモリー編集", edit_group_group_memory_path(@memory), class:"btn btn-primary" %>
+            </td>
+            <td>
+              <%= link_to "グループページに戻る", group_path(@group), class:"btn btn-secondary" %>
             </td>
           </tr>
         </tbody>
       </table>
-    </div>
-
-    <div class="col-md-7">
-      <%= paginate @memory_comments %>
-    </div>
-
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <th>ユーザー</th>
-            <th>コメント</th>
-          </tr>
-          <% @memory_comments.each do |memory_comment| %>
-          <tr>
-            <td><%= memory_comment.end_user.name %></td>
-            <td><%= memory_comment.comment %></td>
-            <td><%= link_to "削除", memory_memory_comment_path(memory_comment), class:"btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-      <div>
-        <%= form_with model:@memory_comment, url:memory_memory_comments_path(@memory.id), method: :post do |f| %>
-          <%= f.label :comment, "コメント投稿" %>
-          <%= f.text_field :comment %>
-          <%= f.submit "コメント投稿", class:"btn btn-primary" %>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>
