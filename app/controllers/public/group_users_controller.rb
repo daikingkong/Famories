@@ -11,6 +11,10 @@ class Public::GroupUsersController < ApplicationController
   end
 
   def destroy
+    group = Group.find(params[:group_id])
+    join_request = group.join_requests.find_by(group_id: group.id)
+    join_request.destroy
+    redirect_to request.referer
   end
 
 end
