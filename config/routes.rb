@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :end_users, only: [:show, :edit, :update, :destroy] do
       get 'favorite_memories' => 'end_users#favorite_memories'
-      get 'unsubscribe' => 'end_users#unsubscribe'
+      get 'unsubscribe_confirm' => 'end_users#unsubscribe_confirm'
     end
 
     get 'thanks' => 'end_users#thanks'

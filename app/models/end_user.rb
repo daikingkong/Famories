@@ -6,8 +6,9 @@ class EndUser < ApplicationRecord
 
   has_many :group_users, dependent: :destroy
   has_many :join_requests, dependent: :destroy
-  has_many :group_memories, dependent: :destroy
   has_many :groups, through: :group_users
+
+  has_many :group_memories, dependent: :destroy
 
   has_many :memories, dependent: :destroy
   has_many :memories, dependent: :destroy
@@ -22,7 +23,7 @@ class EndUser < ApplicationRecord
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
-  
+
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

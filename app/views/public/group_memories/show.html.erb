@@ -1,0 +1,37 @@
+<div class="container">
+  <%= notice %>
+  <div class="row">
+    <div class="col-md-3">
+
+      <table>
+        <tbody>
+          <tr>
+            <th>投稿ユーザー</th>
+            <th><%= @memory.end_user.name %></th>
+          </tr>
+          <tr>
+            <td>メモリー画像</td>
+            <td><%= image_tag @memory.get_memory_image, size: "100x100" %></td>
+          </tr>
+          <tr>
+            <td>メモリータイトル</td>
+            <td><%= @memory.title %></td>
+          </tr>
+          <tr>
+            <td>メモ</td>
+            <td><%= @memory.memo %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <%= link_to "メモリー編集", edit_group_group_memory_path(@group, @memory), class:"btn btn-primary" %>
+            </td>
+            <td>
+              <%= link_to "グループページに戻る", group_path(@group), class:"btn btn-secondary" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
