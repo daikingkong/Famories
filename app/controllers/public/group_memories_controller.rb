@@ -40,6 +40,10 @@ class Public::GroupMemoriesController < ApplicationController
   end
 
   def destroy
+    @group = Group.find(params[:group_id])
+    memory = GroupMemory.find(params[:id])
+    memory.destroy
+    redirect_to group_path(@group), notice: "メモリーを削除しました。"
   end
 
   def group_memory_params
