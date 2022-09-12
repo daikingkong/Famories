@@ -1,12 +1,6 @@
 <div class="container text-center">
   新しくメモる
 
-  <% @tag_list.each do |tag| %>
-  <span>
-    <%= link_to tag.name, memory_tag_tag_memories_path(tag) %>
-    <%= "(#{tag.memories.count})" %>
-  </span>
-  <% end %>
   <%= form_with model:@memory do |f| %>
 
     <div class="field">
