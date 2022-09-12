@@ -6,6 +6,7 @@ class Public::GroupMemoriesController < ApplicationController
     @group = Group.find(params[:group_id])
   end
 
+  # グループ内でのメモリー投稿はグループと会員の情報を持たせる必要がある
   def create
     @group = Group.find(params[:group_id])
     memory = GroupMemory.new(group_memory_params)
@@ -24,6 +25,8 @@ class Public::GroupMemoriesController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params[:group_id])
+    @memory = GroupMemory.find(params[:id])
   end
 
   def update

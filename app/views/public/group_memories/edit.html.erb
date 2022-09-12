@@ -1,0 +1,28 @@
+<div class="container text-center">
+  グループのメモリー編集画面
+  <%= form_with model:@memory, url:  group_group_memories_path do |f| %>
+
+    <div class="field">
+      <%= f.label :memory_image, "メモリー画像" %>
+      <%= f.file_field :memory_image, accept: "image/*" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :title, "メモリータイトル" %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :memo, "メモ" %>
+      <%= f.text_area :memo %>
+    </div>
+
+    <div class="field">
+      <%= f.submit "メモる", class:"btn btn-success" %>
+    </div>
+
+    <div class="field">
+      <%= link_to "グループメモリー詳細画面に戻る", group_group_memory_path(@group, @memory), class:"btn btn-secondary" %>
+    </div>
+
+  <% end %>
