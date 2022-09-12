@@ -18,4 +18,25 @@ class Memory < ApplicationRecord
     memory_favorites.exists?(end_user_id: end_user.id)
   end
 
+
+  # 登録や編集時に既存のタグと同名のモノは削除し、新しいタグのみ保存する
+  def save_tag(sent_memory_tags)
+    current_memory_tags = self.memory_tags.pluck(:name) unless self.memory_tags.nil?
+    old_memory_tags = current_memory_tags - sent_memory_tags
+    new_memory_tags = sent_memory_tags - current_memory_tags
+
+    old_memory_tags.each do |old|
+      self.memory_tags.delete MemoryTag.find_by(name: old)
+    end
+
+    new_memory_tags.each do |new|
+      new_memory_tag = MemoryTag.find_or_create_by(name: new)
+      self.memory_tags << new_memory_tag
+    end
+  end
+
+  def self.search_for(content)
+    Memory.where('title LIKE ?', '%'+content+'%')
+  end
+
 end

@@ -10,6 +10,19 @@
             <th><%= @memory.end_user.name %></th>
           </tr>
           <tr>
+            <td>
+              <% @memory_tags.each do |tag| %>
+                <%= link_to tag.name, memory_tag_tag_search_path(tag) %>
+                <%= "(#{tag.memories.count})" %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= paginate @memory_tags %>
+            </td>
+          </tr>
+          <tr>
             <td>メモリー画像</td>
             <td><%= image_tag @memory.get_memory_image, size: "100x100" %></td>
           </tr>

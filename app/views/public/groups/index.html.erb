@@ -6,35 +6,11 @@
       </div>
       <div class="col-8">
         <div class="d-flex flex-wrap">
-          みんなのメモリー一覧
+          グループ一覧
           <%= link_to "グループ作成", new_group_path, class:"btn btn-success" %>
           <%= paginate @groups %>
         </div>
-          <table>
-            <tbody>
-              <tr>
-                <th>グループ名</th>
-                <th>グループオーナー</th>
-                <th>グループ紹介文</th>
-              </tr>
-              <% @groups.each do |group| %>
-                <tr>
-                  <td><%= group.name %></td>
-                  <td><%= EndUser.find_by(id: group.owner_id).name %></td>
-                  <td><%= group.introduction %></td>
-                  <% if group.already_requested?(current_end_user) %>
-                    <td>
-                      <%= link_to "リクエスト解除", group_join_request_path(group, group.join_requests), class:"btn btn-danger", method: :delete %>
-                    </td>
-                  <% else %>
-                    <td>
-                      <%= link_to "加入リクエスト", group_join_requests_path(group), class:"btn btn-primary", method: :post %>
-                    </td>
-                  <% end %>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+        <%= render 'index', groups: @groups %>
       </div>
     </div>
   </div>

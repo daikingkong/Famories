@@ -9,8 +9,7 @@ class Public::GroupMemoriesController < ApplicationController
   # グループ内でのメモリー投稿はグループと会員の情報を持たせる必要がある
   def create
     @group = Group.find(params[:group_id])
-    memory = GroupMemory.new(group_memory_params)
-    memory.group_id = @group.id
+    memory = @group.group_memories.new(group_memory_params)
     memory.end_user_id = current_end_user.id
     if memory.save
       redirect_to group_path(@group), notice: "メモリーを作成しました。"

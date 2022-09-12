@@ -1,0 +1,26 @@
+<div class="container text-center">
+  <div class="row">
+    <div class="col-12 d-flex flex-wrap justify-content-center">
+      <div class="col-3">
+        <%= render "public/end_users/user_info", user_groups: @user_groups, end_user: @end_user %>
+      </div>
+      <div class="col-8">
+        <% if @model == 'memory' %>
+          <div class="d-flex flex-wrap">
+            メモリー検索結果
+            <%= link_to "新しくメモる", new_memory_path, class:"btn btn-success" %>
+            <%= paginate @records %>
+          </div>
+          <%= render "public/end_users/memories", memories: @records %>
+        <% elsif @model == 'group' %>
+          <div class="d-flex flex-wrap">
+            グループ検索結果
+            <%= link_to "グループ作成", new_group_path, class:"btn btn-success" %>
+            <%= paginate @records %>
+          </div>
+          <%= render 'public/groups/index', groups: @records %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
     resources :memory_tags, only: [:create, :index] do
       get 'tag_memories' => 'memory_tags#tag_memories'
+      get 'tag_search' => 'memories#tag_search'
     end
 
     resources :groups do
@@ -38,6 +39,8 @@ Rails.application.routes.draw do
       resources :group_users, only: [:create, :destroy]
       resources :group_memories, except: [:index]
     end
+
+    get 'search' => 'searches#search'
 
   end
 
