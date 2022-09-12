@@ -1,5 +1,12 @@
 <div class="container text-center">
   新しくメモる
+
+  <% @tag_list.each do |tag| %>
+  <span>
+    <%= link_to tag.name, memory_tag_tag_memories_path(tag) %>
+    <%= "(#{tag.memories.count})" %>
+  </span>
+  <% end %>
   <%= form_with model:@memory do |f| %>
 
     <div class="field">
@@ -15,6 +22,13 @@
     <div class="field">
       <%= f.label :memo, "メモ" %>
       <%= f.text_area :memo %>
+    </div>
+    全角スペースを間に入れると複数のタグ付けができます。<br>
+    例：家族　音楽　文芸　スポーツ　趣味　釣り
+
+    <div class="field">
+      <%= f.label :name, "タグ作成" %>
+      <%= f.text_field :name %>
     </div>
 
     <div class="field">

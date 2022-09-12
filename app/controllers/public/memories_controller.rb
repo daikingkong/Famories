@@ -3,12 +3,15 @@ class Public::MemoriesController < ApplicationController
 
   def new
     @memory = Memory.new
+    @tag_list = MemoryTag.all
   end
 
+  # メモリー投稿とタグ作成をする機能
   def create
-    memory = Memory.new(memory_params)
-    memory.end_user_id = current_end_user.id
+    memory = current_end_user.memories.new(memory_params)
+    tag_list = params[:memory][:name].split('　')
     if memory.save
+      memory.save_tag(tag_list)
       @end_user = memory.end_user
       redirect_to end_user_path(@end_user), notice: "メモリーを作成しました。"
     else
@@ -24,6 +27,7 @@ class Public::MemoriesController < ApplicationController
 
   def show
     @memory = Memory.find(params[:id])
+    @memory_tags = @memory.memory_tags
     @memory_comments = @memory.memory_comments.page(params[:page]).per(8)
     @memory_comment = MemoryComment.new
   end
