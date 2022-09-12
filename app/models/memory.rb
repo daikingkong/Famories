@@ -18,4 +18,8 @@ class Memory < ApplicationRecord
     memory_favorites.exists?(end_user_id: end_user.id)
   end
 
+  def self.search_for(content)
+    Memory.where('title LIKE ?', '%'+content+'%')
+  end
+
 end

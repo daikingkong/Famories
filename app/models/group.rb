@@ -19,4 +19,8 @@ class Group < ApplicationRecord
     self.join_requests.exists?(end_user_id: end_user.id)
   end
 
+  def self.search_for(content)
+    Group.where('name LIKE ?', '%'+content+'%')
+  end
+
 end

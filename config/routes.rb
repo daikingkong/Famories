@@ -39,6 +39,8 @@ Rails.application.routes.draw do
       resources :group_memories, except: [:index]
     end
 
+    get 'search' => 'searches#search'
+
   end
 
   namespace :admin do
