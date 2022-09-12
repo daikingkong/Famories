@@ -33,6 +33,7 @@ class Public::MemoriesController < ApplicationController
 
   def edit
     @memory = Memory.find(params[:id])
+    @memory_tags = @memory.memory_tags.page(params[:page]).per(5)
   end
 
   def update
