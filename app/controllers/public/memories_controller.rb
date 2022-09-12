@@ -38,7 +38,9 @@ class Public::MemoriesController < ApplicationController
 
   def update
     memory = Memory.find(params[:id])
+    tag_list = params[:memory][:name].split('　')
     if memory.update(memory_params)
+      memory.save_tag(tag_list)
       redirect_to memory_path(memory), notice: "メモリーを編集しました。"
     else
       redirect_to edit_memory_path(memory), notice: "メモリーの編集に失敗しました。"

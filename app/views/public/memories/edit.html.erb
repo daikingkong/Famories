@@ -17,7 +17,14 @@
       <%= f.text_area :memo %>
     </div>
     全角スペースを間に入れると複数のタグ付けができます。<br>
-    例：家族　音楽　文芸　スポーツ　趣味　釣り
+    例：家族　音楽　文芸　スポーツ　趣味　釣り<br>
+    現在のタグ：
+    <% @memory_tags.each do |tag| %>
+      <%= link_to tag.name, memory_tag_tag_search_path(tag) %>
+      <%= "(#{tag.memories.count})" %>
+    <% end %>
+    ※今までのタグも含めて、すべて入力してください。<br>
+    (未入力だとタグが外れます)
     <%= paginate @memory_tags %>
     <div class="field">
       <%= f.label :name, "タグ作成" %>
