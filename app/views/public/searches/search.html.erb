@@ -7,14 +7,14 @@
       <div class="col-8">
         <% if @model == 'memory' %>
           <div class="d-flex flex-wrap">
-            みんなのメモリー一覧
+            メモリー検索結果
             <%= link_to "新しくメモる", new_memory_path, class:"btn btn-success" %>
             <%= paginate @records %>
           </div>
           <%= render "public/end_users/memories", memories: @records %>
         <% elsif @model == 'group' %>
           <div class="d-flex flex-wrap">
-            グループ一覧
+            グループ検索結果
             <%= link_to "グループ作成", new_group_path, class:"btn btn-success" %>
             <%= paginate @records %>
           </div>
