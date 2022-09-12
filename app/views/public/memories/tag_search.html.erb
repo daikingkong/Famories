@@ -1,9 +1,3 @@
-<% @memory_tags.each do |tag| %>
-  <%= link_to tag.name, memory_tag_tag_search_path(tag) %>
-  <%= "(#{tag.memories.count})" %>
-<% end %>
-
-タグが<strong><%= @memory_tag.name %></strong>のメモリー一覧
 <%= paginate @memory_tags %>
 <% @memories.each do |memory| %>
   <%= link_to memory.title, memory_path(memory) %>
@@ -15,8 +9,12 @@
         <%= render "public/end_users/user_info",user_groups: @user_groups, end_user: @end_user %>
       </div>
       <div class="col-8">
+        <% @memory_tags.each do |tag| %>
+          <%= link_to tag.name, memory_tag_tag_search_path(tag) %>
+          <%= "(#{tag.memories.count})" %>
+        <% end %>
         <div class="d-flex flex-wrap">
-タグが<strong><%= @memory_tag.name %></strong>のメモリー一覧
+          タグが<strong><%= @memory_tag.name %></strong>のメモリー一覧
           <%= link_to "新しくメモる", new_memory_path, class:"btn btn-success" %>
           <%= paginate @memories %>
         </div>

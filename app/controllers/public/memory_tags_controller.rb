@@ -1,13 +1,8 @@
 class Public::MemoryTagsController < ApplicationController
   layout "public_application"
 
-  def create
-  end
-
   def index
-  end
-
-  def tag_memories
+    @memory_tags = MemoryTag.page(params[:page]).per(50)
   end
 
 end

@@ -28,8 +28,7 @@ Rails.application.routes.draw do
       resource :memory_favorites, only: [:create, :destroy]
     end
 
-    resources :memory_tags, only: [:create, :index] do
-      get 'tag_memories' => 'memory_tags#tag_memories'
+    resources :memory_tags, only: [:index] do
       get 'tag_search' => 'memories#tag_search'
     end
 
