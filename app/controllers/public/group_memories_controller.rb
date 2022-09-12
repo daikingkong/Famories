@@ -30,6 +30,13 @@ class Public::GroupMemoriesController < ApplicationController
   end
 
   def update
+    @group = Group.find(params[:group_id])
+    memory = GroupMemory.find(params[:id])
+    if memory.update(group_memory_params)
+      redirect_to group_group_memory_path(@group, memory), notice: "メモリーを更新しました。"
+    else
+      redirect_to edit_group_group_memory_path(@group, memory), notice: "メモリーの更新に失敗しました。"
+    end
   end
 
   def destroy
