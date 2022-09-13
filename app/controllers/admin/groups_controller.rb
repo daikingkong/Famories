@@ -6,6 +6,9 @@ class Admin::GroupsController < ApplicationController
   end
 
   def show
+    @group = Group.find(params[:id])
+    @group_users = @group.end_users.page(params[:page]).per(10)
+    @memories = @group.group_memories.page(params[:page]).per(6)
   end
 
   def destroy

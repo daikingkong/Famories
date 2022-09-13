@@ -6,23 +6,13 @@
       <div class="col-3">
         <table class="table">
           <tbody>
-            <tr>
-              <td><%= image_tag @group.get_group_image, size: "100x100" %></td>
-            </tr>
+            <tr><td><%= image_tag @group.get_group_image, size: "100x100" %></td></tr>
 
-            <tr>
-              <td><%= @group.name %></td>
-            </tr>
+            <tr><td><%= @group.name %></td></tr>
 
-            <tr>
-              <td><%= link_to "グループ編集", edit_group_path(@group), class:"btn btn-primary" %></td>
-            </tr>
+            <tr><td><%= link_to "グループ編集", edit_group_path(@group), class:"btn btn-primary" %></td></tr>
 
-            <tr>
-              <td>
-                <h4>グループメンバー</h4>
-              </td>
-            </tr>
+            <tr><td><h4>グループメンバー</h4></td></tr>
 
             <% @group_users.each do |group_user| %>
               <tr>
@@ -41,9 +31,9 @@
               （<%= @group.join_requests.count %>件）
               </td>
             </tr>
-            <tr>
-              <td><%= link_to "グループ退会", group_unsubscribe_confirm_path(@group), class:"btn btn-danger" %></td>
-            </tr>
+
+            <tr><td><%= link_to "グループ退会", group_unsubscribe_confirm_path(@group), class:"btn btn-danger" %></td></tr>
+
           </tbody>
         </table>
       </div>
