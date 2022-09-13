@@ -5,7 +5,4 @@ class Admin::HomesController < ApplicationController
     @memories = Memory.all
   end
 
-  def about
-  end
-
 end
