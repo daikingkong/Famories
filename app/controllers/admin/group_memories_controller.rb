@@ -11,6 +11,9 @@ class Admin::GroupMemoriesController < ApplicationController
   end
 
   def destroy
+    memory = GroupMemory.find(params[:id])
+    memory.destroy
+    redirect_to admin_group_memories_path
   end
 
 end

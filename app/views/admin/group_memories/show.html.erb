@@ -28,7 +28,7 @@
           <tr>
             <td></td>
             <td>
-              <%= link_to "メモリー削除", admin_group_group_memory_path(@group, @memory), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %>
+              <%= link_to "メモリー削除", admin_group_group_memory_path(@memory.group, @memory), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %>
             </td>
           </tr>
         </tbody>
