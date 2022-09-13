@@ -1,0 +1,23 @@
+<div class="container text-center">
+  <%= notice %>
+  全グループメモリー一覧
+  <div class="row">
+    <div class="col-12 d-flex flex-wrap justify-content-center">
+      <div class="col-8">
+        <%= paginate @memories %>
+        <div class="d-flex flex-wrap">
+          <% @memories.each do |memory| %>
+            <div class="mx-auto mb-3 text-truncate">
+              <%= link_to admin_group_group_memory_path(memory.group, memory) do %>
+                <%= image_tag memory.get_memory_image, size: "200x150" %><br>
+                <%= memory.title %><br>
+              <% end %>
+              <%= link_to "#{memory.end_user.name}", admin_end_user_path(memory.end_user_id) %><br>
+              <%= link_to "#{memory.group.name}", admin_group_path(memory.group) %><br>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
