@@ -1,0 +1,23 @@
+<div class="container text-center">
+  コメント一覧
+  <div class="row">
+    <%= paginate @memory_comments %>
+    <div>
+      <table>
+        <tbody>
+          <tr>
+            <th>ユーザー</th>
+            <th>コメント</th>
+          </tr>
+          <% @memory_comments.each do |memory_comment| %>
+          <tr>
+            <td><%= memory_comment.end_user.name %></td>
+            <td><%= memory_comment.comment %></td>
+            <td><%= link_to "削除", memory_memory_comments_path(memory_comment), class:"btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
