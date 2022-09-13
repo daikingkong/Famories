@@ -1,0 +1,34 @@
+<div class="container text-center">
+  <div class="row">
+    <div class="col-12 d-flex flex-wrap justify-content-center">
+      <div class="col-8">
+        <div class="d-flex flex-wrap">
+          グループ一覧
+          <%= link_to "グループ作成", new_group_path, class:"btn btn-success" %>
+        </div>
+        <table>
+          <tbody>
+            <tr>
+              <th>グループ画像</th>
+              <th>グループ名</th>
+              <th>グループオーナー</th>
+              <th>グループ紹介文</th>
+            </tr>
+            <% @groups.each do |group| %>
+              <tr>
+                <td>
+                  <%= link_to admin_group_path(group) do %>
+                    <%= image_tag group.get_group_image, size: "50x50" %>
+                  <% end %>
+                </td>
+                  <td><%= link_to "#{group.name}", admin_group_path(group) %></td>
+                <td><%= link_to "#{group.owner.pop}#", admin_end_user_path(group.owner_id) %></td>
+                <td><%= group.introduction %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

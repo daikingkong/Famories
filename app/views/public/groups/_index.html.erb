@@ -8,7 +8,7 @@
     <% groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <td><%= EndUser.find_by(id: group.owner_id).name %></td>
+        <td><%= group.owner.pop %></td>
         <td><%= group.introduction %></td>
         <% if group.already_requested?(current_end_user) %>
           <td>

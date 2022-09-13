@@ -1,0 +1,38 @@
+<div class="container">
+  <%= notice %>
+  <div class="row">
+    <div class="col-md-3">
+
+      <table>
+        <tbody>
+          <tr>
+            <th>投稿ユーザー</th>
+            <th><%= link_to "#{@memory.end_user.name}", admin_end_user_path(@memory.end_user) %></th>
+          </tr>
+          <tr>
+            <th>投稿グループ</th>
+            <th><%= link_to "#{@memory.group.name}", admin_group_path(@memory.group) %></th>
+          </tr>
+          <tr>
+            <td>メモリー画像</td>
+            <td><%= image_tag @memory.get_memory_image, size: "100x100" %></td>
+          </tr>
+          <tr>
+            <td>メモリータイトル</td>
+            <td><%= @memory.title %></td>
+          </tr>
+          <tr>
+            <td>メモ</td>
+            <td><%= @memory.memo %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <%= link_to "メモリー削除", admin_group_group_memory_path(@memory.group, @memory), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

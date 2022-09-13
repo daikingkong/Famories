@@ -1,0 +1,74 @@
+<div class="container text-center">
+  メモリー詳細
+  <div class="row">
+    <div class="col-md-3">
+
+      <%= notice %>
+      <table>
+        <tbody>
+          <tr>
+            <th>投稿ユーザー</th>
+            <th>
+              <%= link_to admin_end_user_path(@memory.end_user_id) do %>
+                <%= @memory.end_user.name %>
+              <% end %>
+              </th>
+          </tr>
+          <tr>
+            <td>タグ名</td>
+            <td>
+              <% @memory_tags.each do |tag| %>
+                <%= tag.name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= paginate @memory_tags %>
+            </td>
+          </tr>
+          <tr>
+            <td>メモリー画像</td>
+            <td><%= image_tag @memory.get_memory_image, size: "100x100" %></td>
+          </tr>
+          <tr>
+            <td>メモリータイトル</td>
+            <td><%= @memory.title %></td>
+          </tr>
+          <tr>
+            <td>メモ</td>
+            <td><%= @memory.memo %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <%= link_to "メモリー削除", admin_memory_path(@memory), method: :delete, data: {confirm: "本当に削除しますか？" }, class:"btn btn-danger" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-7">
+      <%= paginate @memory_comments %>
+    </div>
+
+    <div>
+      <table>
+        <tbody>
+          <tr>
+            <th>ユーザー</th>
+            <th>コメント</th>
+          </tr>
+          <% @memory_comments.each do |memory_comment| %>
+          <tr>
+            <td><%= memory_comment.end_user.name %></td>
+            <td><%= memory_comment.comment %></td>
+            <td><%= link_to "削除", memory_memory_comment_path(memory_comment), class:"btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
