@@ -23,4 +23,8 @@ class Group < ApplicationRecord
     Group.where('name LIKE ?', '%'+content+'%')
   end
 
+  def owner
+    self.end_users.where(id: owner_id).map(&:name)
+  end
+
 end
