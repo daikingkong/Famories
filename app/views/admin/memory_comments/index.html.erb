@@ -13,7 +13,7 @@
           <tr>
             <td><%= memory_comment.end_user.name %></td>
             <td><%= memory_comment.comment %></td>
-            <td><%= link_to "削除", memory_memory_comments_path(memory_comment), class:"btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+            <td><%= link_to "削除", admin_memory_comment_path(memory_comment), class:"btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
           </tr>
           <% end %>
         </tbody>
