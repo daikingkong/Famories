@@ -6,6 +6,8 @@ class Admin::GroupMemoriesController < ApplicationController
   end
 
   def show
+    @memory = GroupMemory.find(params[:id])
+    @group = @memory.group
   end
 
   def destroy
