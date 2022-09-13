@@ -37,6 +37,8 @@ class Memory < ApplicationRecord
       if new_memory_tag.new_record?
         new_memory_tag.save!
         self.memory_tags << new_memory_tag
+      else
+        self.memory_tags << new_memory_tag
       end
     end
   end

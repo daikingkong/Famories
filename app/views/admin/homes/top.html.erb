@@ -6,7 +6,7 @@
         <%= image_tag memory.get_memory_image, size: "200x150" %><br>
         <%= memory.title %><br>
       <% end %>
-      <%= link_to admin_end_user_path(memory) do %>
+      <%= link_to admin_end_user_path(memory.end_user_id) do %>
         <%= memory.end_user.name %><br>
       <% end %>
     </div>
