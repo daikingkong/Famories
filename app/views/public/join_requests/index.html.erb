@@ -27,20 +27,14 @@
             <% @group_users.each do |group_user| %>
               <tr>
                 <td>
-                  <%= link_to group_path(group_user) do %>
-                    <%= image_tag group_user.get_profile_image, size: "39x39" %>
-                    <%= group_user.name %>
+                  <%= link_to group_group_user_path(@group, group_user), method: :delete, data: {confirm: "本当に『#{group_user.name}さん』を退出させますか？" }, class:"text-danger text-decoration-none" do %>
+                    <i class="fas fa-minus-circle"></i>
                   <% end %>
+                  <%= image_tag group_user.get_profile_image, size: "39x39" %>
+                  <%= group_user.name %>
                 </td>
               </tr>
             <% end %>
-
-            <tr>
-              <td><%= link_to "加入リクエスト一覧", group_join_requests_path(@group), class:"btn btn-success" %></td>
-            </tr>
-            <tr>
-              <td><%= link_to "グループ退会", group_unsubscribe_confirm_path(@group), class:"btn btn-danger" %></td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -64,10 +58,10 @@
                 <td><%= image_tag join_request.end_user.get_profile_image, size: "50x50" %></td>
                 <td><%= join_request.end_user.name %></td>
                 <td>
-                  <%= link_to "承認", group_group_users_path(join_request.group), class:"btn btn-primary", method: :post %>
+                  <%= link_to "承認", group_group_user_approve_path(join_request.group, join_request.end_user), class:"btn btn-primary", method: :post %>
                 </td>
                 <td>
-                  <%= link_to "拒否", group_group_user_path(join_request.group, join_request.id), class:"btn btn-danger", method: :delete, date: {confirm: "本当に拒否しますか？"} %>
+                  <%= link_to "拒否", group_group_user_refuse_path(join_request.group, join_request.end_user), class:"btn btn-danger", method: :delete, date: {confirm: "本当に拒否しますか？"} %>
                 </td>
               </tr>
             <% end %>
