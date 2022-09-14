@@ -12,7 +12,7 @@ class Public::MemoriesController < ApplicationController
     if memory.save
       if memory.save_tag(tag_list)
         @end_user = memory.end_user
-        redirect_to end_user_path(@end_user), notice: "メモリーを作成しました。"
+        redirect_to memory_path(memory), notice: "メモリーを作成しました。"
       end
     else
       redirect_to new_memory_path, notice: "メモリーの作成に失敗しました。"
