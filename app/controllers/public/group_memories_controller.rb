@@ -12,7 +12,7 @@ class Public::GroupMemoriesController < ApplicationController
     memory = @group.group_memories.new(group_memory_params)
     memory.end_user_id = current_end_user.id
     if memory.save
-      redirect_to group_path(@group), notice: "メモリーを作成しました。"
+      redirect_to group_group_memory_path(@group, memory), notice: "メモリーを作成しました。"
     else
       redirect_to new_group_group_memory_path(@group), notice: "メモリーの作成に失敗しました。"
     end
