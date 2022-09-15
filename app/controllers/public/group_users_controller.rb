@@ -32,7 +32,7 @@ class Public::GroupUsersController < ApplicationController
         redirect_to end_user_path(end_user), notice: "グループを退会しました。"
       end
     else
-      redirect_to request.referer, notice: "オーナーはグループを削除することで退会できます。"
+      redirect_to request.referer, notice: "現在、オーナーが退会することはできません"
     end
   end
 

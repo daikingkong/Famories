@@ -4,12 +4,15 @@
       <th>グループ名</th>
       <th>グループオーナー</th>
       <th>グループ紹介文</th>
+      <th>メンバー数</th>
+      <th></th>
     </tr>
     <% groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
         <td><%= group.owner.pop %></td>
         <td><%= group.introduction %></td>
+        <td><%= group.end_users.count %>名</td>
         <% if current_end_user.name == "guestuser" %>
         <% else %>
           <% if group.already_joined?(current_end_user) %>

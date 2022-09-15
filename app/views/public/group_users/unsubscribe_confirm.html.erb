@@ -3,9 +3,9 @@
   グループ退会確認
   <div>
     <h1><b>注意！！</b></h1>
-    <p>退会するとこれまでグループで投稿したメモリーはすべて削除されます。</p>
+    <p>退会すると再び加入リクエストが承認されない限り入室できません。</p>
     <p>本当にグループを退会しますか？</p>
   </div>
   <%= link_to "退会しない", group_path(@group), class:"btn btn-primary" %><br>
-  <%= link_to "退会する", group_group_user_path(@group, current_end_user.id), class:"btn btn-danger", method: :delete, data: {confirm: "『 OK 』　を選択すると退会します。"} %>
+  <%= link_to "退会する", group_group_user_path(@group, current_end_user.id), class:"btn btn-danger", method: :delete, data: {confirm: "『最終確認』"} %>
 </div>
