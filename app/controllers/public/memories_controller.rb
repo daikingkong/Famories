@@ -5,7 +5,7 @@ class Public::MemoriesController < ApplicationController
 
   # ゲストユーザーは閲覧のみできる
   def new
-    @memory = Memory.newd
+    @memory = Memory.new
   end
 
   # メモリー投稿とタグ作成をする機能
