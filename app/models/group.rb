@@ -27,4 +27,9 @@ class Group < ApplicationRecord
     self.end_users.where(id: owner_id).map(&:name)
   end
 
+  # 加入済みかどうか判定
+  def already_joined?(end_user)
+    self.group_users.exists?(end_user_id: end_user.id)
+  end
+
 end

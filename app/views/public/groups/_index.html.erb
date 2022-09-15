@@ -12,14 +12,20 @@
         <td><%= group.introduction %></td>
         <% if current_end_user.name == "guestuser" %>
         <% else %>
-          <% if group.already_requested?(current_end_user) %>
-            <td>
-              <%= link_to "リクエスト解除", group_join_request_path(group, group.join_requests), class:"btn btn-danger", method: :delete %>
-            </td>
+          <% if group.already_joined?(current_end_user) %>
+          <td>
+            <%= link_to "マイグループ", group_path(group), class:"btn btn-secondary" %>
+          </td>
           <% else %>
-            <td>
-              <%= link_to "加入リクエスト", group_join_requests_path(group), class:"btn btn-primary", method: :post %>
-            </td>
+            <% if group.already_requested?(current_end_user) %>
+              <td>
+                <%= link_to "リクエスト解除", group_join_request_path(group, group.join_requests), class:"btn btn-danger", method: :delete %>
+              </td>
+            <% else %>
+              <td>
+                <%= link_to "加入リクエスト", group_join_requests_path(group), class:"btn btn-primary", method: :post %>
+              </td>
+            <% end %>
           <% end %>
         <% end %>
       </tr>
