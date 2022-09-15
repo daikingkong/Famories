@@ -1,4 +1,5 @@
 class Public::JoinRequestsController < ApplicationController
+  before_action :ensure_guest_user
   layout "public_application"
 
   def index

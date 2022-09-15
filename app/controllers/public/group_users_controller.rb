@@ -1,4 +1,5 @@
 class Public::GroupUsersController < ApplicationController
+  before_action :ensure_guest_user
 
   # リクエスト承認でグループに加入し、そのリクエストを削除
   def approve

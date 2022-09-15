@@ -1,4 +1,6 @@
 class Public::GroupsController < ApplicationController
+  before_action :ensure_guest_user, except: [:index]
+
   layout "public_application"
 
   def new
@@ -40,6 +42,8 @@ class Public::GroupsController < ApplicationController
       redirect_to edit_group_path(group), notice: "グループの編集に失敗しました。"
     end
   end
+
+  private
 
   def group_params
     params.require(:group).permit(:name, :introduction, :owner_id, :group_image)

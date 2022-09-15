@@ -1,4 +1,5 @@
 class Public::MemoryCommentsController < ApplicationController
+  before_action :ensure_guest_user
 
   def create
     @memory = Memory.find(params[:memory_id])

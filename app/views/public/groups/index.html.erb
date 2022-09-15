@@ -6,8 +6,8 @@
       </div>
       <div class="col-8">
         <div class="d-flex flex-wrap">
-          グループ一覧
-          <%= link_to "グループ作成", new_group_path, class:"btn btn-success" %>
+        マイメモリー一覧
+        <%= link_to "新しくメモる", new_memory_path, class:"btn btn-success" %>
           <%= paginate @groups %>
         </div>
         <%= render 'index', groups: @groups %>

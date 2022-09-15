@@ -45,6 +45,8 @@ class Public::GroupMemoriesController < ApplicationController
     redirect_to group_path(@group), notice: "メモリーを削除しました。"
   end
 
+  private
+
   def group_memory_params
     params.require(:group_memory).permit(:title, :memo, :group_id, :end_user_id, :memory_image)
   end

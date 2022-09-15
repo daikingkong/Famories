@@ -1,8 +1,11 @@
 class Public::MemoriesController < ApplicationController
+  before_action :ensure_guest_user, only: [:new, :create, :edit, :update]
+
   layout "public_application"
 
+  # ゲストユーザーは閲覧のみできる
   def new
-    @memory = Memory.new
+    @memory = Memory.newd
   end
 
   # メモリー投稿とタグ作成をする機能
@@ -62,6 +65,8 @@ class Public::MemoriesController < ApplicationController
     @memory_tag = MemoryTag.find(params[:memory_tag_id])
     @memories = @memory_tag.memories.page(params[:page]).per(6)
   end
+
+  private
 
   def memory_params
     params.require(:memory).permit(:title, :memo, :end_user_id, :memory_image)
