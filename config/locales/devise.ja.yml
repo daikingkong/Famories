@@ -1,7 +1,7 @@
 ja:
   activerecord:
     attributes:
-      user:
+      end_user:
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -10,7 +10,7 @@ ja:
         current_sign_in_at: 現在のログイン時刻
         current_sign_in_ip: 現在のログインIPアドレス
         email: Eメール
-        encrypted_password: 暗号化パスワード
+        encrypted_password: パスワード(確認)
         failed_attempts: 失敗したログイン試行回数
         last_sign_in_at: 最終ログイン時刻
         last_sign_in_ip: 最終ログインIPアドレス
@@ -26,7 +26,7 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
     models:
-      user: ユーザ
+      end_user: 会員
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

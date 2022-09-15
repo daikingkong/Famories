@@ -1,3 +1,4 @@
+
 ja:
   activerecord:
     errors:
@@ -6,6 +7,12 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    model:
+      end_user:
+    attributes:
+      end_user:
+        name: ニックネーム
+        email: メールアドレス
   date:
     abbr_day_names:
     - 日
@@ -16,7 +23,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -42,7 +49,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
