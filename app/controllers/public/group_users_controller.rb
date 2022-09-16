@@ -1,4 +1,9 @@
 class Public::GroupUsersController < ApplicationController
+  before_action :authenticate_end_user!
+  before_action :ensure_guest_user
+  before_action :ensure_correct_end_user, except: [:approve, :refuse, :destroy, :unsubscribe_confirm, ]
+
+  layout "public_application"
   before_action :ensure_guest_user
 
   # リクエスト承認でグループに加入し、そのリクエストを削除
@@ -8,14 +13,14 @@ class Public::GroupUsersController < ApplicationController
     request_user = join_request.end_user
     group.end_users << request_user
     join_request.destroy
-    redirect_to group_path(group)
+    redirect_to request.referer, notice: "#{group.name}に『#{request_user.name}さん』が加入しました。"
   end
 
   def refuse
     group = Group.find(params[:group_id])
     join_request = group.join_requests.find_by(group_id: group.id)
     join_request.destroy
-    redirect_to request.referer
+    redirect_to request.referer, notice: "加入リクエストを拒否しました。"
   end
 
   # オーナーは自身以外のグループユーザーを削除できる。
@@ -38,6 +43,17 @@ class Public::GroupUsersController < ApplicationController
 
   def unsubscribe_confirm
     @group = Group.find(params[:group_id])
+  end
+
+  private
+
+  def ensure_correct_end_user
+    group = Group.find(params[:group_id])
+    end_user = EndUser.find(params[:id])
+    @group_user = GroupUser.find_by(group_id: group.id, end_user_id: end_user.id)
+    unless @group_user.end_user_id == current_end_user.id
+      redirect_to group_group_user_path(@group_user), notice: '本人以外はできません'
+    end
   end
 
 end

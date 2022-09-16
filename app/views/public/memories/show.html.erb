@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-md-3">
 
-      <%= notice %>
       <table>
         <tbody>
           <tr>
@@ -50,9 +49,11 @@
           </tr>
           <tr>
             <td></td>
-            <td>
-              <%= link_to "メモリー編集", edit_memory_path(@memory), class:"btn btn-primary" %>
-            </td>
+            <% if @memory.end_user == current_end_user %>
+              <td>
+                <%= link_to "メモリー編集", edit_memory_path(@memory), class:"btn btn-primary" %>
+              </td>
+            <% end %>
           </tr>
         </tbody>
       </table>
@@ -73,7 +74,9 @@
           <tr>
             <td><%= memory_comment.end_user.name %></td>
             <td><%= memory_comment.comment %></td>
-            <td><%= link_to "削除", memory_memory_comment_path(memory_comment), class:"btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+            <% if memory_comment.end_user == current_end_user %>
+              <td><%= link_to "削除", memory_memory_comment_path(memory_comment), class:"btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+            <% end %>
           </tr>
           <% end %>
         </tbody>

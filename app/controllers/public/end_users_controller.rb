@@ -1,5 +1,7 @@
 class Public::EndUsersController < ApplicationController
+  before_action :authenticate_end_user!, except: [:thanks]
   before_action :ensure_guest_user, only: [:edit, :update, :destroy, :unsubscribe_confirm]
+  before_action :ensure_correct_end_user, except: [:favorite_memories, :unsubscribe_confirm, :thanks]
 
   layout "public_application"
 
@@ -42,6 +44,13 @@ class Public::EndUsersController < ApplicationController
   end
 
   private
+
+  def ensure_correct_end_user
+    @end_user = EndUser.find(params[:id])
+    unless @end_user == current_end_user
+      redirect_to end_user_path(current_user), notice: ''
+    end
+  end
 
   def end_user_params
     params.require(:end_user).permit(:name, :email, :profile_image)

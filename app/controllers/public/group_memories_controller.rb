@@ -1,4 +1,8 @@
 class Public::GroupMemoriesController < ApplicationController
+  before_action :authenticate_end_user!
+  before_action :ensure_guest_user
+  before_action :ensure_correct_end_user, except: [:new, :create, :show]
+
   layout "public_application"
 
   def new
@@ -46,6 +50,18 @@ class Public::GroupMemoriesController < ApplicationController
   end
 
   private
+
+  # オーナーとログインユーザ以外のアクション制限
+  def ensure_correct_end_user
+    @group = Group.find(params[:group_id])
+    @group_memory = GroupMemory.find(params[:id])
+    if @group.owner_id == current_end_user.id
+    else
+      unless @group_memory.end_user_id == current_end_user.id
+        redirect_to group_group_memory_path(@group, @group_memory), notice: '自分以外のメモリーの編集はできません'
+      end
+    end
+  end
 
   def group_memory_params
     params.require(:group_memory).permit(:title, :memo, :group_id, :end_user_id, :memory_image)

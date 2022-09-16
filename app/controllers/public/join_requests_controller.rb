@@ -1,5 +1,8 @@
 class Public::JoinRequestsController < ApplicationController
+  before_action :authenticate_end_user!
   before_action :ensure_guest_user
+  before_action :ensure_correct_group_owner, only: [:index]
+
   layout "public_application"
 
   def index
@@ -20,6 +23,15 @@ class Public::JoinRequestsController < ApplicationController
     join_request = current_end_user.join_requests.find_by(group_id: group.id)
     join_request.destroy
     redirect_to request.referer
+  end
+
+  private
+
+  def ensure_correct_group_owner
+    @group = Group.find(params[:group_id])
+    unless @group.owner_id == current_end_user.id
+      redirect_to group_path(@group), notice: 'オーナーのみ利用可能です'
+    end
   end
 
 end

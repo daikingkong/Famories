@@ -1,5 +1,8 @@
 class Public::GroupsController < ApplicationController
+  before_action :authenticate_end_user!
   before_action :ensure_guest_user, except: [:index]
+  before_action :ensure_correct_group_user, except: [:new, :create, :index]
+  before_action :ensure_correct_group_owner, except: [:new, :create, :index, :show]
 
   layout "public_application"
 
@@ -44,6 +47,23 @@ class Public::GroupsController < ApplicationController
   end
 
   private
+
+  def ensure_correct_group_owner
+    @group = Group.find(params[:id])
+    unless @group.owner_id == current_end_user.id
+      redirect_to group_path(@group), notice: "オーナーのみ利用可能です。"
+    end
+  end
+
+  def ensure_correct_group_user
+    @group = Group.find(params[:id])
+    @group_user = GroupUser.where(group_id: @group, end_user_id: current_end_user.id)
+    if @group_user.present?
+    else
+      redirect_to end_user_path(current_end_user), notice: "グループのメンバーのみ利用可能です。"
+    end
+
+  end
 
   def group_params
     params.require(:group).permit(:name, :introduction, :owner_id, :group_image)

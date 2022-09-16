@@ -1,4 +1,5 @@
 class Public::MemoryCommentsController < ApplicationController
+  before_action :authenticate_end_user!
   before_action :ensure_guest_user
 
   def create

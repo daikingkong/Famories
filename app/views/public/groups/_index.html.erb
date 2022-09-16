@@ -17,7 +17,7 @@
         <% else %>
           <% if group.already_joined?(current_end_user) %>
           <td>
-            <%= link_to "マイグループ", group_path(group), class:"btn btn-secondary" %>
+            <%= link_to "マイグループへ", group_path(group), class:"btn btn-secondary" %>
           </td>
           <% else %>
             <% if group.already_requested?(current_end_user) %>

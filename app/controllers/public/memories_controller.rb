@@ -1,5 +1,7 @@
 class Public::MemoriesController < ApplicationController
+  before_action :authenticate_end_user!
   before_action :ensure_guest_user, only: [:new, :create, :edit, :update]
+  before_action :ensure_correct_end_user, only: [:edit, :update, :destroy]
 
   layout "public_application"
 
@@ -67,6 +69,13 @@ class Public::MemoriesController < ApplicationController
   end
 
   private
+
+  def ensure_correct_end_user
+    @memory = Memory.find(params[:id])
+    unless @memory.end_user_id == current_end_user.id
+      redirect_to memory_path(@memory), notice: '自分以外のメモリーの編集はできません'
+    end
+  end
 
   def memory_params
     params.require(:memory).permit(:title, :memo, :end_user_id, :memory_image)
