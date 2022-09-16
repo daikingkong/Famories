@@ -2,7 +2,7 @@ class Public::GroupsController < ApplicationController
   before_action :authenticate_end_user!
   before_action :ensure_guest_user, except: [:index]
   before_action :ensure_correct_group_user, except: [:new, :create, :index]
-  before_action :ensure_correct_group_owner, except: [:new, :create, :index, :show]
+  before_action :ensure_correct_group_owner, only: [:edit, :update]
 
   layout "public_application"
 
@@ -62,7 +62,6 @@ class Public::GroupsController < ApplicationController
     else
       redirect_to end_user_path(current_end_user), notice: "グループのメンバーのみ利用可能です。"
     end
-
   end
 
   def group_params

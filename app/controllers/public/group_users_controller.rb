@@ -1,7 +1,7 @@
 class Public::GroupUsersController < ApplicationController
   before_action :authenticate_end_user!
   before_action :ensure_guest_user
-  before_action :ensure_correct_end_user, except: [:approve, :refuse, :destroy, :unsubscribe_confirm, ]
+  before_action :ensure_correct_group_user
 
   layout "public_application"
   before_action :ensure_guest_user
@@ -47,12 +47,12 @@ class Public::GroupUsersController < ApplicationController
 
   private
 
-  def ensure_correct_end_user
-    group = Group.find(params[:group_id])
-    end_user = EndUser.find(params[:id])
-    @group_user = GroupUser.find_by(group_id: group.id, end_user_id: end_user.id)
-    unless @group_user.end_user_id == current_end_user.id
-      redirect_to group_group_user_path(@group_user), notice: '本人以外はできません'
+  def ensure_correct_group_user
+    @group = Group.find(params[:group_id])
+    @group_user = GroupUser.where(group_id: @group, end_user_id: current_end_user.id)
+    if @group_user.present?
+    else
+      redirect_to end_user_path(current_end_user), notice: "グループのメンバーのみ利用可能です。"
     end
   end
 
