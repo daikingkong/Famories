@@ -1,5 +1,4 @@
 <div class="container">
-  <%= notice %>
   <div class="row">
     <div class="col-md-3">
 
@@ -23,9 +22,11 @@
           </tr>
           <tr>
             <td></td>
-            <td>
-              <%= link_to "メモリー編集", edit_group_group_memory_path(@group, @memory), class:"btn btn-primary" %>
-            </td>
+            <% if current_end_user.name == @group.owner.pop || current_end_user == @memory.end_user %>
+              <td>
+                <%= link_to "メモリー編集", edit_group_group_memory_path(@group, @memory), class:"btn btn-primary" %>
+              </td>
+            <% end %>
             <td>
               <%= link_to "グループページに戻る", group_path(@group), class:"btn btn-secondary" %>
             </td>

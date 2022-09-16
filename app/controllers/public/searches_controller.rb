@@ -1,6 +1,7 @@
 class Public::SearchesController < ApplicationController
-  layout 'public_application'
   before_action :authenticate_end_user!
+
+  layout 'public_application'
 
 
   # キーワード検索の対象となるモデルを判定

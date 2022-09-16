@@ -32,10 +32,13 @@ Rails.application.routes.draw do
       get 'tag_search' => 'memories#tag_search'
     end
 
-    resources :groups do
-      get 'unsubscribe_confirm' => 'groups#unsubscribe_confirm'
+    resources :groups, except: [:destroy] do
       resources :join_requests, only: [:create, :index, :destroy]
-      resources :group_users, only: [:create, :destroy]
+      resources :group_users, only: [:destroy] do
+        post 'approve' => 'group_users#approve'
+        delete 'refuse' => 'group_users#refuse'
+        get 'unsubscribe_confirm' => 'group_users#unsubscribe_confirm'
+      end
       resources :group_memories, except: [:index]
     end
 

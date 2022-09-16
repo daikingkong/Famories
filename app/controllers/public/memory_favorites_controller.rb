@@ -1,4 +1,6 @@
 class Public::MemoryFavoritesController < ApplicationController
+  before_action :authenticate_end_user!
+
 
   def create
     memory = Memory.find(params[:memory_id])

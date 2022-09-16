@@ -1,4 +1,6 @@
 class Public::MemoryTagsController < ApplicationController
+  before_action :authenticate_end_user!
+
   layout "public_application"
 
   def index

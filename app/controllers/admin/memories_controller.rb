@@ -1,4 +1,6 @@
 class Admin::MemoriesController < ApplicationController
+  before_action :authenticate_admin!
+
   layout "admin_application"
 
   def show
@@ -10,7 +12,7 @@ class Admin::MemoriesController < ApplicationController
   def destroy
     memory = Memory.find(params[:id])
     memory.destroy
-    redirect_to admin_end_user_path(memory.end_user_id)
+    redirect_to admin_end_user_path(memory.end_user_id), notice: "メモリーを削除しました。"
   end
 
 end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+
   layout "public_application"
   # before_action :configure_sign_in_params, only: [:create]
 

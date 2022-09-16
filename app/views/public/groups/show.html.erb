@@ -1,5 +1,4 @@
 <div class="container text-center">
-  <%= notice %>
   <div class="row">
     <div class="col-12 d-flex flex-wrap justify-content-center">
 
@@ -10,29 +9,31 @@
 
             <tr><td><%= @group.name %></td></tr>
 
-            <tr><td><%= link_to "グループ編集", edit_group_path(@group), class:"btn btn-primary" %></td></tr>
+            <% if current_end_user == @group.owner %>
+              <tr><td><%= link_to "グループ編集", edit_group_path(@group), class:"btn btn-primary" %></td></tr>
+            <% end %>
 
             <tr><td><h4>グループメンバー</h4></td></tr>
 
             <% @group_users.each do |group_user| %>
               <tr>
                 <td>
-                  <%= link_to group_path(group_user) do %>
-                    <%= image_tag group_user.get_profile_image, size: "39x39" %>
-                    <%= group_user.name %>
-                  <% end %>
+                  <%= image_tag group_user.get_profile_image, size: "39x39" %>
+                  <%= group_user.name %>
                 </td>
               </tr>
             <% end %>
 
-            <tr>
-              <td>
-                <%= link_to "加入リクエスト一覧", group_join_requests_path(@group), class:"btn btn-success" %><br>
-              （<%= @group.join_requests.count %>件）
-              </td>
-            </tr>
+            <% if current_end_user.name == @group.owner.pop %>
+              <tr>
+                <td>
+                  <%= link_to "メンバー編集", group_join_requests_path(@group), class:"btn btn-success" %><br>
+                加入リクエスト（<%= @group.join_requests.count %>件）
+                </td>
+              </tr>
+            <% end %>
 
-            <tr><td><%= link_to "グループ退会", group_unsubscribe_confirm_path(@group), class:"btn btn-danger" %></td></tr>
+            <tr><td><%= link_to "グループ退会", group_group_user_unsubscribe_confirm_path(@group, current_end_user.id), class:"btn btn-danger" %></td></tr>
 
           </tbody>
         </table>

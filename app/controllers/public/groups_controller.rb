@@ -1,4 +1,9 @@
 class Public::GroupsController < ApplicationController
+  before_action :authenticate_end_user!
+  before_action :ensure_guest_user, except: [:index]
+  before_action :ensure_correct_group_user, except: [:new, :create, :index]
+  before_action :ensure_correct_group_owner, only: [:edit, :update]
+
   layout "public_application"
 
   def new
@@ -41,18 +46,22 @@ class Public::GroupsController < ApplicationController
     end
   end
 
-  def destroy
+  private
+
+  def ensure_correct_group_owner
     @group = Group.find(params[:id])
-    unless current_end_user.id == @group.owner_id
-      @group.end_users.destroy(current_end_user)
-      redirect_to end_user_path(current_end_user)
-    else
-      redirect_to request.referer, notice: "オーナーはグループを削除することで退会できます。"
+    unless @group.owner_id == current_end_user.id
+      redirect_to group_path(@group), notice: "オーナーのみ利用可能です。"
     end
   end
 
-  def unsubscribe_confirm
-    @group = Group.find(params[:group_id])
+  def ensure_correct_group_user
+    @group = Group.find(params[:id])
+    @group_user = GroupUser.where(group_id: @group, end_user_id: current_end_user.id)
+    if @group_user.present?
+    else
+      redirect_to end_user_path(current_end_user), notice: "グループのメンバーのみ利用可能です。"
+    end
   end
 
   def group_params

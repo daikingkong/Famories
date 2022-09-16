@@ -1,4 +1,6 @@
 class Admin::GroupMemoriesController < ApplicationController
+  before_action :authenticate_admin!
+
   layout "admin_application"
 
   def index
@@ -13,7 +15,7 @@ class Admin::GroupMemoriesController < ApplicationController
   def destroy
     memory = GroupMemory.find(params[:id])
     memory.destroy
-    redirect_to admin_group_memories_path
+    redirect_to admin_group_memories_path, notice: "グループのメモリーを削除しました。"
   end
 
 end

@@ -28,6 +28,7 @@ class EndUser < ApplicationRecord
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
+      user.email = "guest@example.com"
     end
   end
 

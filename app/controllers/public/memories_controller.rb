@@ -1,6 +1,11 @@
 class Public::MemoriesController < ApplicationController
+  before_action :authenticate_end_user!
+  before_action :ensure_guest_user, only: [:new, :create, :edit, :update]
+  before_action :ensure_correct_end_user, only: [:edit, :update, :destroy]
+
   layout "public_application"
 
+  # ゲストユーザーは閲覧のみできる
   def new
     @memory = Memory.new
   end
@@ -8,11 +13,11 @@ class Public::MemoriesController < ApplicationController
   # メモリー投稿とタグ作成をする機能
   def create
     memory = current_end_user.memories.new(memory_params)
-    tag_list = params[:memory][:name].split(" ")
+    tag_list = params[:memory][:name].split("　")
     if memory.save
       if memory.save_tag(tag_list)
         @end_user = memory.end_user
-        redirect_to end_user_path(@end_user), notice: "メモリーを作成しました。"
+        redirect_to memory_path(memory), notice: "メモリーを作成しました。"
       end
     else
       redirect_to new_memory_path, notice: "メモリーの作成に失敗しました。"
@@ -39,7 +44,7 @@ class Public::MemoriesController < ApplicationController
 
   def update
     memory = Memory.find(params[:id])
-    tag_list = params[:memory][:name].split(" ")
+    tag_list = params[:memory][:name].split("　")
     if memory.update(memory_params)
       if memory.save_tag(tag_list)
         redirect_to memory_path(memory), notice: "メモリーを編集しました。"
@@ -61,6 +66,15 @@ class Public::MemoriesController < ApplicationController
     @memory_tags = MemoryTag.page(params[:page]).per(5)
     @memory_tag = MemoryTag.find(params[:memory_tag_id])
     @memories = @memory_tag.memories.page(params[:page]).per(6)
+  end
+
+  private
+
+  def ensure_correct_end_user
+    @memory = Memory.find(params[:id])
+    unless @memory.end_user_id == current_end_user.id
+      redirect_to memory_path(@memory), notice: '自分以外のメモリーの編集はできません'
+    end
   end
 
   def memory_params

@@ -4,20 +4,32 @@
       <th>グループ名</th>
       <th>グループオーナー</th>
       <th>グループ紹介文</th>
+      <th>メンバー数</th>
+      <th></th>
     </tr>
     <% groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
         <td><%= group.owner.pop %></td>
         <td><%= group.introduction %></td>
-        <% if group.already_requested?(current_end_user) %>
-          <td>
-            <%= link_to "リクエスト解除", group_join_request_path(group, group.join_requests), class:"btn btn-danger", method: :delete %>
-          </td>
+        <td><%= group.end_users.count %>名</td>
+        <% if current_end_user.name == "guestuser" %>
         <% else %>
+          <% if group.already_joined?(current_end_user) %>
           <td>
-            <%= link_to "加入リクエスト", group_join_requests_path(group), class:"btn btn-primary", method: :post %>
+            <%= link_to "マイグループへ", group_path(group), class:"btn btn-secondary" %>
           </td>
+          <% else %>
+            <% if group.already_requested?(current_end_user) %>
+              <td>
+                <%= link_to "リクエスト解除", group_join_request_path(group, group.join_requests), class:"btn btn-danger", method: :delete %>
+              </td>
+            <% else %>
+              <td>
+                <%= link_to "加入リクエスト", group_join_requests_path(group), class:"btn btn-primary", method: :post %>
+              </td>
+            <% end %>
+          <% end %>
         <% end %>
       </tr>
     <% end %>
