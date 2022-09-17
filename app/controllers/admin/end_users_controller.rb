@@ -10,7 +10,7 @@ class Admin::EndUsersController < ApplicationController
   def show
     @end_user = EndUser.find(params[:id])
     @user_groups = @end_user.groups
-    @memories = @end_user.memories.page(params[:page]).per(10)
+    @memories = @end_user.memories.page(params[:page]).per(10).order("created_at DESC")
   end
 
   def destroy

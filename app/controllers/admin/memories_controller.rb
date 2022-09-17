@@ -6,7 +6,7 @@ class Admin::MemoriesController < ApplicationController
   def show
     @memory = Memory.find(params[:id])
     @memory_tags = @memory.memory_tags.page(params[:page]).per(5)
-    @memory_comments = @memory.memory_comments.page(params[:page]).per(8)
+    @memory_comments = @memory.memory_comments.page(params[:page]).per(8).order("created_at DESC")
   end
 
   def destroy

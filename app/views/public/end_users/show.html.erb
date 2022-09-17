@@ -1,4 +1,10 @@
 <div class="container text-center">
+  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+    <b>マイページ</b>
+  </h6>
+
+  <%= link_to "新しくメモる", new_memory_path, class:"btn btn-success w-25 h-25 mb-4 border border-warning rounded-pill text-light" %>
+
   <div class="row">
     <div class="col-12 d-flex flex-wrap justify-content-center">
       <div class="col-3">
@@ -6,13 +12,11 @@
       </div>
       <div class="col-8">
         <div class="d-flex flex-wrap">
-        マイメモリー一覧
-        <%= link_to "新しくメモる", new_memory_path, class:"btn btn-success" %>
         <% if current_end_user.name == "guestuser" %>
           会員が投稿したマイメモリーはここに一覧として表示されます。
         <% else %>
-          <%= paginate @memories %>
           <%= render "memories", memories: @memories %>
+          <%= paginate @memories %>
         <% end %>
         </div>
       </div>

@@ -25,7 +25,7 @@ class Public::MemoriesController < ApplicationController
   end
 
   def index
-    @memories = Memory.page(params[:page]).per(6)
+    @memories = Memory.page(params[:page]).per(12).order("created_at DESC")
     @end_user = current_end_user
     @user_groups = @end_user.groups
   end
@@ -33,7 +33,7 @@ class Public::MemoriesController < ApplicationController
   def show
     @memory = Memory.find(params[:id])
     @memory_tags = @memory.memory_tags.page(params[:page]).per(5)
-    @memory_comments = @memory.memory_comments.page(params[:page]).per(8)
+    @memory_comments = @memory.memory_comments.page(params[:page]).per(8).order("created_at DESC")
     @memory_comment = MemoryComment.new
   end
 
@@ -65,7 +65,7 @@ class Public::MemoriesController < ApplicationController
     @user_groups = @end_user.groups
     @memory_tags = MemoryTag.page(params[:page]).per(5)
     @memory_tag = MemoryTag.find(params[:memory_tag_id])
-    @memories = @memory_tag.memories.page(params[:page]).per(6)
+    @memories = @memory_tag.memories.page(params[:page]).per(12).order("created_at DESC")
   end
 
   private

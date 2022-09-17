@@ -22,15 +22,15 @@ class Public::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.page(params[:page]).per(10)
+    @groups = Group.page(params[:page]).per(10).order("created_at DESC")
     @end_user = current_end_user
-    @user_groups = @end_user.groups.page(params[:page]).per(10)
+    @user_groups = @end_user.groups.page(params[:page]).per(10).order("created_at DESC")
   end
 
   def show
     @group = Group.find(params[:id])
     @group_users = @group.end_users
-    @memories = @group.group_memories.page(params[:page]).per(6)
+    @memories = @group.group_memories.page(params[:page]).per(12).order("created_at DESC")
   end
 
   def edit

@@ -49,7 +49,7 @@
           <% @memories.each do |memory| %>
             <div class="mx-auto mb-3 text-truncate">
               <%= link_to group_group_memory_path(@group, memory) do %>
-                <%= image_tag memory.get_memory_image, size: "200x150" %><br>
+                <%= image_tag memory.get_memory_image, size: "200x150", class:"post-memory" %><br>
                 <%= memory.title %><br>
               <% end %>
               <%= memory.end_user.name %><br>

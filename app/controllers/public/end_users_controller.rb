@@ -7,8 +7,8 @@ class Public::EndUsersController < ApplicationController
 
   def show
     @end_user = current_end_user
-    @user_groups = @end_user.groups.page(params[:page]).per(10)
-    @memories = @end_user.memories.page(params[:page]).per(6)
+    @user_groups = @end_user.groups.page(params[:page]).per(10).order("created_at DESC")
+    @memories = @end_user.memories.page(params[:page]).per(12).order("created_at DESC")
   end
 
   def edit
@@ -39,8 +39,8 @@ class Public::EndUsersController < ApplicationController
     @user_groups = @end_user.groups
      # ログインユーザーの「いいねしたメモリー一覧」を表示するため
     favorite_memories = MemoryFavorite.where(end_user_id: @end_user.id).pluck(:memory_id)
-    @memories = Memory.find(favorite_memories)
-    @memories = Kaminari.paginate_array(@memories).page(params[:page]).per(6)
+    @memories = Memory.order("created_at DESC").find(favorite_memories)
+    @memories = Kaminari.paginate_array(@memories).page(params[:page]).per(12)
   end
 
   private
