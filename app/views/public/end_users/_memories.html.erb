@@ -8,17 +8,17 @@
           <tbody>
             <tr>
               <td>タイトル</td>
-              <td><span style="color: #FFF;"><%= memory.title %></span></td>
+              <td class="text-light"><span><%= memory.title %></span></td>
             </tr>
 
             <tr>
               <td>投稿者</td>
-              <td><span style="color: #FFF;"><%= memory.end_user.name %></span></td>
+              <td class="text-light"><span><%= memory.end_user.name %></span></td>
             </tr>
 
             <tr>
               <td>いいね</td>
-              <td><span style="color: #FFF;"><%= memory.memory_favorites.count %>件</span></td>
+              <td class="text-light"><span><%= memory.memory_favorites.count %>件</span></td>
             </tr>
         </tbody>
       </table>

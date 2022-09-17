@@ -32,13 +32,16 @@ body {
   line-height: 30px;
 }
 
-.post-memory {
+.post-memory, .group-index, .user-index, .user-profile {
   margin: 0 12px;
   border: solid 6px #e8dece;
 }
+
 .table {
   table-layout:fixed;
  }
+
+
 // フッター
 footer {
   background-image: url("../images/wall.2.jpg");

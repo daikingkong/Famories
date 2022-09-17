@@ -7,18 +7,18 @@
 
   <div class="row">
     <div class="col-12 d-flex flex-wrap justify-content-center">
-      <div class="col-3">
+      <div class="col-4">
         <%= render "user_info",user_groups: @user_groups, end_user: @end_user %>
       </div>
-      <div class="col-8">
-        <div class="d-flex flex-wrap">
+      <div class="col-8 d-flex flex-wrap">
         <% if current_end_user.name == "guestuser" %>
           会員が投稿したマイメモリーはここに一覧として表示されます。
         <% else %>
           <%= render "memories", memories: @memories %>
-          <%= paginate @memories %>
         <% end %>
-        </div>
+      </div>
+      <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
+        <%= paginate @memories %>
       </div>
     </div>
   </div>

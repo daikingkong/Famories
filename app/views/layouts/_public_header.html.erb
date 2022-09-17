@@ -7,7 +7,7 @@
 
     <div class="m-auto">
       <% if end_user_signed_in? %>
-      ようこそ、<%= current_end_user.name %>さん！
+      <b>ようこそ、<%= current_end_user.name %>さん！</b>
       <% end %>
       <div>
         <%= form_with url: search_path, method: :get do |f| %>
