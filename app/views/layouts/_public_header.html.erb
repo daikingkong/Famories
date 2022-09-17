@@ -1,83 +1,86 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#202A4B;">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <%= image_tag 'no_image.jpg', size:"200x120" %>
-      </a>
-      <div style="color:#FFF; margin-left:200px; width:300px;">
-        <% if end_user_signed_in? %>
-        ようこそ、<%= current_end_user.name %>さん！
+<header class="header">
+  <div class="container text-center">
+
+    <a class="navbar-brand m-auto" href="/">
+      <%= image_tag 'famories.logo.png', size:"430x110" %>
+    </a>
+
+    <div class="m-auto">
+      <% if end_user_signed_in? %>
+      ようこそ、<%= current_end_user.name %>さん！
+      <% end %>
+      <div>
+        <%= form_with url: search_path, method: :get do |f| %>
+          <%= f.text_field :content, class:"rounded" %>
+          <%= f.select :model, options_for_select({ "メモリー" => "memory", "グループ" => "group" }) %>
+          <%= f.submit "検索", class: "btn btn-secondary rounded-pill" %>
         <% end %>
       </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    </div>
+
+    <nav class="navbar navbar-expand-lg px-5 mx-5">
+      <button class="navbar-toggler border-info" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarNavDropdown", style = "flex-wrap:wrap;">
-        <ul class="navbar-nav ml-auto", style = "margin-left:55%;">
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+        <ul class="navbar-nav">
         <% if end_user_signed_in? %>
           <li>
-            <%= link_to end_user_path(current_end_user), class: 'nav-link text-light border border-white rounded mr-3' do %>
+            <%= link_to end_user_path(current_end_user), class: 'nav-link btn btn-info rounded-pill border-primary border-primary mx-2' do %>
               マイページ
             <% end %>
           </li>
           <li>
-            <%=  link_to end_user_favorite_memories_path(current_end_user), class: 'nav-link text-light border border-white rounded mr-3' do %>
-              マイいいね一覧
+            <%=  link_to end_user_favorite_memories_path(current_end_user), class: 'nav-link btn btn-info rounded-pill border-primary mx-2' do %>
+              マイいいね
             <% end %>
           </li>
           <li>
-            <%=  link_to memories_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
-              みんなのメモリー一覧
+            <%=  link_to memories_path, class: 'nav-link btn btn-info rounded-pill border-primary mx-2' do %>
+              メモリー一覧
             <% end %>
           </li>
           <li>
-            <%=  link_to memory_tags_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
-              タグから探す
+            <%=  link_to memory_tags_path, class: 'nav-link btn btn-info rounded-pill border-primary mx-2' do %>
+              タグ一覧検索
             <% end %>
           </li>
           <li>
-            <%=  link_to groups_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
+            <%=  link_to groups_path, class: 'nav-link btn btn-info rounded-pill border-primary mx-2' do %>
               グループ一覧
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_end_user_session_path, method: :delete,class: 'nav-link text-light border border-white rounded' do %>
+            <%= link_to destroy_end_user_session_path, method: :delete,class: 'nav-link btn btn-info rounded-pill border-primary mx-2' do %>
               ログアウト
             <% end %>
           </li>
         <% else %>
           <li>
-            <%= link_to end_user_guest_sign_in_path, class: 'nav-link text-light border border-white rounded mr-3', method: :post do %>
+            <%= link_to end_user_guest_sign_in_path, class: 'nav-link btn btn-info rounded-pill border-primary mx-2', method: :post do %>
               ゲストログイン
             <% end %>
           </li>
           <li>
-            <%= link_to about_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
-              About
+            <%= link_to about_path, class: 'nav-link btn btn-info rounded-pill border-primary mx-2' do %>
+              アバウト
             <% end %>
           </li>
           <li>
-            <%= link_to new_end_user_registration_path, class: 'nav-link text-light border border-white rounded mr-3' do %>
+            <%= link_to new_end_user_registration_path, class: 'nav-link btn btn-info rounded-pill border-primary mx-2' do %>
               新規登録
             <% end %>
           </li>
           <li>
-            <%= link_to new_end_user_session_path, class: 'nav-link text-light border border-white rounded' do %>
+            <%= link_to new_end_user_session_path, class: 'nav-link btn btn-info rounded-pill border-primary mx-2' do %>
               ログイン
             <% end %>
           </li>
         <% end %>
 
-        <div class="search_form mt-3", style = "margin-left:37%;">
-          <%= form_with url: search_path, method: :get do |f| %>
-            <%= f.text_field :content %>
-            <%= f.select :model, options_for_select({ "メモリー" => "memory", "グループ" => "group" }) %>
-            <%= f.submit "検索", class: "btn btn-secondary" %>
-          <% end %>
-        </div>
         </ul>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>
