@@ -28,12 +28,12 @@
   <h5><strong>マイグループ</strong></h5>
   <div class="m-auto group-index overflow-auto" style="height:625px; width: 100%; background-color: #393939;">
     <% user_groups.each do |user_group| %>
-          <%= link_to group_path(user_group) do %>
-            <%= image_tag user_group.get_group_image, size: "50x50", class:"mt-4" %>
-          <% end %>
-          <%= link_to group_path(user_group), class:"text-truncate my-2 btn border border-warning rounded-pill text-dark text-decoration-none", style:"width: 90%; background-color: #e8dece;" do %>
-            <%= user_group.name %>
-          <% end %><br>
+      <%= link_to group_path(user_group) do %>
+        <%= image_tag user_group.get_group_image, size: "50x50", class:"mt-4" %>
+      <% end %>
+      <%= link_to group_path(user_group), class:"text-truncate my-2 btn border border-warning rounded-pill text-dark text-decoration-none", style:"width: 90%; background-color: #e8dece;" do %>
+        <%= user_group.name %>
+      <% end %><br>
     <% end %>
   </div>
 </div>
