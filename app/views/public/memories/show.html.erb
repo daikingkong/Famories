@@ -2,49 +2,55 @@
   <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
     <b>メモリー詳細</b>
   </h6>
+
   <div class="row d-flex flex-wrap justify-content-center">
     <div class="col-7">
-
       <table class="table table-borderless text-truncate table-active">
         <tbody>
           <tr>
             <td>投稿者</td>
             <td colspan="2" class="text-light"><%= @memory.end_user.name %></td>
           </tr>
+
           <tr>
             <td>タグ</td>
             <td colspan="2" class="text-light bg-dark rounded-pill d-flex justify-content-center" style="width: 420px;">
               <% @memory_tags.each do |tag| %>
-                <span class="mx-2">
-                  <%= link_to tag.name, memory_tag_tag_search_path(tag), class:" text-truncate" %>
+                <span class="mx-2 text-truncate">
+                  <%= link_to tag.name, memory_tag_tag_search_path(tag) %>
                   <%= "(#{tag.memories.count})" %>
                 </span>
               <% end %>
             </td>
           </tr>
+
           <tr>
             <td>タグページ</td>
             <td></td>
             <td>
-              <div class="text-light bg-dark rounded-pill w-50 d-flex justify-content-center">
+              <div class="text-light bg-dark rounded-pill w-75 d-flex justify-content-center">
                 <%= paginate @memory_tags %>
               </div>
             </td>
           </tr>
+
           <tr>
             <td>メモリー画像</td>
             <td colspan="2" class="text-light"><%= image_tag @memory.get_memory_image, size: "280x200",class:"post-memory" %></td>
           </tr>
+
           <tr>
             <td>メモリータイトル</td>
             <td colspan="2" class="text-light"><%= @memory.title %></td>
           </tr>
+
           <tr>
             <td>メモ</td>
             <td colspan="2" class="text-light text-wrap"><%= @memory.memo %></td>
           </tr>
+
           <tr>
-            <td>いいね　<b><%= @memory.memory_favorites.count %></b> 件</td>
+            <td>いいね<b>　<%= @memory.memory_favorites.count %></b> 件</td>
             <td colspan="2" class="text-light">
               <% if @memory.memory_favorited_by?(current_end_user) %>
                 <%= link_to memory_memory_favorites_path(@memory), class:"text-danger", method: :delete do %>
@@ -57,6 +63,7 @@
               <% end %>
             </td>
           </tr>
+
           <tr>
             <td></td>
             <% if @memory.end_user == current_end_user %>
@@ -78,6 +85,7 @@
             <th>コメント</th>
             <th></th>
           </tr>
+
           <% @memory_comments.each do |memory_comment| %>
           <tr>
             <td class="text-light"><%= memory_comment.end_user.name %></td>
@@ -89,6 +97,7 @@
           <% end %>
         </tbody>
       </table>
+
       <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
         <%= paginate @memory_comments %>
       </div>
