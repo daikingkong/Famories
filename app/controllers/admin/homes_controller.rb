@@ -4,7 +4,7 @@ class Admin::HomesController < ApplicationController
   layout "admin_application"
 
   def top
-    @memories = Memory.page(params[:page]).per(12).order("created_at DESC")
+    @memories = Memory.page(params[:page]).per(24).order("created_at DESC")
   end
 
 end

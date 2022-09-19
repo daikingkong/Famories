@@ -4,7 +4,7 @@ class Admin::MemoryCommentsController < ApplicationController
   layout "admin_application"
 
   def index
-    @memory_comments = MemoryComment.page(params[:page]).per(10).order("created_at DESC")
+    @memory_comments = MemoryComment.page(params[:page]).per(20).order("created_at DESC")
   end
 
   def destroy

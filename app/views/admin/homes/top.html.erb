@@ -1,16 +1,49 @@
-<h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
-  <b>投稿一覧</b>
-</h6>
-<div class="d-flex flex-wrap">
-  <% @memories.each do |memory| %>
-    <div class="mx-auto mb-3 text-truncate">
-      <%= link_to admin_memory_path(memory) do %>
-        <%= image_tag memory.get_memory_image, size: "200x150" %><br>
-        <%= memory.title %><br>
-      <% end %>
-      <%= link_to admin_end_user_path(memory.end_user_id) do %>
-        <%= memory.end_user.name %><br>
-      <% end %>
+<div class="container text-center">
+  <h6 class="page-title text-truncate px-3 mb-4 mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+    <b>投稿一覧</b>
+  </h6>
+
+  <div class="row">
+    <div class="col-12 d-flex flex-wrap justify-content-center">
+      <div class="d-flex flex-wrap">
+        <% @memories.each do |memory| %>
+          <div class="mx-auto mb-3" style="width: 230px;">
+            <%= link_to memory_path(memory) do %>
+              <%= image_tag memory.get_memory_image, size: "200x150", class:"post-memory" %>
+            <% end %>
+            <table class="table table-borderless table-sm text-truncate">
+              <tbody>
+                <tr>
+                  <td>タイトル</td>
+                  <td>
+                    <span>
+                      <%= link_to admin_memory_path(memory), class:"text-light" do %>
+                        <%= memory.title %>
+                      <% end %>
+                    </span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>投稿者</td>
+                  <td class="text-light">
+                    <span>
+                      <%= link_to admin_end_user_path(memory.end_user_id), class:"text-light" do %>
+                        <%= memory.end_user.name %>
+                      <% end %>
+                    </span>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+    <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
+      <%= paginate @memories %>
+    </div>
+  </div>
 </div>

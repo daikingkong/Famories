@@ -1,21 +1,32 @@
-<h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
-  <b>ログイン</b>
-</h6>
+<div class="container text-center">
+  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+    <b>ログイン</b>
+  </h6>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="row d-flex flex-wrap justify-content-center">
+      <div class="col-7">
 
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン", class: "btn btn-primary" %>
-  </div>
-<% end %>
-
-<%= render "admin/shared/links" %>
+        <table class="table table-borderless text-truncate table-active text-left">
+          <tbody>
+            <tr>
+              <th><%= f.label :email, "メールアドレス" %></th>
+              <td><%= f.email_field :email, placeholder:"管理者メールアドレス", autofocus: true, autocomplete: "email" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th><%= f.label :password, "パスワード" %></th>
+              <td><%= f.password_field :password, placeholder:"管理者パスワード", autocomplete: "current-password", style:"width: 100%;", class:" rounded" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="text-light"><%= f.submit "ログイン", class: "btn btn-primary rounded-pill border border-warning", style:"width: 100%;" %></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>
