@@ -10,7 +10,7 @@ class Public::MemoryCommentsController < ApplicationController
     if memory_comment.save
       redirect_to memory_path(@memory), notice: "コメントを投稿しました。"
     else
-      redirect_to memory_path(@memory), notice: "コメントの投稿に失敗しました。"
+      redirect_to memory_path(@memory), alert: "コメントの投稿に失敗しました。"
     end
   end
 

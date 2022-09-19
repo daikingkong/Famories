@@ -20,7 +20,7 @@ class Public::MemoriesController < ApplicationController
         redirect_to memory_path(memory), notice: "メモリーを作成しました。"
       end
     else
-      redirect_to new_memory_path, notice: "メモリーの作成に失敗しました。"
+      redirect_to new_memory_path, alert: "メモリーの作成に失敗しました。"
     end
   end
 
@@ -50,7 +50,7 @@ class Public::MemoriesController < ApplicationController
         redirect_to memory_path(memory), notice: "メモリーを編集しました。"
       end
     else
-      redirect_to edit_memory_path(memory), notice: "メモリーの編集に失敗しました。"
+      redirect_to edit_memory_path(memory), alert: "メモリーの編集に失敗しました。"
     end
   end
 
@@ -73,7 +73,7 @@ class Public::MemoriesController < ApplicationController
   def ensure_correct_end_user
     @memory = Memory.find(params[:id])
     unless @memory.end_user_id == current_end_user.id
-      redirect_to memory_path(@memory), notice: '自分以外のメモリーの編集はできません'
+      redirect_to memory_path(@memory), alert: '自分以外のメモリーの編集はできません'
     end
   end
 

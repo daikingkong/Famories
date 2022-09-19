@@ -37,7 +37,7 @@ class Public::GroupUsersController < ApplicationController
         redirect_to end_user_path(end_user), notice: "グループを退会しました。"
       end
     else
-      redirect_to request.referer, notice: "現在、オーナーが退会することはできません"
+      redirect_to request.referer, alert: "現在、オーナーが退会することはできません"
     end
   end
 
@@ -52,7 +52,7 @@ class Public::GroupUsersController < ApplicationController
     @group_user = GroupUser.where(group_id: @group, end_user_id: current_end_user.id)
     if @group_user.present?
     else
-      redirect_to end_user_path(current_end_user), notice: "グループのメンバーのみ利用可能です。"
+      redirect_to end_user_path(current_end_user), alert: "グループのメンバーのみ利用可能です。"
     end
   end
 
