@@ -13,16 +13,19 @@
               <th><%= f.label :memory_image, "メモリー画像" %></th>
               <td colspan="2" class="text-light"><%= f.file_field :memory_image, accept: "image/*"%></td>
             </tr>
+
             <tr>
               <th><%= f.label :title, "メモリータイトル" %></th>
               <td class="text-light"><%= f.text_field :title, style:"width: 100%;", class:" rounded" %></td>
               <td></td>
             </tr>
+
             <tr>
               <th><%= f.label :memo, "メモ" %></th>
               <td class="text-light"><%= f.text_area :memo, style:"width: 100%; height: 150px;", class:" rounded" %></td>
               <td></td>
             </tr>
+
             <tr class="text-center">
               <td colspan="3" class="text-light">
                 <p>
@@ -32,18 +35,22 @@
                 </p>
               </td>
             </tr>
+
             <tr>
               <th><%= f.label :name, "タグ作成" %></th>
               <td class="text-light"><%= f.text_field :name, style:"width: 100%;", class:" rounded" %></td>
               <td></td>
             </tr>
+
             <tr>
               <td></td>
               <td class="text-light"><%= f.submit "メモリー投稿", class:"btn btn-success rounded-pill border border-warning", style:"width: 100%;" %></td>
               <td></td>
             </tr>
+
           </tbody>
         </table>
+
       </div>
     </div>
   <% end %>
