@@ -12,8 +12,8 @@
 
   <body>
     <%= render "layouts/admin_header" %>
-    <%= notice %>
-    <%= alert %>
+    <p class="text-light bg-success text-center mx-auto w-25 rounded"><%= notice %></p>
+    <p class="text-warning bg-danger text-center mx-auto w-25 rounded"><%= alert %></p>
     <%= yield %>
   </body>
   <footer></footer>

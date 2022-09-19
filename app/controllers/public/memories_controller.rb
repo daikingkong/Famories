@@ -27,7 +27,7 @@ class Public::MemoriesController < ApplicationController
   def index
     @memories = Memory.page(params[:page]).per(12).order("created_at DESC")
     @end_user = current_end_user
-    @user_groups = @end_user.groups
+    @user_groups = @end_user.groups.order("created_at DESC")
   end
 
   def show
