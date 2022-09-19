@@ -14,22 +14,12 @@
 
           <tr>
             <td>タグ</td>
-            <td colspan="2" class="text-light bg-dark rounded-pill d-flex justify-content-center" style="width: 420px;">
+            <td colspan="2" class="text-light overflow-auto d-flex justify-content-center" style="width: 420px; padding-left: 50px; background-color: rgba(0, 0, 0, 0.2);">
               <% @memory_tags.each do |tag| %>
-                <span class="mx-2 text-truncate">
+                <span class="mx-2">
                   <%= link_to tag.name, memory_tag_tag_search_path(tag)%>
                 </span>
               <% end %>
-            </td>
-          </tr>
-
-          <tr>
-            <td>タグページ</td>
-            <td></td>
-            <td>
-              <div class="text-light bg-dark rounded-pill w-75 d-flex justify-content-center">
-                <%= paginate @memory_tags %>
-              </div>
             </td>
           </tr>
 
