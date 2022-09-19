@@ -11,7 +11,7 @@
       <% end %>
       <div>
         <%= form_with url: search_path, method: :get do |f| %>
-          <%= f.text_field :content, class:"rounded" %>
+          <%= f.text_field :content, placeholder:"キーワード入力", class:"rounded" %>
           <%= f.select :model, options_for_select({ "メモリー" => "memory", "グループ" => "group" }) %>
           <%= f.submit "検索", class: "btn btn-secondary rounded-pill" %>
         <% end %>

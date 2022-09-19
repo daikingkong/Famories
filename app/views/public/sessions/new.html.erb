@@ -11,12 +11,12 @@
           <tbody>
             <tr>
               <th><%= f.label :email, "メールアドレス" %></th>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+              <td><%= f.email_field :email, placeholder:"登録済みメールアドレス", autofocus: true, autocomplete: "email" %></td>
               <td></td>
             </tr>
             <tr>
               <th><%= f.label :password, "パスワード" %></th>
-              <td><%= f.password_field :password, autocomplete: "current-password", style:"width: 100%;", class:" rounded" %></td>
+              <td><%= f.password_field :password, placeholder:"登録済みパスワード", autocomplete: "current-password", style:"width: 100%;", class:" rounded" %></td>
               <td></td>
             </tr>
             <% if devise_mapping.rememberable? %>

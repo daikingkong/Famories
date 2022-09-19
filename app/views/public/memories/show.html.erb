@@ -94,7 +94,7 @@
       <div class="mt-3">
         <%= form_with model:@memory_comment, url:memory_memory_comments_path(@memory.id), method: :post do |f| %>
           <%= f.label :comment, "コメント投稿" %>
-          <%= f.text_field :comment, class:"rounded" %>
+          <%= f.text_field :comment, placeholder:"３０文字以内", class:"rounded" %>
           <%= f.submit "コメント投稿", class:"btn btn-success rounded-pill border border-warning" %>
         <% end %>
       </div>

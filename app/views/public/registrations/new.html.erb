@@ -12,23 +12,20 @@
           <tbody>
             <tr>
               <th><%= f.label :name, "ニックネーム" %></th>
-              <td><%= f.text_field :name, autofocus: true, autocomplete: "name", style:"width: 100%;", class:" rounded" %></td>
+              <td><%= f.text_field :name, placeholder:"３０文字以内", autofocus: true, autocomplete: "name", style:"width: 100%;", class:" rounded" %></td>
               <td></td>
             </tr>
             <tr>
               <th><%= f.label :email, "メールアドレス" %></th>
-              <td><%= f.email_field :email, autocomplete: "email", style:"width: 100%;", class:" rounded" %></td>
+              <td><%= f.email_field :email, autocomplete: "email", placeholder:"famories@example.com", style:"width: 100%;", class:" rounded" %></td>
               <td></td>
             </tr>
             <% if devise_mapping.rememberable? %>
               <tr>
                 <th>
                   <%= f.label :password, "パスワード"%>
-                  <% if @minimum_password_length %>
-                  (<%= @minimum_password_length %>文字以上)
-                  <% end %>
                 </th>
-                <td><%= f.password_field :password, autocomplete: "new-password", style:"width: 100%;", class:" rounded" %></td>
+                <td><%= f.password_field :password, placeholder:"６文字以上", autocomplete: "new-password", style:"width: 100%;", class:" rounded" %></td>
                 <td></td>
               </tr>
             <tr>

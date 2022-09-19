@@ -14,7 +14,7 @@ class EndUser < ApplicationRecord
   has_many :memories, dependent: :destroy
   has_many :memory_favorites, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 30 }
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true
 
