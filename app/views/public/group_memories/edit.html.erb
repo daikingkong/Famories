@@ -2,33 +2,45 @@
   <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
     <b>グループメモリー編集</b>
   </h6>
-  <%= form_with model:@memory, url:  group_group_memory_path do |f| %>
 
-    <div class="field">
-      <%= f.label :memory_image, "メモリー画像" %>
-      <%= f.file_field :memory_image, accept: "image/*" %>
+  <%= form_with model:@memory, url: group_group_memory_path do |f| %>
+    <div class="row d-flex flex-wrap justify-content-center">
+      <div class="col-7">
+
+        <table class="table table-borderless text-truncate table-active text-left">
+          <tbody>
+            <tr>
+              <th><%= f.label :memory_image, "メモリー画像" %></th>
+              <td colspan="2" class="text-light"><%= f.file_field :memory_image, accept: "image/*", style:"width: 100%;" %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :title, "メモリータイトル" %></th>
+              <td class="text-light"><%= f.text_field :title, style:"width: 100%;", class:" rounded" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th><%= f.label :memo, "メモ" %></th>
+              <td class="text-light"><%= f.text_area :memo, style:"width: 100%; height: 150px;", class:" rounded" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="text-light"><%= f.submit "更新", class:"btn btn-success rounded-pill border border-warning", style:"width: 100%;" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="text-light"><%= link_to "メモリー詳細に戻る", group_group_memory_path(@group, @memory), class:"btn btn-secondary rounded-pill border border-warning", style:"width: 100%;" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="text-light"><%= link_to "削除する", group_group_memory_path(@group, @memory), class:"btn btn-danger rounded-pill border border-warning", style:"width: 100%;", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-    <div class="field">
-      <%= f.label :title, "メモリータイトル" %>
-      <%= f.text_field :title %>
-    </div>
-
-    <div class="field">
-      <%= f.label :memo, "メモ" %>
-      <%= f.text_area :memo %>
-    </div>
-
-    <div class="field">
-      <%= f.submit "メモリーを更新", class:"btn btn-success" %>
-    </div>
-
-    <div class="field">
-      <%= link_to "メモリー詳細画面に戻る", group_group_memory_path(@group, @memory), class:"btn btn-secondary" %>
-    </div>
-
-    <div class="field">
-      <%= link_to "メモリー削除", group_group_memory_path(@group, @memory), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger" %>
-    </div>
-
   <% end %>
+</div>

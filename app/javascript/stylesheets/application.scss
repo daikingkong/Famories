@@ -35,11 +35,17 @@ body {
 .post-memory, .group-index, .user-index, .user-profile {
   margin: 0 12px;
   border: solid 6px #e8dece;
+  background-color: #cccccc;
 }
 
 .table {
   table-layout:fixed;
  }
+
+table tr,td{
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
 
 // フッター
 footer {
