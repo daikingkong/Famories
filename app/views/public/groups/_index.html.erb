@@ -4,9 +4,9 @@
       <th class="col-1"></th>
       <th class="col-2">グループ名</th>
       <th class="col-1">オーナー</th>
-      <th class="col-3">グループ紹介文</th>
+      <th class="col-4">グループ紹介文</th>
       <th class="col-1">メンバー</th>
-      <th class="col-3"></th>
+      <th class="col-2">リクエスト</th>
     </tr>
   </thead>
   <tbody class="text-light">
@@ -21,16 +21,16 @@
         <% else %>
           <% if group.already_joined?(current_end_user) %>
           <td>
-            <%= link_to "マイグループへ", group_path(group), class:"btn btn-secondary rounded-pill border border-warning" %>
+            <%= link_to "グループへ", group_path(group), class:"btn btn-secondary rounded-pill border border-warning" %>
           </td>
           <% else %>
             <% if group.already_requested?(current_end_user) %>
               <td>
-                <%= link_to "リクエスト解除", group_join_request_path(group, group.join_requests), class:"btn btn-danger rounded-pill border border-warning", method: :delete %>
+                <%= link_to "申請解除", group_join_request_path(group, group.join_requests), class:"btn btn-danger rounded-pill border border-warning", method: :delete %>
               </td>
             <% else %>
               <td>
-                <%= link_to "加入リクエスト", group_join_requests_path(group), class:"btn btn-primary rounded-pill border border-warning", method: :post %>
+                <%= link_to "加入申請", group_join_requests_path(group), class:"btn btn-primary rounded-pill border border-warning", method: :post %>
               </td>
             <% end %>
           <% end %>

@@ -1,74 +1,71 @@
 <div class="container text-center">
-  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+  <h6 class="page-title text-truncate px-3 mb-4 mt-3 mx-auto bg-secondary border border-primary rounded text-light">
     <b>メンバー編集</b>
   </h6>
-  <%= link_to "グループページに戻る", group_path(@group), class:"btn btn-secondary" %>
+  <%= link_to "グループページに戻る", group_path(@group), class:"btn btn-secondary w-25 h-25 mb-4 border border-warning rounded-pill text-light" %>
 
   <div class="row">
     <div class="col-12 d-flex flex-wrap justify-content-center">
-
       <div class="col-4">
-        <table class="table">
-          <tbody>
-            <tr>
-              <td><%= image_tag @group.get_group_image, size: "100x100" %></td>
-            </tr>
+        <div class="d-flex flex-column justify-content-center">
 
-            <tr>
-              <td><%= @group.name %></td>
-            </tr>
-
-            <tr>
-              <td><%= link_to "グループ編集", edit_group_path(@group), class:"btn btn-primary" %></td>
-            </tr>
-
-            <tr>
-              <td>
-                <h4>グループメンバー</h4>
-              </td>
-            </tr>
-
-            <% @group_users.each do |group_user| %>
+          <table class="table table-borderless text-truncate">
+            <tbody>
               <tr>
-                <td>
-                  <%= link_to group_group_user_path(@group, group_user), method: :delete, data: {confirm: "本当に『#{group_user.name}さん』を退出させますか？" }, class:"text-danger text-decoration-none" do %>
-                    <i class="fas fa-minus-circle"></i>
-                  <% end %>
-                  <%= image_tag group_user.get_profile_image, size: "39x39" %>
-                  <%= group_user.name %>
+                <td colspan="2"><%= image_tag @group.get_group_image, size: "100x100", class:"group-profile" %></td>
+              </tr>
+
+              <tr>
+                <td colspan="2"><b><%= @group.name %></b></td>
+              </tr>
+
+              <tr>
+                <td colspan="2">
                 </td>
               </tr>
+            </tbody>
+          </table>
+
+          <h5><strong>グループメンバー</strong></h5>
+          <div class="m-auto group-index overflow-auto" style="height:625px; width: 100%; background-color: #393939;">
+            <% @group_users.each do |group_user| %>
+              <%= image_tag group_user.get_profile_image, size: "50x50", class:"mt-4"  %>
+              <p class="d-flex align-items-center justify-content-center text-truncate my-2 border mx-auto border-warning rounded-pill text-dark text-decoration-none" style="width: 295.2px; height: 39.2px; background-color: #e8dece;">
+              <%= link_to group_group_user_path(@group, group_user), method: :delete, data: {confirm: "本当に『#{group_user.name}さん』を退出させますか？" }, class:"text-danger text-decoration-none" do %>
+                <i class="fas fa-minus-circle"></i>
+              <% end %>
+                <%= group_user.name %>
+              </p>
             <% end %>
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
 
       <div class="col-8">
-        <div class="d-flex flex-wrap">
-          <%= paginate @join_requests %>
-        </div>
-        <table>
+        <table class="table text-truncate table-borderless table-striped table-active">
           <tbody>
             <tr>
               <th>ユーザー画像</th>
               <th>ユーザ名</th>
-              <th></th>
-              <th></th>
+              <th colspan="2">リクエスト</th>
             </tr>
             <% @join_requests.each do |join_request| %>
               <tr>
                 <td><%= image_tag join_request.end_user.get_profile_image, size: "50x50" %></td>
                 <td><%= join_request.end_user.name %></td>
                 <td>
-                  <%= link_to "承認", group_group_user_approve_path(join_request.group, join_request.end_user), class:"btn btn-primary", method: :post %>
+                  <%= link_to "承認", group_group_user_approve_path(join_request.group, join_request.end_user), class:"btn btn-primary rounded-pill border border-warning", method: :post %>
                 </td>
                 <td>
-                  <%= link_to "拒否", group_group_user_refuse_path(join_request.group, join_request.end_user), class:"btn btn-danger", method: :delete, date: {confirm: "本当に拒否しますか？"} %>
+                  <%= link_to "拒否", group_group_user_refuse_path(join_request.group, join_request.end_user), class:"btn btn-danger rounded-pill border border-warning", method: :delete, date: {confirm: "本当に拒否しますか？"} %>
                 </td>
               </tr>
             <% end %>
           </tbody>
         </table>
+      </div>
+      <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
+        <%= paginate @join_requests %>
       </div>
     </div>
   </div>
