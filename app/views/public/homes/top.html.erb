@@ -1,15 +1,15 @@
 <div class="container text-center">
-  <h6 class="mb-5 bg-info mt-5 mx-auto border border-primary rounded", style="width: 320px; height: 30px; line-height: 30px;">
-    Famoriesへようこそ！！
+  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+    <b>Famoriesへようこそ！！</b>
   </h6>
 
-  <div class="mt-5">
-    <%= image_tag 'no_image.jpg', size: "220x150", class:"mr-4" %>
-    <%= image_tag 'no_image.jpg', size: "220x150", class:"mr-4" %>
-    <%= image_tag 'no_image.jpg', size: "220x150" %>
+  <div class="mt-4">
+    <% @memories.each do |memory| %>
+      <%= image_tag memory.get_memory_image, size: "220x150", class:"post-memory" %>
+    <% end %>
   </div><br>
 
-  <%= link_to "ゲストログイン", end_user_guest_sign_in_path, class: "btn btn-secondary mt-3 mb-4 w-50", method: :post %><br>
-  <%= link_to "新規登録", new_end_user_registration_path, class: "btn btn-success mb-4 w-50" %><br>
-  <%= link_to "ログイン", new_end_user_session_path, class: "btn btn-primary w-50" %>
+  <%= link_to "ゲストログイン", end_user_guest_sign_in_path, class: "btn btn-secondary mt-3 mb-4 w-50 rounded-pill border-warning", method: :post %><br>
+  <%= link_to "新規登録", new_end_user_registration_path, class: "btn btn-success mb-4 w-50 rounded-pill border-warning" %><br>
+  <%= link_to "ログイン", new_end_user_session_path, class: "btn btn-primary w-50 rounded-pill border-warning" %>
 </div>

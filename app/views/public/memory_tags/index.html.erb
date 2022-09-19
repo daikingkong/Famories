@@ -1,25 +1,25 @@
 <div class="container text-center">
-  <div class="row">
+  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+    <b>タグ一覧</b>
+  </h6>
+  <%= link_to "メモリー作成", new_memory_path, class:"btn btn-success w-25 h-25 mb-4 border border-warning rounded-pill text-light" %>
+
+  <div class="row justify-content-center">
     <div class="col-12 d-flex flex-wrap justify-content-center">
-      <div class="col-3">
-      </div>
-      <div class="col-8">
-        <div class="d-flex flex-wrap">
-          タグ一覧
-          <%= link_to "新しくメモる", new_memory_path, class:"btn btn-success" %>
-          <%= paginate @memory_tags %>
-        </div>
-        <table>
-          <tbody>
-            <% @memory_tags.each do |tag| %>
-              <tr>
-                <%= link_to tag.name, memory_tag_tag_search_path(tag) %>
-                <%= "(#{tag.memories.count})" %><br>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+      <% @memory_tags.each do |tag| %>
+        <tr>
+          <td>
+            <span class:"text-truncate">
+              <%= link_to "#{tag.name}""(#{tag.memories.count})", memory_tag_tag_search_path(tag), class:"my-2 btn border border-warning rounded-pill text-dark text-decoration-none", style:"background-color: #e8dece;"  %>
+              <%=  %>
+            </span>
+            <span>　</span>
+          </td>
+        </tr>
+      <% end %>
+    </div>
+    <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
+      <%= paginate @memory_tags %>
     </div>
   </div>
 </div>

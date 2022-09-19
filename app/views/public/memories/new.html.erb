@@ -1,34 +1,57 @@
 <div class="container text-center">
-  新しくメモる
+  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+    <b>メモリー新規作成</b>
+  </h6>
 
   <%= form_with model:@memory do |f| %>
+    <div class="row d-flex flex-wrap justify-content-center">
+      <div class="col-7">
 
-    <div class="field">
-      <%= f.label :memory_image, "メモリー画像" %>
-      <%= f.file_field :memory_image, accept: "image/*" %>
-    </div>
+        <table class="table table-borderless text-truncate table-active text-left">
+          <tbody>
+            <tr>
+              <th><%= f.label :memory_image, "メモリー画像" %></th>
+              <td colspan="2" class="text-light"><%= f.file_field :memory_image, accept: "image/*"%></td>
+            </tr>
 
-    <div class="field">
-      <%= f.label :title, "メモリータイトル" %>
-      <%= f.text_field :title %>
-    </div>
+            <tr>
+              <th><%= f.label :title, "メモリータイトル" %></th>
+              <td class="text-light"><%= f.text_field :title, placeholder:"３０文字以内", style:"width: 100%;", class:" rounded" %></td>
+              <td></td>
+            </tr>
 
-    <div class="field">
-      <%= f.label :memo, "メモ" %>
-      <%= f.text_area :memo %>
-    </div>
+            <tr>
+              <th><%= f.label :memo, "メモ" %></th>
+              <td class="text-light"><%= f.text_area :memo, placeholder:"４００文字以内", style:"width: 100%; height: 150px;", class:" rounded" %></td>
+              <td></td>
+            </tr>
 
-      全角スペースで区切ると複数のタグ付けができます。※半角では区切れません。<br>
-      例：家族　記録用☞　『家族』『記録用』 <br>
-      家族 記録用　☞『家族 記録用』<br>
-      <div class="field">
-        <%= f.label :name, "タグ作成" %>
-        <%= f.text_field :name %>
+            <tr class="text-center">
+              <td colspan="3" class="text-light">
+                <p>
+                  全角スペースで区切ると複数のタグ付けができます。※半角では区切れません。<br>
+                  例：家族　記録用☞　『家族』『記録用』<br>
+                  家族 記録用　☞『家族 記録用』
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <th><%= f.label :name, "タグ作成" %></th>
+              <td class="text-light"><%= f.text_area :name, placeholder:"家族　記録用", style:"width: 100%; height: 100px;", class:" rounded" %></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td class="text-light"><%= f.submit "メモリー投稿", class:"btn btn-success rounded-pill border border-warning", style:"width: 100%;" %></td>
+              <td></td>
+            </tr>
+
+          </tbody>
+        </table>
+
       </div>
-
-    <div class="field">
-      <%= f.submit "メモる", class:"btn btn-success" %>
     </div>
-
   <% end %>
 </div>

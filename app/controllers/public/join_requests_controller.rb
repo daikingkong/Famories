@@ -8,7 +8,7 @@ class Public::JoinRequestsController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @group_users = @group.end_users
-    @join_requests = @group.join_requests.page(params[:page]).per(10)
+    @join_requests = @group.join_requests.page(params[:page]).per(12).order("created_at DESC")
   end
 
   def create
@@ -30,7 +30,7 @@ class Public::JoinRequestsController < ApplicationController
   def ensure_correct_group_owner
     @group = Group.find(params[:group_id])
     unless @group.owner_id == current_end_user.id
-      redirect_to group_path(@group), notice: 'オーナーのみ利用可能です'
+      redirect_to group_path(@group), alert: 'オーナーのみ利用可能です'
     end
   end
 

@@ -6,7 +6,7 @@ class Memory < ApplicationRecord
   has_many :memory_tags, through: :memory_search_tags
 
   validates :title, length: {minimum: 1, maximum: 30 }
-  validates :memo, length: {maximum: 150 }
+  validates :memo, length: {maximum: 400 }
 
   has_one_attached :memory_image
 

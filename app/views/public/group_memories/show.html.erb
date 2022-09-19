@@ -1,34 +1,40 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
+<div class="container text-center">
+  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+    <b>グループメモリー詳細</b>
+  </h6>
+  <div class="row d-flex flex-wrap justify-content-center">
+    <div class="col-7">
 
-      <table>
+      <table class="table table-borderless text-truncate table-active">
         <tbody>
           <tr>
-            <th>投稿ユーザー</th>
-            <th><%= @memory.end_user.name %></th>
+            <td>投稿者</td>
+            <td colspan="2" class="text-light"><%= @memory.end_user.name %></td>
           </tr>
           <tr>
             <td>メモリー画像</td>
-            <td><%= image_tag @memory.get_memory_image, size: "100x100" %></td>
+            <td colspan="2" class="text-light"><%= image_tag @memory.get_memory_image, size: "280x200",class:"post-memory"  %></td>
           </tr>
           <tr>
             <td>メモリータイトル</td>
-            <td><%= @memory.title %></td>
+            <td colspan="2" class="text-light"><%= @memory.title %></td>
           </tr>
           <tr>
             <td>メモ</td>
-            <td><%= @memory.memo %></td>
+            <td colspan="2" class="text-light text-wrap"><%= @memory.memo %></td>
           </tr>
           <tr>
             <td></td>
             <% if current_end_user.name == @group.owner.pop || current_end_user == @memory.end_user %>
-              <td>
-                <%= link_to "メモリー編集", edit_group_group_memory_path(@group, @memory), class:"btn btn-primary" %>
+              <td colspan="2" class="text-light">
+                <%= link_to "メモリー編集", edit_group_group_memory_path(@group, @memory), class:"btn btn-primary rounded-pill border border-warning" %>
               </td>
             <% end %>
-            <td>
-              <%= link_to "グループページに戻る", group_path(@group), class:"btn btn-secondary" %>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2" class="text-light">
+              <%= link_to "グループページに戻る", group_path(@group), class:"btn btn-secondary rounded-pill border border-warning" %>
             </td>
           </tr>
         </tbody>

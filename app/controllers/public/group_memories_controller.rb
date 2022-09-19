@@ -19,7 +19,7 @@ class Public::GroupMemoriesController < ApplicationController
     if memory.save
       redirect_to group_group_memory_path(@group, memory), notice: "メモリーを作成しました。"
     else
-      redirect_to new_group_group_memory_path(@group), notice: "メモリーの作成に失敗しました。"
+      redirect_to new_group_group_memory_path(@group), alert: "メモリーの作成に失敗しました。"
     end
   end
 
@@ -39,7 +39,7 @@ class Public::GroupMemoriesController < ApplicationController
     if memory.update(group_memory_params)
       redirect_to group_group_memory_path(@group, memory), notice: "メモリーを更新しました。"
     else
-      redirect_to edit_group_group_memory_path(@group, memory), notice: "メモリーの更新に失敗しました。"
+      redirect_to edit_group_group_memory_path(@group, memory), alert: "メモリーの更新に失敗しました。"
     end
   end
 
@@ -59,7 +59,7 @@ class Public::GroupMemoriesController < ApplicationController
     if @group.owner_id == current_end_user.id
     else
       unless @group_memory.end_user_id == current_end_user.id
-        redirect_to end_user_path(current_end_user), notice: "グループのメンバーのみ利用可能です。"
+        redirect_to end_user_path(current_end_user), alert: "グループのメンバーのみ利用可能です。"
       end
     end
   end
@@ -69,7 +69,7 @@ class Public::GroupMemoriesController < ApplicationController
     @group_user = GroupUser.where(group_id: @group, end_user_id: current_end_user.id)
     if @group_user.present?
     else
-      redirect_to end_user_path(current_end_user), notice: "グループのメンバーのみ利用可能です。"
+      redirect_to end_user_path(current_end_user), alert: "グループのメンバーのみ利用可能です。"
     end
   end
 

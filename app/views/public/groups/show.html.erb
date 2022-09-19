@@ -1,61 +1,43 @@
 <div class="container text-center">
+  <h6 class="page-title text-truncate px-3 mb-4 mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+    <b>グループページ『<%= "#{@group.name}" %>』</b>
+  </h6>
+  <%= link_to "グループメモリー作成", new_group_group_memory_path(@group), class:"btn btn-success w-25 h-25 mb-4 border border-warning rounded-pill text-light" %>
+
   <div class="row">
     <div class="col-12 d-flex flex-wrap justify-content-center">
-
-      <div class="col-3">
-        <table class="table">
-          <tbody>
-            <tr><td><%= image_tag @group.get_group_image, size: "100x100" %></td></tr>
-
-            <tr><td><%= @group.name %></td></tr>
-
-            <% if current_end_user == @group.owner %>
-              <tr><td><%= link_to "グループ編集", edit_group_path(@group), class:"btn btn-primary" %></td></tr>
-            <% end %>
-
-            <tr><td><h4>グループメンバー</h4></td></tr>
-
-            <% @group_users.each do |group_user| %>
-              <tr>
-                <td>
-                  <%= image_tag group_user.get_profile_image, size: "39x39" %>
-                  <%= group_user.name %>
-                </td>
-              </tr>
-            <% end %>
-
-            <% if current_end_user.name == @group.owner.pop %>
-              <tr>
-                <td>
-                  <%= link_to "メンバー編集", group_join_requests_path(@group), class:"btn btn-success" %><br>
-                加入リクエスト（<%= @group.join_requests.count %>件）
-                </td>
-              </tr>
-            <% end %>
-
-            <tr><td><%= link_to "グループ退会", group_group_user_unsubscribe_confirm_path(@group, current_end_user.id), class:"btn btn-danger" %></td></tr>
-
-          </tbody>
-        </table>
+      <div class="col-4">
+        <div class="d-flex flex-column justify-content-center">
+          <%= render "group_info", group: @group, group_users: @group_users %>
+        </div>
       </div>
 
-      <div class="col-8">
-        <div class="d-flex flex-wrap">
-          <%= @group.name %>のページ
-          <%= link_to "グループに新しくメモる", new_group_group_memory_path(@group), class:"btn btn-success" %>
-          <%= paginate @memories %>
-        </div>
-        <div class="d-flex flex-wrap">
+        <div class="col-8 d-flex flex-wrap">
+          <div class="d-flex flex-wrap">
           <% @memories.each do |memory| %>
-            <div class="mx-auto mb-3 text-truncate">
+            <div class="mx-auto mb-3" style="width: 230px;">
               <%= link_to group_group_memory_path(@group, memory) do %>
-                <%= image_tag memory.get_memory_image, size: "200x150" %><br>
-                <%= memory.title %><br>
+                <%= image_tag memory.get_memory_image, size: "200x150", class:"post-memory" %>
               <% end %>
-              <%= memory.end_user.name %><br>
+              <table class="table table-borderless table-sm text-truncate">
+                <tbody>
+                  <tr>
+                    <td>タイトル</td>
+                    <td class="text-light"><span><%= memory.title %></span></td>
+                  </tr>
+
+                  <tr>
+                    <td>投稿者</td>
+                    <td class="text-light"><span><%= memory.end_user.name %></span></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           <% end %>
         </div>
+      </div>
+      <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
+        <%= paginate @memories %>
       </div>
     </div>
   </div>

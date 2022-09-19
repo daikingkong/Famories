@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_guest_user
     if current_end_user.email == "guest@example.com"
-      redirect_to end_user_path(current_end_user), notice: 'ゲストユーザーは『閲覧』『いいね』のみ可能です。'
+      redirect_to end_user_path(current_end_user), alert: 'ゲストユーザーは『閲覧』『いいね』のみ可能です。'
     end
   end
 

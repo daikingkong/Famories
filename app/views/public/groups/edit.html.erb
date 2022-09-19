@@ -1,29 +1,41 @@
 <div class="container text-center">
-  グループ編集画面
+  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+    <b>グループ編集</b>
+  </h6>
+
   <%= form_with model:@group do |f| %>
+    <div class="row d-flex flex-wrap justify-content-center">
+      <div class="col-7">
 
-    <div class="field">
-      <%= f.label :group_image, "グループ画像" %>
-      <%= f.file_field :group_image, accept: "image/*" %>
+        <table class="table table-borderless text-truncate table-active text-left">
+          <tbody>
+            <tr>
+              <th><%= f.label :group_image, "グループ画像" %></th>
+              <td colspan="2" class="text-light"><%= f.file_field :group_image, accept: "image/*" %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :name, "グループ名" %></th>
+              <td class="text-light"><%= f.text_field :name, placeholder:"３０文字以内", style:"width: 100%;", class:" rounded" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th><%= f.label :introduction, "グループ紹介" %></th>
+              <td class="text-light"><%= f.text_area :introduction, placeholder:"５０文字以内", style:"width: 100%; height: 150px;", class:" rounded" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="text-light"><%= f.submit "グループ更新", class:"btn btn-primary rounded-pill border border-warning", style:"width: 100%;" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="text-light"><%= link_to "グループページに戻る", group_path(@group), class:"btn btn-secondary rounded-pill border border-warning", style:"width: 100%;" %></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-    <div class="field">
-      <%= f.label :name, "グループ名" %>
-      <%= f.text_field :name %>
-    </div>
-
-    <div class="field">
-      <%= f.label :introduction, "グループ紹介" %>
-      <%= f.text_area :introduction %>
-    </div>
-
-    <div class="field">
-      <%= f.submit "更新", class:"btn btn-primary" %>
-    </div>
-
-    <div class="field">
-      <%= link_to "グループページに戻る", group_path(@group), class:"btn btn-secondary" %>
-    </div>
-
   <% end %>
 </div>

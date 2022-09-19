@@ -4,7 +4,7 @@ class Admin::GroupMemoriesController < ApplicationController
   layout "admin_application"
 
   def index
-    @memories = GroupMemory.page(params[:page]).per(10)
+    @memories = GroupMemory.page(params[:page]).per(24).order("created_at DESC")
   end
 
   def show

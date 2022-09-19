@@ -1,29 +1,41 @@
 <div class="container text-center">
-  グループに新しくメモる
-  <%= form_with model:@memory, url:  group_group_memories_path do |f| %>
+  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+    <b>グループメモリー新規作成</b>
+  </h6>
 
-    <div class="field">
-      <%= f.label :memory_image, "メモリー画像" %>
-      <%= f.file_field :memory_image, accept: "image/*" %>
+  <%= form_with model:@memory, url: group_group_memories_path do |f| %>
+    <div class="row d-flex flex-wrap justify-content-center">
+      <div class="col-7">
+
+        <table class="table table-borderless text-truncate table-active text-left">
+          <tbody>
+            <tr>
+              <th><%= f.label :memory_image, "メモリー画像" %></th>
+              <td colspan="2" class="text-light"><%= f.file_field :memory_image, accept: "image/*" %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :title, "メモリータイトル" %></th>
+              <td class="text-light"><%= f.text_field :title, placeholder:"３０文字以内", style:"width: 100%;", class:" rounded" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th><%= f.label :memo, "メモ" %></th>
+              <td class="text-light"><%= f.text_area :memo, placeholder:"４００文字以内", style:"width: 100%; height: 150px;", class:" rounded" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="text-light"><%= f.submit "メモリー投稿", class:"btn btn-success rounded-pill border border-warning", style:"width: 100%;" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="text-light"><%= link_to "グループページに戻る", group_path(@group), class:"btn btn-secondary rounded-pill border border-warning", style:"width: 100%;" %></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-    <div class="field">
-      <%= f.label :title, "メモリータイトル" %>
-      <%= f.text_field :title %>
-    </div>
-
-    <div class="field">
-      <%= f.label :memo, "メモ" %>
-      <%= f.text_area :memo %>
-    </div>
-
-    <div class="field">
-      <%= f.submit "メモる", class:"btn btn-success" %>
-    </div>
-
-    <div class="field">
-      <%= link_to "グループページに戻る", group_path(@group), class:"btn btn-secondary" %>
-    </div>
-
   <% end %>
 </div>

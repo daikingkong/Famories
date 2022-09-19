@@ -7,8 +7,8 @@ class Public::EndUsersController < ApplicationController
 
   def show
     @end_user = current_end_user
-    @user_groups = @end_user.groups.page(params[:page]).per(10)
-    @memories = @end_user.memories.page(params[:page]).per(6)
+    @user_groups = @end_user.groups.order("created_at DESC")
+    @memories = @end_user.memories.page(params[:page]).per(12).order("created_at DESC")
   end
 
   def edit
@@ -18,7 +18,7 @@ class Public::EndUsersController < ApplicationController
   def update
     end_user = current_end_user
     end_user.update(end_user_params)
-    redirect_to end_user_path(end_user)
+    redirect_to end_user_path(end_user), notice: '会員情報を更新しました。'
   end
 
   def destroy
@@ -36,11 +36,11 @@ class Public::EndUsersController < ApplicationController
 
   def favorite_memories
     @end_user = current_end_user
-    @user_groups = @end_user.groups
+    @user_groups = @end_user.groups.order("created_at DESC")
      # ログインユーザーの「いいねしたメモリー一覧」を表示するため
     favorite_memories = MemoryFavorite.where(end_user_id: @end_user.id).pluck(:memory_id)
-    @memories = Memory.find(favorite_memories)
-    @memories = Kaminari.paginate_array(@memories).page(params[:page]).per(6)
+    @memories = Memory.order("created_at DESC").find(favorite_memories)
+    @memories = Kaminari.paginate_array(@memories).page(params[:page]).per(12)
   end
 
   private
@@ -48,7 +48,7 @@ class Public::EndUsersController < ApplicationController
   def ensure_correct_end_user
     @end_user = EndUser.find(params[:id])
     unless @end_user == current_end_user
-      redirect_to end_user_path(current_user), notice: ''
+      redirect_to end_user_path(current_end_user), alert: '本人のみ利用可能です。'
     end
   end
 

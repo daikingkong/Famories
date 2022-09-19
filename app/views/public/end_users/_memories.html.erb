@@ -1,12 +1,27 @@
 <div class="d-flex flex-wrap">
   <% memories.each do |memory| %>
-    <div class="mx-auto mb-3 text-truncate">
+    <div class="mx-auto mb-3" style="width: 230px;">
       <%= link_to memory_path(memory) do %>
-        <%= image_tag memory.get_memory_image, size: "200x150" %><br>
-        <%= memory.title %><br>
+        <%= image_tag memory.get_memory_image, size: "200x150", class:"post-memory" %>
       <% end %>
-      <%= memory.end_user.name %><br>
-      <%= memory.memory_favorites.count %>いいね<br>
+      <table class="table table-borderless table-sm text-truncate">
+        <tbody>
+          <tr>
+            <td>タイトル</td>
+            <td class="text-light"><span><%= memory.title %></span></td>
+          </tr>
+
+          <tr>
+            <td>投稿者</td>
+            <td class="text-light"><span><%= memory.end_user.name %></span></td>
+          </tr>
+
+          <tr>
+            <td>いいね</td>
+            <td class="text-light"><span><%= memory.memory_favorites.count %>件</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   <% end %>
 </div>

@@ -1,40 +1,80 @@
 <div class="container text-center">
-  メモリー編集
+  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+    <b>メモリー編集</b>
+  </h6>
+
   <%= form_with model:@memory do |f| %>
+    <div class="row d-flex flex-wrap justify-content-center">
+      <div class="col-7">
 
-    <div class="field">
-      <%= f.label :memory_image, "メモリー画像" %>
-      <%= f.file_field :memory_image, accept: "image/*" %>
-    </div>
+        <table class="table table-borderless text-truncate table-active text-left">
+          <tbody>
+            <tr>
+              <th><%= f.label :memory_image, "メモリー画像" %></th>
+              <td colspan="2" class="text-light"><%= f.file_field :memory_image, accept: "image/*"%></td>
+            </tr>
 
-    <div class="field">
-      <%= f.label :title, "メモリータイトル" %>
-      <%= f.text_field :title %>
-    </div>
+            <tr>
+              <th><%= f.label :title, "メモリータイトル" %></th>
+              <td class="text-light"><%= f.text_field :title, placeholder:"３０文字以内", style:"width: 100%;", class:" rounded" %></td>
+              <td></td>
+            </tr>
 
-    <div class="field">
-      <%= f.label :memo, "メモ" %>
-      <%= f.text_area :memo %>
-    </div>
-    全角スペースで区切ると複数のタグ付けができます。※半角では区切れません。<br>
-    例：家族　記録用☞　『家族』『記録用』 <br>
-    家族 記録用　☞『家族 記録用』<br>
-    <%= paginate @memory_tags %>
-    <div class="field">
-      <%= f.label :name, "タグ作成" %>
-      <%= f.text_field :name %>
-    </div>
-    ※今までのタグも含めて、すべて入力してください。<br>
-    (未入力だとタグが外れます)<br>
-    現在のタグ：
-    <% @memory_tags.each do |tag| %>
-      <%= link_to tag.name, memory_tag_tag_search_path(tag) %>
-    <% end %>
+            <tr>
+              <th><%= f.label :memo, "メモ" %></th>
+              <td class="text-light"><%= f.text_area :memo, placeholder:"４００文字以内", style:"width: 100%; height: 150px;", class:" rounded" %></td>
+              <td></td>
+            </tr>
 
-    <div class="field">
-      <%= f.submit "更新", class:"btn btn-success" %>
+            <tr class="text-center">
+              <td colspan="3" class="text-light">
+                <p>
+                  全角スペースで区切ると複数のタグ付けができます。※半角では区切れません。<br>
+                  例：家族　記録用☞　『家族』『記録用』<br>
+                  家族 記録用　☞『家族 記録用』
+                </p>
+              </td>
+            </tr>
+
+            <tr class="text-center">
+              <th colspan="3">
+                <p>
+                  現在のタグ
+                </p>
+              </th>
+            </tr>
+
+            <tr>
+              <td colspan="3" class="m-auto text-light overflow-auto d-flex justify-content-center" style="width: 635px; padding-left: 50px; background-color: rgba(0, 0, 0, 0.2);">
+                <% @memory_tags.each do |tag| %>
+                  <span class="mx-2">
+                    <%= link_to tag.name, memory_tag_tag_search_path(tag)%>
+                  </span>
+                <% end %>
+              </td>
+            </tr>
+
+            <tr>
+              <th><%= f.label :name, "タグ作成" %></th>
+              <td class="text-light"><%= f.text_area :name, placeholder:"『現在のタグ』を外したくない場合は再度入力が必要です。全角スペースを忘れずに！", style:"width: 100%; height: 100px;", class:" rounded" %></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td class="text-light"><%= f.submit "更新", class:"btn btn-primary rounded-pill border border-warning", style:"width: 100%;" %></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td class="text-light"><%= link_to "削除する", memory_path(@memory), class:"btn btn-danger rounded-pill border border-warning", style:"width: 100%;", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
     </div>
   <% end %>
-
-  <%= link_to "削除する", memory_path(@memory), class:"btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %>
 </div>
