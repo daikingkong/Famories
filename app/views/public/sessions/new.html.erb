@@ -1,30 +1,53 @@
-
-  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light text-truncate">
-    <b class="mx-2">ログイン</b>
+<div class="container text-center">
+  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+    <b>ログイン</b>
   </h6>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="row d-flex flex-wrap justify-content-center">
+      <div class="col-7">
 
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me, "次回からログイン状態を維持する" %>
+        <table class="table table-borderless text-truncate table-active text-left">
+          <tbody>
+            <tr>
+              <th><%= f.label :email, "メールアドレス" %></th>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th><%= f.label :password, "パスワード" %></th>
+              <td><%= f.password_field :password, autocomplete: "current-password", style:"width: 100%;", class:" rounded" %></td>
+              <td></td>
+            </tr>
+            <% if devise_mapping.rememberable? %>
+              <tr>
+                <th><%= f.label :remember_me, "ログイン状態を維持する", class:" rounded" %></th>
+                <td><%= f.check_box :remember_me %></td>
+                <td></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td></td>
+              <td class="text-light"><%= f.submit "ログイン", class: "btn btn-primary rounded-pill border border-warning", style:"width: 100%;" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>登録がお済みでない方はこちらから</th>
+              <td class="text-right"> <%= render "public/shared/links"%></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>お試しの際はこちらから</th>
+              <td class="text-right"> <%= link_to "ゲストログイン" , end_user_guest_sign_in_path, method: :post, class:"text-light"  %></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   <% end %>
+</div>
 
-  <div class="actions">
-    <%= f.submit "ログイン", class: "btn btn-primary" %>
-  </div>
-<% end %>
 
-<p>登録がお済みでない方はこちらから <%= render "public/shared/links" %></p>
-<p>お試しの際はこちらから <%= link_to "ゲストログイン" , end_user_guest_sign_in_path, method: :post %></p>
+<p></p>
+<p></p>
