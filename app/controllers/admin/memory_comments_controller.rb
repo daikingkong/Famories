@@ -10,7 +10,7 @@ class Admin::MemoryCommentsController < ApplicationController
   def destroy
     memory_comment = MemoryComment.find(params[:id])
     memory_comment.destroy
-    redirect_to admin_memory_comments_path, notice: "コメントを削除しました。"
+    redirect_to request.referer, notice: "コメントを削除しました。"
   end
 
 end

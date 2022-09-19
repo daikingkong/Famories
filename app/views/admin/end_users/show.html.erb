@@ -1,60 +1,71 @@
 <div class="container text-center">
-  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+  <h6 class="page-title text-truncate px-3 mb-4 mt-3 mx-auto bg-secondary border border-primary rounded text-light">
     <b>会員詳細</b>
   </h6>
+
   <div class="row">
     <div class="col-12 d-flex flex-wrap justify-content-center">
-      <div class="col-3">
-        <table class="table">
-          <tbody>
-            <tr>
-              <td><%= image_tag @end_user.get_profile_image, size: "100x100" %></td>
-            </tr>
+      <div class="col-4"><div class="d-flex flex-column justify-content-center">
 
-            <tr>
-              <td><%= @end_user.name %></td>
-            </tr>
-
-            <tr>
-              <td><%= @end_user.email %></td>
-            </tr>
-
-            <tr>
-              <td><%= link_to "登録解除", admin_end_user_path(@end_user), method: :delete, data: {confirm: "本当に削除しますか？" }, class:"btn btn-danger" %></td>
-            </tr>
-
-            <tr>
-              <td>
-                <h4>会員の参加グループ</h4>
-              </td>
-            </tr>
-
-            <% @user_groups.each do |user_group| %>
+          <table class="table table-borderless text-truncate">
+            <tbody>
               <tr>
-                <td>
-                  <%= link_to admin_group_path(user_group) do %>
-                    <%= image_tag user_group.get_group_image, size: "39x39" %>
-                    <%= user_group.name %>
-                  <% end %>
+                <td colspan="2"><%= image_tag @end_user.get_profile_image, size: "100x100", class:"user-profile" %></td>
+              </tr>
+
+              <tr>
+                <td colspan="2"><b><%= @end_user.name %></b></td>
+              </tr>
+
+              <tr>
+                <td colspan="2"><%= link_to "登録解除", admin_end_user_path(@end_user), method: :delete, data: {confirm: "本当に削除しますか？" }, class:"btn btn-danger border border-warning rounded-pill" %></td>
+              </tr>
+
+              <tr>
+                <td colspan="2">
                 </td>
               </tr>
-            <% end %>
+            </tbody>
+          </table>
 
-          </tbody>
-        </table>
+          <h5><strong>会員の参加グループ</strong></h5>
+          <div class="m-auto group-index overflow-auto" style="height:625px; width: 100%; background-color: #393939;">
+            <% @user_groups.each do |user_group| %>
+              <%= link_to admin_group_path(user_group) do %>
+                <%= image_tag user_group.get_group_image, size: "50x50", class:"mt-4" %>
+              <% end %>
+              <%= link_to admin_group_path(user_group), class:"text-truncate my-2 btn border border-warning rounded-pill text-dark text-decoration-none", style:"width: 90%; background-color: #e8dece;" do %>
+                <%= user_group.name %>
+              <% end %><br>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <div class="col-8">
+      <div class="col-8 d-flex flex-wrap">
         <div class="d-flex flex-wrap">
           <% @memories.each do |memory| %>
-            <div class="mx-auto mb-3 text-truncate">
+            <div class="mx-auto mb-3" style="width: 230px;">
               <%= link_to admin_memory_path(memory) do %>
-                <%= image_tag memory.get_memory_image, size: "200x150" %><br>
-                <%= memory.title %><br>
+                <%= image_tag memory.get_memory_image, size: "200x150", class:"post-memory" %>
               <% end %>
-              <%= memory.end_user.name %><br>
+              <table class="table table-borderless table-sm text-truncate">
+                <tbody>
+                  <tr>
+                    <td>タイトル</td>
+                    <td class="text-light">
+                      <span>
+                        <%= link_to "#{memory.title}", admin_memory_path(memory), class:"text-light" %> %>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           <% end %>
         </div>
+      </div>
+      <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
+        <%= paginate @memories %>
       </div>
     </div>
   </div>
