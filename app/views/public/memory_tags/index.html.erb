@@ -2,14 +2,14 @@
   <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
     <b>タグ一覧</b>
   </h6>
-  <%= link_to "新しくメモる", new_memory_path, class:"btn btn-success w-25 h-25 mb-4 border border-warning rounded-pill text-light" %>
+  <%= link_to "メモリー作成", new_memory_path, class:"btn btn-success w-25 h-25 mb-4 border border-warning rounded-pill text-light" %>
 
   <div class="row justify-content-center">
     <div class="col-12 d-flex flex-wrap justify-content-center">
       <% @memory_tags.each do |tag| %>
         <tr>
           <td>
-            <span, class:"text-truncate">
+            <span class:"text-truncate">
               <%= link_to "#{tag.name}""(#{tag.memories.count})", memory_tag_tag_search_path(tag), class:"my-2 btn border border-warning rounded-pill text-dark text-decoration-none", style:"background-color: #e8dece;"  %>
               <%=  %>
             </span>

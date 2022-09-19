@@ -18,7 +18,7 @@ class Public::EndUsersController < ApplicationController
   def update
     end_user = current_end_user
     end_user.update(end_user_params)
-    redirect_to end_user_path(end_user)
+    redirect_to end_user_path(end_user), notice: '会員情報を更新しました。'
   end
 
   def destroy

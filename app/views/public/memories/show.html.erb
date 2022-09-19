@@ -17,8 +17,7 @@
             <td colspan="2" class="text-light bg-dark rounded-pill d-flex justify-content-center" style="width: 420px;">
               <% @memory_tags.each do |tag| %>
                 <span class="mx-2 text-truncate">
-                  <%= link_to tag.name, memory_tag_tag_search_path(tag) %>
-                  <%= "(#{tag.memories.count})" %>
+                  <%= link_to tag.name, memory_tag_tag_search_path(tag)%>
                 </span>
               <% end %>
             </td>
@@ -106,7 +105,7 @@
         <%= form_with model:@memory_comment, url:memory_memory_comments_path(@memory.id), method: :post do |f| %>
           <%= f.label :comment, "コメント投稿" %>
           <%= f.text_field :comment, class:"rounded" %>
-          <%= f.submit "コメント投稿", class:"btn btn-primary rounded-pill border border-warning" %>
+          <%= f.submit "コメント投稿", class:"btn btn-success rounded-pill border border-warning" %>
         <% end %>
       </div>
     </div>

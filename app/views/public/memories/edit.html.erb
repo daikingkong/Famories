@@ -1,6 +1,6 @@
 <div class="container text-center">
   <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
-    <b>メモリー新規作成</b>
+    <b>メモリー編集</b>
   </h6>
 
   <%= form_with model:@memory do |f| %>
@@ -11,7 +11,7 @@
           <tbody>
             <tr>
               <th><%= f.label :memory_image, "メモリー画像" %></th>
-              <td colspan="2" class="text-light"><%= f.file_field :memory_image, accept: "image/*", style:"width: 100%;" %></td>
+              <td colspan="2" class="text-light"><%= f.file_field :memory_image, accept: "image/*"%></td>
             </tr>
             <tr>
               <th><%= f.label :title, "メモリータイトル" %></th>
@@ -32,14 +32,38 @@
                 </p>
               </td>
             </tr>
+
+            <tr class="text-center">
+              <th class="text-left">現在のタグ</th>
+              <td colspan="2" class="text-light bg-dark rounded-pill d-flex justify-content-center" style="width: 420px;">
+                <% @memory_tags.each do |tag| %>
+                  <span class="mx-2 text-truncate">
+                    <%= link_to tag.name, memory_tag_tag_search_path(tag)%>
+                  </span>
+                <% end %>
+              </td>
+            </tr>
+
+            <tr>
+              <th>タグページ</th>
+              <td>
+                <div class="text-light bg-dark rounded-pill d-flex justify-content-center" style="width: 100%;">
+                  <%= paginate @memory_tags %>
+                </div>
+              </td>
+              <td></td>
+            </tr>
+            </tr>
+
             <tr>
               <th><%= f.label :name, "タグ作成" %></th>
               <td class="text-light"><%= f.text_field :name, style:"width: 100%;", class:" rounded" %></td>
               <td></td>
             </tr>
+
             <tr>
               <td></td>
-              <td class="text-light"><%= f.submit "更新", class:"btn btn-success rounded-pill border border-warning", style:"width: 100%;" %></td>
+              <td class="text-light"><%= f.submit "更新", class:"btn btn-primary rounded-pill border border-warning", style:"width: 100%;" %></td>
               <td></td>
             </tr>
             <tr>

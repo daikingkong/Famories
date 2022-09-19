@@ -1,25 +1,20 @@
 <div class="container text-center">
-  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light text-truncate">
-    <b class="mx-2">メモリー一覧（タグが『<%= @memory_tag.name %>』）</b>
+  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+    <b>メモリー一覧（タグが『<%= @memory_tag.name %>』）</b>
   </h6>
-  <%= link_to "新しくメモる", new_memory_path, class:"btn btn-success" %>
+  <%= link_to "メモリー作成", new_memory_path, class:"btn btn-success w-25 h-25 mb-4 border border-warning rounded-pill text-light" %>
 
   <div class="row">
     <div class="col-12 d-flex flex-wrap justify-content-center">
       <div class="col-4">
         <%= render "public/end_users/user_info",user_groups: @user_groups, end_user: @end_user %>
       </div>
-      <div class="col-8">
-        <% @memory_tags.each do |tag| %>
-          <%= link_to tag.name, memory_tag_tag_search_path(tag) %>
-          <%= "(#{tag.memories.count})" %>
-        <% end %>
-        <div class="d-flex flex-wrap">
-          <%= paginate @memories %>
-        </div>
+      <div class="col-8 d-flex flex-wrap">
         <%= render "public/end_users/memories", memories: @memories %>
       </div>
-      <%= paginate @memory_tags %>
+      <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
+        <%= paginate @memories %>
+      </div>
     </div>
   </div>
 </div>

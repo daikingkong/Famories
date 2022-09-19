@@ -12,7 +12,7 @@
 
             <tr><td><%= @group.name %></td></tr>
 
-            <% if current_end_user == @group.owner %>
+            <% if current_end_user.name == @group.owner.pop %>
               <tr><td><%= link_to "グループ編集", edit_group_path(@group), class:"btn btn-primary" %></td></tr>
             <% end %>
 
