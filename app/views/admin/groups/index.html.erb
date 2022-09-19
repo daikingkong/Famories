@@ -5,32 +5,31 @@
 
   <div class="row">
     <div class="col-12 d-flex flex-wrap justify-content-center">
-      <div class="col-8">
-        <div class="d-flex flex-wrap">
-        </div>
-        <table>
-          <tbody>
+      <table class="table text-truncate table-borderless table-striped table-active">
+        <tbody>
+          <tr>
+            <th class="col-3">グループ画像</th>
+            <th class="col-3">グループ名</th>
+            <th class="col-2">グループオーナー</th>
+            <th class="col-4">グループ紹介文</th>
+          </tr>
+          <% @groups.each do |group| %>
             <tr>
-              <th>グループ画像</th>
-              <th>グループ名</th>
-              <th>グループオーナー</th>
-              <th>グループ紹介文</th>
+              <td>
+                <%= link_to admin_group_path(group) do %>
+                  <%= image_tag group.get_group_image, size: "50x50" %>
+                <% end %>
+              </td>
+                <td><%= link_to "#{group.name}", admin_group_path(group), class:"text-light" %></td>
+              <td><%= link_to "#{group.owner.pop}", admin_end_user_path(group.owner_id), class:"text-light" %></td>
+              <td><%= group.introduction %></td>
             </tr>
-            <% @groups.each do |group| %>
-              <tr>
-                <td>
-                  <%= link_to admin_group_path(group) do %>
-                    <%= image_tag group.get_group_image, size: "50x50" %>
-                  <% end %>
-                </td>
-                  <td><%= link_to "#{group.name}", admin_group_path(group) %></td>
-                <td><%= link_to "#{group.owner.pop}", admin_end_user_path(group.owner_id) %></td>
-                <td><%= group.introduction %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
+      <%= paginate @groups%>
     </div>
   </div>
 </div>

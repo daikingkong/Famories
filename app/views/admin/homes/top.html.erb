@@ -8,7 +8,7 @@
       <div class="d-flex flex-wrap">
         <% @memories.each do |memory| %>
           <div class="mx-auto mb-3" style="width: 230px;">
-            <%= link_to memory_path(memory) do %>
+            <%= link_to admin_memory_path(memory) do %>
               <%= image_tag memory.get_memory_image, size: "200x150", class:"post-memory" %>
             <% end %>
             <table class="table table-borderless table-sm text-truncate">
@@ -17,9 +17,7 @@
                   <td>タイトル</td>
                   <td>
                     <span>
-                      <%= link_to admin_memory_path(memory), class:"text-light" do %>
-                        <%= memory.title %>
-                      <% end %>
+                      <%= link_to "#{memory.title}", admin_memory_path(memory), class:"text-light" %>
                     </span>
                   </td>
                 </tr>
@@ -28,9 +26,7 @@
                   <td>投稿者</td>
                   <td class="text-light">
                     <span>
-                      <%= link_to admin_end_user_path(memory.end_user_id), class:"text-light" do %>
-                        <%= memory.end_user.name %>
-                      <% end %>
+                      <%= link_to "#{memory.end_user.name}", admin_end_user_path(memory.end_user_id), class:"text-light" %>
                     </span>
                   </td>
                 </tr>

@@ -4,7 +4,7 @@ class Admin::GroupsController < ApplicationController
   layout "admin_application"
 
   def index
-    @groups = Group.all
+    @groups = Group.page(params[:page]).per(10).order("created_at DESC")
   end
 
   def show
