@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :end_user do
-    get '/end_users' => 'devise/registrations#new'
+    get '/end_users' => 'public/registrations#new'
     post 'end_user/guest_sign_in' => 'public/sessions#guest_sign_in'
   end
 
