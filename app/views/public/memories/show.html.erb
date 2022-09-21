@@ -5,7 +5,7 @@
 
   <div class="row d-flex flex-wrap justify-content-center">
     <div class="col-7">
-      <table class="table table-borderless text-truncate table-active">
+      <table class="table table-borderless table-active text-break">
         <tbody>
           <tr>
             <td>投稿者</td>
@@ -14,10 +14,10 @@
 
           <tr>
             <td>タグ</td>
-            <td colspan="2" class="text-light overflow-auto d-flex justify-content-center" style="width: 420px; padding-left: 50px; background-color: rgba(0, 0, 0, 0.2);">
+            <td colspan="2" class="text-light">
               <% @memory_tags.each do |tag| %>
                 <span class="mx-2">
-                  <%= link_to tag.name, memory_tag_tag_search_path(tag)%>
+                  <%= link_to tag.name, memory_tag_tag_search_path(tag), class:"text-light" %>
                 </span>
               <% end %>
             </td>
@@ -35,11 +35,11 @@
 
           <tr>
             <td>メモ</td>
-            <td colspan="2" class="text-light text-wrap"><%= @memory.memo %></td>
+            <td colspan="2" class="text-light"><%= @memory.memo %></td>
           </tr>
 
           <tr>
-            <td>いいね<b>　<%= @memory.memory_favorites.count %></b> 件</td>
+            <td>いいね<b class="text-light">　<%= @memory.memory_favorites.count %></b> 件</td>
             <td colspan="2" class="text-light">
               <% if @memory.memory_favorited_by?(current_end_user) %>
                 <%= link_to memory_memory_favorites_path(@memory), class:"text-danger", method: :delete do %>
@@ -67,7 +67,7 @@
 
 
     <div class="col-5">
-      <table class="table text-truncate table-borderless table-striped table-active">
+      <table class="table table-borderless table-striped table-active text-break">
         <tbody>
           <tr>
             <th>コメント投稿者</th>
@@ -76,9 +76,9 @@
           </tr>
 
           <% @memory_comments.each do |memory_comment| %>
-          <tr>
-            <td class="text-light"><%= memory_comment.end_user.name %></td>
-            <td class="text-light"><%= memory_comment.comment %></td>
+          <tr class="text-light">
+            <td><%= memory_comment.end_user.name %></td>
+            <td><%= memory_comment.comment %></td>
             <% if memory_comment.end_user == current_end_user %>
               <td><%= link_to "削除", memory_memory_comment_path(memory_comment), class:"btn btn-danger rounded-pill border border-warning", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
             <% end %>

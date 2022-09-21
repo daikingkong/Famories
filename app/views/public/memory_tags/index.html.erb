@@ -9,7 +9,7 @@
       <% @memory_tags.each do |tag| %>
         <tr>
           <td>
-            <span class:"text-truncate">
+            <span>
               <%= link_to "#{tag.name}""(#{tag.memories.count})", memory_tag_tag_search_path(tag), class:"my-2 btn border border-warning rounded-pill text-dark text-decoration-none", style:"background-color: #e8dece;"  %>
               <%=  %>
             </span>

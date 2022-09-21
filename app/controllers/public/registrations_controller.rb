@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
+  before_action :authenticate_end_user!
 
   layout "public_application"
   # before_action :configure_sign_up_params, only: [:create]

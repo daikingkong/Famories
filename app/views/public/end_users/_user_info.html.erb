@@ -3,23 +3,23 @@
   <table class="table table-borderless text-truncate">
     <tbody>
       <tr>
-        <td colspan="2"><%= image_tag end_user.get_profile_image, size: "100x100", class:"user-profile" %></td>
+        <td><%= image_tag end_user.get_profile_image, size: "100x100", class:"user-profile" %></td>
       </tr>
 
       <tr>
-        <td colspan="2"><b><%= end_user.name %></b></td>
+        <td><b><%= end_user.name %></b></td>
       </tr>
 
       <tr>
-        <td colspan="2"><%= link_to "ユーザー編集", edit_end_user_path(end_user), class:"btn btn-primary border-warning rounded-pill" %></td>
+        <td><%= link_to "ユーザー編集", edit_end_user_path(end_user), class:"btn btn-primary border-warning rounded-pill" %></td>
       </tr>
 
       <tr>
-        <td colspan="2"><%= link_to "グループ作成", new_group_path, class:"btn btn-success border-warning rounded-pill" %></td>
+        <td><%= link_to "グループ作成", new_group_path, class:"btn btn-success border-warning rounded-pill" %></td>
       </tr>
 
       <tr>
-        <td colspan="2">
+        <td>
         </td>
       </tr>
     </tbody>

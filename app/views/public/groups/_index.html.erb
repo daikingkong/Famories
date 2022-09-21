@@ -1,22 +1,38 @@
 <table class="table text-truncate table-borderless table-striped table-active">
   <thead>
     <tr>
-      <th class="col-1"></th>
-      <th class="col-2">グループ名</th>
-      <th class="col-1">オーナー</th>
-      <th class="col-4">グループ紹介文</th>
-      <th class="col-1">メンバー</th>
-      <th class="col-2">リクエスト</th>
+      <th></th>
+      <th>グループ名</th>
+      <th>オーナー</th>
+      <th>グループ紹介文</th>
+      <th>メンバー</th>
+      <th>リクエスト</th>
     </tr>
   </thead>
+
   <tbody class="text-light">
     <% groups.each do |group| %>
       <tr>
-        <td><%= image_tag group.get_group_image, size: "50x50" %></td>
-        <td class="text-light"><%= group.name %></td>
-        <td class="text-light"><%= group.owner.pop %></td>
-        <td class="text-light"><%= group.introduction %></td>
-        <td class="text-light"><%= group.end_users.count %>名</td>
+        <td>
+          <%= image_tag group.get_group_image, size: "50x50" %>
+        </td>
+
+        <td class="overflow-auto">
+          <%= group.name %>
+        </td>
+
+        <td class="overflow-auto">
+          <%= group.owner.pop %>
+        </td>
+
+        <td class="overflow-auto">
+          <%= group.introduction %>
+        </td>
+
+        <td>
+          <%= group.end_users.count %>名
+        </td>
+
         <% if current_end_user.name == "guestuser" %>
         <% else %>
           <% if group.already_joined?(current_end_user) %>

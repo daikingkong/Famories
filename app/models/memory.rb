@@ -25,20 +25,27 @@ class Memory < ApplicationRecord
     old_memory_tags = current_memory_tags - sent_memory_tags
     new_memory_tags = sent_memory_tags - current_memory_tags
 
-    # 未入力タグ(古いタグ)は外す
+    # 未入力タグ(古いタグ)は外し、それによって該当するメモリーが無くなったタグは消滅
     old_memory_tags.each do |old_tag|
       self.memory_tags.delete MemoryTag.find_by(name: old_tag)
+      old_memory_tag = MemoryTag.where(name: old_tag)
+      memory = MemorySearchTag.where(memory_tag_id: old_memory_tag.ids).pluck(:memory_id)
+      if memory.count == 0
+        MemoryTag.find_by(name: old_tag).destroy
+      end
     end
 
     # 入力タグ(新しいタグ)は追加
     # MemorySearchTagモデルのmemory_tag_idを重複させないため新しいレコードか判定する
     new_memory_tags.each do |new_tag|
-      new_memory_tag = MemoryTag.find_or_initialize_by(name: new_tag)
-      if new_memory_tag.new_record?
-        new_memory_tag.save!
-        self.memory_tags << new_memory_tag
-      else
-        self.memory_tags << new_memory_tag
+      unless new_tag.blank?
+        new_memory_tag = MemoryTag.find_or_initialize_by(name: new_tag)
+        if new_memory_tag.new_record?
+          new_memory_tag.save!
+          self.memory_tags << new_memory_tag
+        else
+          self.memory_tags << new_memory_tag
+        end
       end
     end
   end

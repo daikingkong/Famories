@@ -24,7 +24,7 @@ class Public::GroupsController < ApplicationController
   def index
     @groups = Group.page(params[:page]).per(12).order("created_at DESC")
     @end_user = current_end_user
-    @user_groups = @end_user.groups.page(params[:page]).per(10).order("created_at DESC")
+    @user_groups = @end_user.groups.order("created_at DESC")
   end
 
   def show
