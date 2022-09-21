@@ -13,7 +13,8 @@ class Public::MemoriesController < ApplicationController
   # メモリー投稿とタグ作成をする機能
   def create
     memory = current_end_user.memories.new(memory_params)
-    tag_list = params[:memory][:name].split("　")
+    tag_list = params[:memory][:name].split(/ |　/)
+    tag_list = tag_list.uniq
     if memory.save
       if memory.save_tag(tag_list)
         @end_user = memory.end_user
@@ -44,7 +45,8 @@ class Public::MemoriesController < ApplicationController
 
   def update
     memory = Memory.find(params[:id])
-    tag_list = params[:memory][:name].split("　")
+    tag_list = params[:memory][:name].split(/ |　/)
+    tag_list = tag_list.uniq
     if memory.update(memory_params)
       if memory.save_tag(tag_list)
         redirect_to memory_path(memory), notice: "メモリーを編集しました。"
