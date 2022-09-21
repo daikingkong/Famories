@@ -5,12 +5,12 @@ class Public::MemoriesController < ApplicationController
 
   layout "public_application"
 
-  # ゲストユーザーは閲覧のみできる
   def new
     @memory = Memory.new
   end
 
-  # メモリー投稿とタグ作成をする機能
+
+  # メモリー投稿とタグ付け（なければ作成）を同時に行う
   def create
     memory = current_end_user.memories.new(memory_params)
     tag_list = params[:memory][:name].split(/ |　/)
@@ -25,6 +25,7 @@ class Public::MemoriesController < ApplicationController
     end
   end
 
+
   def index
     @memories = Memory.page(params[:page]).per(12).order("created_at DESC")
     @end_user = current_end_user
@@ -34,7 +35,7 @@ class Public::MemoriesController < ApplicationController
   def show
     @memory = Memory.find(params[:id])
     @memory_tags = @memory.memory_tags
-    @memory_comments = @memory.memory_comments.page(params[:page]).per(8).order("created_at DESC")
+    @memory_comments = @memory.memory_comments.page(params[:page]).per(10).order("created_at DESC")
     @memory_comment = MemoryComment.new
   end
 
@@ -43,6 +44,7 @@ class Public::MemoriesController < ApplicationController
     @memory_tags = @memory.memory_tags
   end
 
+  # メモリー更新とタグ付け更新を同時に行う
   def update
     memory = Memory.find(params[:id])
     tag_list = params[:memory][:name].split(/ |　/)
@@ -65,7 +67,6 @@ class Public::MemoriesController < ApplicationController
   def tag_search
     @end_user = current_end_user
     @user_groups = @end_user.groups
-    @memory_tags = MemoryTag.page(params[:page]).per(5)
     @memory_tag = MemoryTag.find(params[:memory_tag_id])
     @memories = @memory_tag.memories.page(params[:page]).per(12).order("created_at DESC")
   end

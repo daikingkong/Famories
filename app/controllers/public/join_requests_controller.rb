@@ -8,7 +8,7 @@ class Public::JoinRequestsController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @group_users = @group.end_users
-    @join_requests = @group.join_requests.page(params[:page]).per(12).order("created_at DESC")
+    @join_requests = @group.join_requests.page(params[:page]).per(12)
   end
 
   def create

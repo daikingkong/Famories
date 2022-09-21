@@ -34,10 +34,10 @@ class Public::EndUsersController < ApplicationController
   def thanks
   end
 
+   # ログインユーザーの「いいねしたメモリー一覧」を表示するため
   def favorite_memories
     @end_user = current_end_user
     @user_groups = @end_user.groups.order("created_at DESC")
-     # ログインユーザーの「いいねしたメモリー一覧」を表示するため
     favorite_memories = MemoryFavorite.where(end_user_id: @end_user.id).pluck(:memory_id)
     @memories = Memory.order("created_at DESC").find(favorite_memories)
     @memories = Kaminari.paginate_array(@memories).page(params[:page]).per(12)

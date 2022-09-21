@@ -9,12 +9,12 @@ class Public::SearchesController < ApplicationController
     @model = params[:model]
     @content = params[:content]
     if @model == 'memory'
-      @records = Memory.search_for(@content).page(params[:page]).per(6)
+      @records = Memory.search_for(@content).page(params[:page]).per(12).order("created_at DESC")
     elsif @model == 'group'
-      @records = Group.search_for(@content).page(params[:page]).per(10)
+      @records = Group.search_for(@content).page(params[:page]).per(10).order("created_at DESC")
     end
     @end_user = current_end_user
-    @user_groups = @end_user.groups.page(params[:page]).per(10)
+    @user_groups = @end_user.groups
   end
 
 end

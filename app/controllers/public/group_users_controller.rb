@@ -16,12 +16,14 @@ class Public::GroupUsersController < ApplicationController
     redirect_to request.referer, notice: "#{group.name}に『#{request_user.name}さん』が加入しました。"
   end
 
+
   def refuse
     group = Group.find(params[:group_id])
     join_request = group.join_requests.find_by(group_id: group.id)
     join_request.destroy
     redirect_to request.referer, notice: "加入リクエストを拒否しました。"
   end
+
 
   # オーナーは自身以外のグループユーザーを削除できる。
   # メンバー自身が退会すると、マイページに遷移する。
@@ -41,11 +43,14 @@ class Public::GroupUsersController < ApplicationController
     end
   end
 
+
   def unsubscribe_confirm
     @group = Group.find(params[:group_id])
   end
 
+
   private
+
 
   def ensure_correct_group_user
     @group = Group.find(params[:group_id])
