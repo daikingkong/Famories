@@ -39,7 +39,7 @@
           </tr>
 
           <tr>
-            <td>いいね<b>　<%= @memory.memory_favorites.count %></b> 件</td>
+            <td>いいね<b class="text-light">　<%= @memory.memory_favorites.count %></b> 件</td>
             <td colspan="2" class="text-light">
               <% if @memory.memory_favorited_by?(current_end_user) %>
                 <%= link_to memory_memory_favorites_path(@memory), class:"text-danger", method: :delete do %>
