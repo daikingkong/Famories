@@ -9,7 +9,7 @@
       <div class="col-4">
         <div class="d-flex flex-column justify-content-center">
 
-          <table class="table table-borderless text-truncate">
+          <table class="table table-borderless text-break">
             <tbody>
               <tr>
                 <td colspan="2"><%= image_tag @group.get_group_image, size: "100x100", class:"group-profile" %></td>
@@ -30,7 +30,7 @@
           <div class="m-auto group-index overflow-auto" style="height:625px; width: 100%; background-color: #393939;">
             <% @group_users.each do |group_user| %>
               <%= image_tag group_user.get_profile_image, size: "50x50", class:"mt-4"  %>
-              <p class="d-flex align-items-center justify-content-center text-truncate my-2 border mx-auto border-warning rounded-pill text-dark text-decoration-none" style="width: 295.2px; height: 39.2px; background-color: #e8dece;">
+              <p class="d-flex align-items-center justify-content-center text-break my-2 border mx-3 border-warning rounded-pill text-dark text-decoration-none" width:"100%" style="height: 39.2px; background-color: #e8dece;">
               <%= link_to group_group_user_path(@group, group_user), method: :delete, data: {confirm: "本当に『#{group_user.name}さん』を退出させますか？" }, class:"text-danger text-decoration-none" do %>
                 <i class="fas fa-minus-circle"></i>
               <% end %>

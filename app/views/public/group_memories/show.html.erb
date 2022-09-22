@@ -2,10 +2,11 @@
   <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
     <b>グループメモリー詳細</b>
   </h6>
+
   <div class="row d-flex flex-wrap justify-content-center">
     <div class="col-7">
 
-      <table class="table table-borderless text-truncate table-active">
+      <table class="table table-borderless text-break table-active">
         <tbody>
           <tr>
             <td>投稿者</td>
@@ -13,7 +14,7 @@
           </tr>
           <tr>
             <td>メモリー画像</td>
-            <td colspan="2" class="text-light"><%= image_tag @memory.get_memory_image, size: "280x200",class:"post-memory"  %></td>
+            <td colspan="2" class="text-light"><%= image_tag @memory.get_memory_image, width:"100%", height:"100%",class:"post-memory"  %></td>
           </tr>
           <tr>
             <td>メモリータイトル</td>

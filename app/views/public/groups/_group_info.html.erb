@@ -1,4 +1,4 @@
-<table class="table table-borderless text-truncate">
+<table class="table table-borderless text-break">
   <tbody>
     <tr>
       <td><%= image_tag @group.get_group_image, size: "100x100", class:"group-profile" %></td>
@@ -6,6 +6,10 @@
 
     <tr>
       <td><b><%= @group.name %></b></td>
+    </tr>
+
+    <tr>
+      <td><b><%= @group.introduction %></b></td>
     </tr>
 
     <% if current_end_user.name == @group.owner.pop %>
@@ -39,7 +43,7 @@
 <div class="m-auto group-index overflow-auto" style="height:625px; width: 100%; background-color: #393939;">
   <% @group_users.each do |group_user| %>
     <%= image_tag group_user.get_profile_image, size: "50x50", class:"mt-4"  %>
-    <p class="d-flex align-items-center justify-content-center text-truncate my-2 border mx-auto border-warning rounded-pill text-dark text-decoration-none" style="width: 295.2px; height: 39.2px; background-color: #e8dece;">
+    <p class="d-flex align-items-center justify-content-center text-break my-2 border mx-3 border-warning rounded-pill text-dark text-decoration-none" width:"100%" style="height: 39.2px; background-color: #e8dece;">
       <%= group_user.name %>
     </p>
   <% end %>

@@ -6,7 +6,7 @@ class Group < ApplicationRecord
   has_many :group_memories, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 1, maximum: 30 }
-  validates :introduction, length: {maximum: 50 }
+  validates :introduction, length: {maximum: 150 }
 
   has_one_attached :group_image
 
