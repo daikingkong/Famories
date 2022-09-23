@@ -458,7 +458,7 @@ memory_tags = MemoryTag.create!(
     {name: 'マンション'},
     {name: '足つぼ'},
     {name: '痛い'},
-    {name: '気持い'},
+    {name: '気持ち良い'},
     {name: '赤べこ'},
     {name: '伝統工芸'},
     {name: '山'}
