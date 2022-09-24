@@ -58,7 +58,7 @@ groups = Group.create!(
     {name: 'testgroup', introduction: 'testgroupintroduction', owner_id: end_users[1].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/no_image.jpg"), filename:"no_image.jpg")},
 
     # オーナー：てる、メール：man7@test.com、パスワード：testman7
-    {name: '祭だ！祭だ！！わっしょい！！', introduction: '祭が好きな人や、祭娘が好きな人達で交流しましょう！絶賛メンバー募集中です！', owner_id: end_users[7].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.matsuri.matsurimusume.jpg"), filename:"group.matsuri.matsurimusume.jpg")},
+    {name: '祭だ！祭だ！！わっしょい！！', introduction: '祭が人達で交流しましょう！絶賛メンバー募集中です！', owner_id: end_users[7].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.matsuri.matsurimusume.jpg"), filename:"group.matsuri.matsurimusume.jpg")},
     # オーナー：高山 元信、メール：man13@test.com、パスワード：testman13
     {name: 'スポーツ好き集まれ！！', introduction: 'スポーツなら何でもOK！！みんなのスポーツをおしえて！！そしてお互いに高め合いましょう！！', owner_id: end_users[13].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.sports.roadbike.jpg"), filename:"group.sports.roadbike.jpg")},
     # オーナー：るりるり、メール：woman8@test.com、パスワード：testwoman8
