@@ -17,7 +17,9 @@ Admin.create!(
 
 end_users = EndUser.create!(
   [
+    # こちらは使用しないでください。(データが少量です)
     {email: 'test@test.com', name: 'tester', password: 'testtest', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/no_image.jpg"), filename:"no_image.jpg")},
+
     {email: 'man1@test.com', name: 'マーシー', password: 'testman1', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man1.jpg"), filename:"man1.jpg")},
     {email: 'man2@test.com', name: '小柳 久作', password: 'testman2', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man2.jpg"), filename:"man2.jpg")},
     {email: 'man3@test.com', name: 'てる', password: 'testman3', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man3.jpg"), filename:"man3.jpg")},
@@ -52,14 +54,24 @@ end_users = EndUser.create!(
 
 groups = Group.create!(
   [
+    # こちらは使用しないでください。(データが少量です)
     {name: 'testgroup', introduction: 'testgroupintroduction', owner_id: end_users[1].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/no_image.jpg"), filename:"no_image.jpg")},
+
+    # オーナー：てる、メール：man7@test.com、パスワード：testman7
     {name: '祭だ！祭だ！！わっしょい！！', introduction: '祭が好きな人や、祭娘が好きな人達で交流しましょう！絶賛メンバー募集中です！', owner_id: end_users[7].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.matsuri.matsurimusume.jpg"), filename:"group.matsuri.matsurimusume.jpg")},
+    # オーナー：高山 元信、メール：man13@test.com、パスワード：testman13
     {name: 'スポーツ好き集まれ！！', introduction: 'スポーツなら何でもOK！！みんなのスポーツをおしえて！！そしてお互いに高め合いましょう！！', owner_id: end_users[13].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.sports.roadbike.jpg"), filename:"group.sports.roadbike.jpg")},
+    # オーナー：るりるり、メール：woman8@test.com、パスワード：testwoman8
     {name: 'だらだら過ごす時間の共有場所', introduction: 'だらだらしているときに、みんなのだらだらを共有しよう！そして一緒にだらだらしましょう！だ～らだら～。', owner_id: end_users[21].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.daradara.catonpc.jpg"), filename:"group.daradara.catonpc.jpg")},
+    # オーナー：クリスティーナ、メール：woman10@test.com、パスワード：testwoman10
     {name: 'チーム食べる前に自慢', introduction: '美味しいものや自分で作った料理など、みんなで自慢し合いましょう！', owner_id: end_users[23].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.eat.kaisendon.jpg"), filename:"group.eat.kaisendon.jpg")},
+    # オーナー：うえだこー、メール：man10@test.com、パスワード：testman10
     {name: 'みんなの会社の楽しい写真！！！', introduction: 'みんなの会社の楽しかった思い出を共有しようぜ！', owner_id: end_users[10].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.kaisya.ofuzake.jpg"), filename:"group.kaisya.ofuzake.jpg")},
+    # オーナー：小柳 久作、メール：man2@test.com、パスワード：testman2
     {name: 'うちのカレカノが最高だ！', introduction: '彼女のかわいいところや、彼氏のカッコいいところ、好きなところなど、みんなに共有してもっと好きになろう！！誹謗中傷は絶対やめてください。', owner_id: end_users[2].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.karekano.nomukanojo.jpg"), filename:"group.karekano.nomukanojo.jpg")},
+    # オーナー：ママこさん、メール：womancouple@test.com、パスワード：testwomancouple
     {name: '今井一家団らん', introduction: '今井一家のグループです。今井一家の人のみ加入許可します。', owner_id: end_users[29].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.family.dog.jpg"), filename:"group.family.dog.jpg")},
+    # オーナー：まっすう、メール：man8@test.com、パスワード：testman8
     {name: 'まっすう用', introduction: '個人利用', owner_id: end_users[8].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.kozinriyou.vrsamurai.jpg"), filename:"group.kozinriyou.vrsamurai.jpg")}
   ]
 )
@@ -112,7 +124,52 @@ GroupUser.create!(
     {group_id: groups[7].id, end_user_id: end_users[27].id},
     {group_id: groups[7].id, end_user_id: end_users[17].id},
     {group_id: groups[7].id, end_user_id: end_users[11].id},
-    {group_id: groups[8].id, end_user_id: end_users[8].id},
+    {group_id: groups[8].id, end_user_id: end_users[8].id}
+  ]
+)
+
+JoinRequest.create!(
+  [
+    {group_id: groups[1].id, end_user_id: end_users[6].id},
+    {group_id: groups[1].id, end_user_id: end_users[12].id},
+    {group_id: groups[1].id, end_user_id: end_users[15].id},
+    {group_id: groups[1].id, end_user_id: end_users[17].id},
+    {group_id: groups[1].id, end_user_id: end_users[16].id},
+    {group_id: groups[1].id, end_user_id: end_users[21].id},
+    {group_id: groups[1].id, end_user_id: end_users[25].id},
+    {group_id: groups[2].id, end_user_id: end_users[12].id},
+    {group_id: groups[2].id, end_user_id: end_users[11].id},
+    {group_id: groups[2].id, end_user_id: end_users[19].id},
+    {group_id: groups[2].id, end_user_id: end_users[6].id},
+    {group_id: groups[2].id, end_user_id: end_users[5].id},
+    {group_id: groups[2].id, end_user_id: end_users[3].id},
+    {group_id: groups[2].id, end_user_id: end_users[14].id},
+    {group_id: groups[2].id, end_user_id: end_users[8].id},
+    {group_id: groups[2].id, end_user_id: end_users[22].id},
+    {group_id: groups[2].id, end_user_id: end_users[24].id},
+    {group_id: groups[3].id, end_user_id: end_users[20].id},
+    {group_id: groups[3].id, end_user_id: end_users[9].id},
+    {group_id: groups[3].id, end_user_id: end_users[16].id},
+    {group_id: groups[3].id, end_user_id: end_users[23].id},
+    {group_id: groups[4].id, end_user_id: end_users[22].id},
+    {group_id: groups[4].id, end_user_id: end_users[10].id},
+    {group_id: groups[4].id, end_user_id: end_users[21].id},
+    {group_id: groups[4].id, end_user_id: end_users[2].id},
+    {group_id: groups[4].id, end_user_id: end_users[3].id},
+    {group_id: groups[4].id, end_user_id: end_users[6].id},
+    {group_id: groups[4].id, end_user_id: end_users[8].id},
+    {group_id: groups[4].id, end_user_id: end_users[19].id},
+    {group_id: groups[4].id, end_user_id: end_users[11].id},
+    {group_id: groups[4].id, end_user_id: end_users[15].id},
+    {group_id: groups[5].id, end_user_id: end_users[9].id},
+    {group_id: groups[5].id, end_user_id: end_users[14].id},
+    {group_id: groups[5].id, end_user_id: end_users[17].id},
+    {group_id: groups[6].id, end_user_id: end_users[1].id},
+    {group_id: groups[6].id, end_user_id: end_users[19].id},
+    {group_id: groups[6].id, end_user_id: end_users[26].id},
+    {group_id: groups[6].id, end_user_id: end_users[25].id},
+    {group_id: groups[6].id, end_user_id: end_users[2].id},
+    {group_id: groups[6].id, end_user_id: end_users[10].id}
   ]
 )
 
@@ -151,7 +208,7 @@ GroupMemory.create!(
     {title: '孫がまた増える', memo: 'お金ならあるから安心せい。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.family.matanity.jpg"), filename:"group.family.matanity.jpg"), end_user_id: end_users[11].id, group_id: groups[7].id },
     {title: 'いとこの家', memo: 'この表所がたまらなく好きですわ！わら', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.family.odoroki.jpg"), filename:"group.family.odoroki.jpg"), end_user_id: end_users[28].id, group_id: groups[7].id },
     {title: 'きれい好きにも程がある(笑)', memo: 'この家、たててから4年だよ？キレイ過ぎない？わら。てか、色味なすぎやろ！！わら', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.family.souji.jpg"), filename:"group.family.souji.jpg"), end_user_id: end_users[29].id, group_id: groups[7].id },
-    {title: 'VRx220を試用', memo: 'なかなか楽しかった。購入検討。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.kozinriyou.vrsamurai.jpg"), filename:"group.kozinriyou.vrsamurai.jpg"), end_user_id: end_users[8].id, group_id: groups[8].id },
+    {title: 'VRx220を試用', memo: 'なかなか楽しかった。購入検討。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.kozinriyou.vrsamurai.jpg"), filename:"group.kozinriyou.vrsamurai.jpg"), end_user_id: end_users[8].id, group_id: groups[8].id }
   ]
 )
 
@@ -289,7 +346,7 @@ MemoryComment.create!(
     {comment: 'いいね！！', end_user_id: end_users[11].id, memory_id: memories[40].id },
     {comment: '素晴らしいです！！！', end_user_id: end_users[11].id, memory_id: memories[39].id },
     {comment: 'グループつくりましょう！！', end_user_id: end_users[23].id, memory_id: memories[38].id },
-    {comment: 'さいこー－－－。', end_user_id: end_users[23].id, memory_id: memories[37].id },
+    {comment: 'さいこー－－－。', end_user_id: end_users[23].id, memory_id: memories[37].id }
   ]
 )
 
