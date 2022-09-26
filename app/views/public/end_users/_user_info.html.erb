@@ -1,6 +1,5 @@
 <div class="d-flex flex-column justify-content-center">
-
-  <table class="table table-borderless text-truncate">
+  <table class="table table-borderless text-break">
     <tbody>
       <tr>
         <td><%= image_tag end_user.get_profile_image, size: "100x100", class:"user-profile" %></td>
@@ -31,7 +30,7 @@
       <%= link_to group_path(user_group) do %>
         <%= image_tag user_group.get_group_image, size: "50x50", class:"mt-4" %>
       <% end %>
-      <%= link_to group_path(user_group), class:"text-truncate my-2 btn border border-warning rounded-pill text-dark text-decoration-none", style:"width: 90%; background-color: #e8dece;" do %>
+      <%= link_to group_path(user_group), class:"text-break my-2 btn border border-warning rounded-pill text-dark text-decoration-none", style:"width: 90%; background-color: #e8dece;" do %>
         <%= user_group.name %>
       <% end %><br>
     <% end %>

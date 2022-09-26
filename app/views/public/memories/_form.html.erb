@@ -1,0 +1,78 @@
+<div class="row d-flex flex-wrap justify-content-center">
+  <div class="col-7">
+
+    <table class="table table-borderless text-truncate table-active text-left">
+      <tbody>
+        <tr>
+          <th><%= f.label :memory_image, "メモリー画像" %></th>
+          <td colspan="2" class="text-light"><%= f.file_field :memory_image, accept: "image/*"%></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :title, "メモリータイトル" %></th>
+          <td class="text-light"><%= f.text_field :title, placeholder:"３０文字以内", style:"width: 100%;", class:" rounded" %></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :memo, "メモ" %></th>
+          <td class="text-light"><%= f.text_area :memo, placeholder:"４００文字以内", style:"width: 100%; height: 150px;", class:" rounded" %></td>
+          <td></td>
+        </tr>
+
+        <tr class="text-center">
+          <td colspan="3" class="text-light">
+            <p>
+              スペース(半角も可)で区切ると複数のタグ付けができます。<br>
+              例：家族　記録用　☞　『家族』『記録用』<br>
+            </p>
+          </td>
+        </tr>
+
+        <% if local_assigns[:memory_tags] %>
+          <tr class="text-center">
+            <th colspan="3">
+              <p>
+                現在のタグ
+              </p>
+            </th>
+          </tr>
+
+          <tr>
+            <td colspan="3" class="m-auto text-light overflow-auto d-flex justify-content-center" style="width: 635px; padding-left: 50px; background-color: rgba(0, 0, 0, 0.2);">
+              <% memory_tags.each do |tag| %>
+                <span class="mx-2">
+                  <%= link_to tag.name, memory_tag_tag_search_path(tag)%>
+                </span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        <tr>
+          <th><%= f.label :name, "タグ作成" %></th>
+          <td class="text-light"><%= f.text_area :name, placeholder:"家族　記録用", style:"width: 100%; height: 130px;", class:" rounded" %></td>
+          <td></td>
+        </tr>
+        <% if local_assigns[:memory_tags] %>
+          <tr>
+            <td></td>
+            <td class="text-light"><%= f.submit "更新する", class:"btn btn-primary rounded-pill border border-warning", style:"width: 100%;" %></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td class="text-light"><%= link_to "削除する", memory_path(memory), class:"btn btn-danger rounded-pill border border-warning", style:"width: 100%;", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+            <td></td>
+          </tr>
+        <% else %>
+          <tr>
+            <td></td>
+            <td class="text-light"><%= f.submit "メモリー投稿", class:"btn btn-success rounded-pill border border-warning", style:"width: 100%;" %></td>
+            <td></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

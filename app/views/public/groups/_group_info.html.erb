@@ -1,60 +1,62 @@
-<table class="table table-borderless text-break">
-  <tbody>
-    <tr>
-      <td><%= image_tag @group.get_group_image, size: "100x100", class:"group-profile" %></td>
-    </tr>
-
-    <tr>
-      <td><b><%= @group.name %></b></td>
-    </tr>
-
-    <tr>
-      <td><b><%= @group.introduction %></b></td>
-    </tr>
-
-    <% if current_end_user.name == @group.owner.pop %>
+<div class="d-flex flex-column justify-content-center">
+  <table class="table table-borderless text-break">
+    <tbody>
       <tr>
-        <td><%= link_to "グループ編集", edit_group_path(@group), class:"btn btn-primary border-warning rounded-pill" %></td>
+        <td><%= image_tag @group.get_group_image, size: "100x100", class:"group-profile" %></td>
       </tr>
-    <% end %>
 
-    <% if current_end_user.name == @group.owner.pop %>
+      <tr>
+        <td><b><%= @group.name %></b></td>
+      </tr>
+
+      <tr>
+        <td><b><%= @group.introduction %></b></td>
+      </tr>
+
+      <% if current_end_user.name == @group.owner.pop %>
+        <tr>
+          <td><%= link_to "グループ編集", edit_group_path(@group), class:"btn btn-primary border-warning rounded-pill" %></td>
+        </tr>
+      <% end %>
+
+      <% if current_end_user.name == @group.owner.pop %>
+        <tr>
+          <td>
+            <%= link_to "メンバー編集", group_join_requests_path(@group), class:"btn btn-primary border-warning rounded-pill" %><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            加入リクエスト（<b class="text-light"><%= @group.join_requests.count %></b>件）
+          </td>
+        </tr>
+      <% end %>
+
       <tr>
         <td>
-          <%= link_to "メンバー編集", group_join_requests_path(@group), class:"btn btn-primary border-warning rounded-pill" %><br>
         </td>
       </tr>
+    </tbody>
+  </table>
 
+  <h5><strong>グループメンバー</strong></h5>
+  <div class="m-auto group-index overflow-auto" style="height:625px; width: 100%; background-color: #393939;">
+    <% @group_users.each do |group_user| %>
+      <%= image_tag group_user.get_profile_image, size: "50x50", class:"mt-4"  %>
+      <p class="d-flex align-items-center justify-content-center text-break my-2 border mx-3 border-warning rounded-pill text-dark text-decoration-none" width:"100%" style="min-height: 39.2px; background-color: #e8dece;">
+        <%= group_user.name %>
+      </p>
+    <% end %>
+  </div>
+
+  <table>
+    <tbody>
       <tr>
         <td>
-          加入リクエスト（<b class="text-light"><%= @group.join_requests.count %></b>件）
+          <%= link_to "　退会する　", group_group_user_unsubscribe_confirm_path(@group, GroupUser.where(group_id: @group, end_user_id: current_end_user.id)), class:"mt-4 btn btn-danger border-warning rounded-pill"  %>
         </td>
       </tr>
-    <% end %>
-
-    <tr>
-      <td>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<h5><strong>グループメンバー</strong></h5>
-<div class="m-auto group-index overflow-auto" style="height:625px; width: 100%; background-color: #393939;">
-  <% @group_users.each do |group_user| %>
-    <%= image_tag group_user.get_profile_image, size: "50x50", class:"mt-4"  %>
-    <p class="d-flex align-items-center justify-content-center text-break my-2 border mx-3 border-warning rounded-pill text-dark text-decoration-none" width:"100%" style="height: 39.2px; background-color: #e8dece;">
-      <%= group_user.name %>
-    </p>
-  <% end %>
+    </tbody>
+  </table>
 </div>
-
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <%= link_to "　退会する　", group_group_user_unsubscribe_confirm_path(@group, GroupUser.where(group_id: @group, end_user_id: current_end_user.id)), class:"mt-4 btn btn-danger border-warning rounded-pill"  %>
-      </td>
-    </tr>
-  </tbody>
-</table>

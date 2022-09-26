@@ -1,0 +1,51 @@
+ <div class="row d-flex flex-wrap justify-content-center">
+      <div class="col-7">
+        <table class="table table-borderless text-break table-active text-left">
+          <tbody>
+            <tr>
+              <th><%= f.label :memory_image, "メモリー画像" %></th>
+              <td colspan="2" class="text-light"><%= f.file_field :memory_image, accept: "image/*" %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :title, "メモリータイトル" %></th>
+              <td class="text-light"><%= f.text_field :title, placeholder:"３０文字以内", style:"width: 100%;", class:" rounded" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th><%= f.label :memo, "メモ" %></th>
+              <td class="text-light"><%= f.text_area :memo, placeholder:"４００文字以内", style:"width: 100%; height: 150px;", class:" rounded" %></td>
+              <td></td>
+            </tr>
+
+            <% if local_assigns[:memory] %>
+              <tr>
+                <td></td>
+                <td class="text-light"><%= f.submit "更新する", class:"btn btn-primary rounded-pill border border-warning", style:"width: 100%;" %></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="text-light"><%= link_to "メモリー詳細に戻る", group_group_memory_path(group, memory), class:"btn btn-secondary rounded-pill border border-warning", style:"width: 100%;" %></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="text-light"><%= link_to "削除する", group_group_memory_path(group, memory), class:"btn btn-danger rounded-pill border border-warning", style:"width: 100%;", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+                <td></td>
+              </tr>
+            <% else %>
+              <tr>
+                <td></td>
+                <td class="text-light"><%= f.submit "メモリー投稿", class:"btn btn-success rounded-pill border border-warning", style:"width: 100%;" %></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="text-light"><%= link_to "グループページに戻る", group_path(group), class:"btn btn-secondary rounded-pill border border-warning", style:"width: 100%;" %></td>
+                <td></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>

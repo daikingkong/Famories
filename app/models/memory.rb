@@ -19,13 +19,13 @@ class Memory < ApplicationRecord
   end
 
 
-  # メモリーへのタグ追加時に同名タグを増やさないため、また、未入力にすることでタグを外すため
+  # メモリーへのタグ紐づけ時に同名タグを増やずに新しいタグは作成したい、また、未入力時はタグの紐づけを外したい
   def save_tag(sent_memory_tags)
     current_memory_tags = self.memory_tags.pluck(:name) unless self.memory_tags.nil?
     old_memory_tags = current_memory_tags - sent_memory_tags
     new_memory_tags = sent_memory_tags - current_memory_tags
 
-    # 未入力タグ(古いタグ)は外し、それによって該当するメモリーが無くなったタグは消滅
+    # もともと紐づいていたタグは未入力なら外したい、それによって該当するメモリーが無くなったタグはレコードから削除したい
     old_memory_tags.each do |old_tag|
       self.memory_tags.delete MemoryTag.find_by(name: old_tag)
       old_memory_tag = MemoryTag.where(name: old_tag)
@@ -35,8 +35,8 @@ class Memory < ApplicationRecord
       end
     end
 
-    # 入力タグ(新しいタグ)は追加
-    # MemorySearchTagモデルのmemory_tag_idを重複させないため新しいレコードか判定する
+    # 入力されたタグ名に新しいタグがあれば作成したい、もともと紐づいていたタグでも入力されていれば再びメモリーに紐づけたい
+    # MemorySearchTagモデルのmemory_tag_idを重複させないため新しいレコードか判定する必要がある
     new_memory_tags.each do |new_tag|
       unless new_tag.blank?
         new_memory_tag = MemoryTag.find_or_initialize_by(name: new_tag)

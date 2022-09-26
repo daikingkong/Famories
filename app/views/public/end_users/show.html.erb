@@ -9,6 +9,7 @@
       <div class="col-4">
         <%= render "user_info",user_groups: @user_groups, end_user: @end_user %>
       </div>
+      
       <div class="col-8 d-flex flex-wrap">
         <% if current_end_user.name == "guestuser" %>
           ユーザーが投稿したマイメモリーはここに一覧として表示されます。

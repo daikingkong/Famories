@@ -10,7 +10,8 @@ class Public::MemoriesController < ApplicationController
   end
 
 
-  # メモリー投稿とタグ付け（なければ作成）を同時に行う
+  # メモリーとタグの紐づけ（送られてきたタグ名が新しければタグ新規作成も）を同時に行いたい
+  # save_tagメソッドをMemoires.rbに記述しています。
   def create
     memory = current_end_user.memories.new(memory_params)
     tag_list = params[:memory][:name].split(/ |　/)
@@ -44,7 +45,8 @@ class Public::MemoriesController < ApplicationController
     @memory_tags = @memory.memory_tags
   end
 
-  # メモリー更新とタグ付け更新を同時に行う
+  # メモリーとタグの紐づけ（送られてきたタグ名が新しければタグ新規作成も）を同時に行いたい
+  # save_tagメソッドをMemoires.rbに記述しています。
   def update
     memory = Memory.find(params[:id])
     tag_list = params[:memory][:name].split(/ |　/)

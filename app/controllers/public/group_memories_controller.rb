@@ -29,8 +29,8 @@ class Public::GroupMemoriesController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:group_id])
     @memory = GroupMemory.find(params[:id])
+    @group = Group.find(params[:group_id])
   end
 
   def update
@@ -52,7 +52,7 @@ class Public::GroupMemoriesController < ApplicationController
 
   private
 
-  # オーナーとグループで投稿したメモリーのユーザ以外のアクション制限
+  # オーナーと投稿者以外のアクション制限
   def ensure_correct_memory_user
     @group = Group.find(params[:group_id])
     @group_memory = GroupMemory.find(params[:id])
