@@ -5,41 +5,7 @@
 
   <div class="row d-flex flex-wrap justify-content-center">
     <div class="col-7">
-      <table class="table table-borderless text-break table-active">
-        <tbody>
-          <tr>
-            <td>投稿者</td>
-            <td colspan="2" class="text-light"><%= link_to "#{@memory.end_user.name}", admin_end_user_path(@memory.end_user), class:"text-light" %></td>
-          </tr>
-
-          <tr>
-            <td>投稿グループ</td>
-            <td colspan="2" class="text-light"><%= link_to "#{@memory.group.name}", admin_group_path(@memory.group), class:"text-light" %></td>
-          </tr>
-
-          <tr>
-            <td>メモリー画像</td>
-            <td colspan="2"><%= image_tag @memory.get_memory_image, width:"100%", height:"100%", class:"post-memory" %></td>
-          </tr>
-
-          <tr>
-            <td>メモリータイトル</td>
-            <td colspan="2"><%= @memory.title %></td>
-          </tr>
-
-          <tr>
-            <td>メモ</td>
-            <td colspan="2" class="text-wrap"><%= @memory.memo %></td>
-          </tr>
-
-          <tr>
-            <td></td>
-            <td colspan="2" class="text-light">
-              <%= link_to "メモリー削除", admin_group_group_memory_path(@memory.group, @memory), method: :delete, data: {confirm: "本当に削除しますか？" }, class:"btn btn-danger rounded-pill border border-warning" %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <%= render 'admin/memories/memories', memory: @memory, group: @group %>
     </div>
   </div>
 </div>

@@ -1,0 +1,55 @@
+      <table class="table table-borderless text-break table-active">
+        <tbody>
+          <tr>
+            <td>投稿者</td>
+            <td colspan="3" class="text-light"><%= link_to "#{memory.end_user.name}", admin_end_user_path(memory.end_user_id), class:"text-light" %></td>
+          </tr>
+
+          <% if local_assigns[:group] %>
+            <tr>
+              <td>投稿グループ</td>
+              <td></td>
+              <td class="text-light"><%= link_to "#{memory.group.name}", admin_group_path(memory.group), class:"text-light" %></td>
+            </tr>
+          <% else %>
+            <tr>
+              <td>タグ名</td>
+              <td></td>
+              <td class="text-light" width:"100%" height:"100%" style="background-color: rgba(0, 0, 0, 0.2);">
+                <% memory_tags.each do |tag| %>
+                  <span class="mx-2">
+                    <%=  tag.name %>
+                  </span>
+                <% end %>
+              </td>
+              <td></td>
+            </tr>
+          <% end %>
+
+          <tr>
+            <td>メモリー画像</td>
+            <td colspan="3"><%= image_tag memory.get_memory_image, width:"100%", height:"100%", class:"post-memory" %></td>
+          </tr>
+
+          <tr>
+            <td>メモリータイトル</td>
+            <td colspan="3"><%= memory.title %></td>
+          </tr>
+
+          <tr>
+            <td>メモ</td>
+            <td colspan="3"><%= memory.memo %></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td colspan="3" class="text-light">
+              <% if local_assigns[:group] %>
+                <%= link_to "メモリー削除", admin_group_group_memory_path(memory.group, memory), method: :delete, data: {confirm: "本当に削除しますか？" }, class:"btn btn-danger rounded-pill border border-warning" %>
+              <% else %>
+                <%= link_to "メモリー削除", admin_memory_path(memory), method: :delete, data: {confirm: "本当に削除しますか？" }, class:"btn btn-danger rounded-pill border border-warning" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
