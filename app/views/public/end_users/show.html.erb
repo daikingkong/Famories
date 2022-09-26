@@ -11,7 +11,7 @@
       </div>
       <div class="col-8 d-flex flex-wrap">
         <% if current_end_user.name == "guestuser" %>
-          会員が投稿したマイメモリーはここに一覧として表示されます。
+          ユーザーが投稿したマイメモリーはここに一覧として表示されます。
         <% else %>
           <%= render "memories", memories: @memories %>
         <% end %>

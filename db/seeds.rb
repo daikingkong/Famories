@@ -11,44 +11,44 @@ ActiveStorage::PurgeJob.queue_adapter = :inline
 
 Admin.create!(
   [
-    {email: 'admin@test.com', password: 'admintest'}
+    {email: 'admin@test', password: 'admintest'}
   ]
 )
 
 end_users = EndUser.create!(
   [
     # こちらは使用しないでください。(データが少量です)
-    {email: 'test@test.com', name: 'tester', password: 'testtest', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/no_image.jpg"), filename:"no_image.jpg")},
+    {email: 'test@test', name: 'tester', password: 'testtest', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/no_image.jpg"), filename:"no_image.jpg")},
 
-    {email: 'man1@test.com', name: 'マーシー', password: 'testman1', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man1.jpg"), filename:"man1.jpg")},
-    {email: 'man2@test.com', name: '小柳 久作', password: 'testman2', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man2.jpg"), filename:"man2.jpg")},
-    {email: 'man3@test.com', name: 'てる', password: 'testman3', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man3.jpg"), filename:"man3.jpg")},
-    {email: 'man4@test.com', name: '小出 佐十郎', password: 'testman4', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man4.jpg"), filename:"man4.jpg")},
-    {email: 'man5@test.com', name: 'グレイテストショーイチ', password: 'testman5', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man5.jpg"), filename:"man5.jpg")},
-    {email: 'man6@test.com', name: '青柳', password: 'testman6', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man6.jpg"), filename:"man6.jpg")},
-    {email: 'man7@test.com', name: '幸博', password: 'testman7', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man7.jpg"), filename:"man7.jpg")},
-    {email: 'man8@test.com', name: 'まっすう', password: 'testman8', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man8.jpg"), filename:"man8.jpg")},
-    {email: 'man9@test.com', name: 'たばた', password: 'testman9', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man9.jpg"), filename:"man9.jpg")},
-    {email: 'man10@test.com', name: 'うえだこー', password: 'testman10', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man10.jpg"), filename:"man10.jpg")},
-    {email: 'man11@test.com', name: 'いまい　いまいち', password: 'testman11', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man11.jpg"), filename:"man11.jpg")},
-    {email: 'man12@test.com', name: 'やまなかこうじ', password: 'testman12', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man12.jpg"), filename:"man12.jpg")},
-    {email: 'man13@test.com', name: '高山 元信', password: 'testman13', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man13.jpg"), filename:"man13.jpg")},
-    {email: 'woman1@test.com', name: 'レイ', password: 'testwoman1', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman1.jpg"), filename:"woman1.jpg")},
-    {email: 'woman2@test.com', name: '中田 玲', password: 'testwoman2', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman2.jpg"), filename:"woman2.jpg")},
-    {email: 'woman3@test.com', name: 'ジュンジュリ', password: 'testwoman3', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman3.jpg"), filename:"woman3.jpg")},
-    {email: 'woman4@test.com', name: 'えーちゃん', password: 'testwoman4', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman4.jpg"), filename:"woman4.jpg")},
-    {email: 'woman5@test.com', name: '咲子', password: 'testwoman5', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman5.jpg"), filename:"woman5.jpg")},
-    {email: 'woman6@test.com', name: '西川 章子', password: 'testwoman6', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman6.jpg"), filename:"woman6.jpg")},
-    {email: 'woman7@test.com', name: 'つっちーさん', password: 'testwoman7', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman7.jpg"), filename:"woman7.jpg")},
-    {email: 'woman8@test.com', name: 'るりるり', password: 'testwoman8', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman8.jpg"), filename:"woman8.jpg")},
-    {email: 'woman9@test.com', name: 'がんこっこ', password: 'testwoman9', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman9.jpg"), filename:"woman9.jpg")},
-    {email: 'woman10@test.com', name: 'クリスティーナ', password: 'testwoman10', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman10.jpg"), filename:"woman10.jpg")},
-    {email: 'woman11@test.com', name: '東 順子', password: 'testwoman11', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman11.jpg"), filename:"woman11.jpg")},
-    {email: 'woman12@test.com', name: 'アドミニストれーこ', password: 'testwoman12', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman12.jpg"), filename:"woman12.jpg")},
-    {email: 'woman13@test.com', name: 'ゆうこはん', password: 'testwoman12', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman13.jpg"), filename:"woman13.jpg")},
-    {email: 'manbaby@test.com', name: 'ゆうた', password: 'testmanbaby', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/manbaby.jpg"), filename:"manbaby.jpg")},
-    {email: 'mancouple@test.com', name: 'パパおさん', password: 'testmancouple', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/mancouple.jpg"), filename:"mancouple.jpg")},
-    {email: 'womancouple@test.com', name: 'ママこさん', password: 'testwomancouple', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/womancouple.jpg"), filename:"womancouple.jpg")}
+    {email: 'man1@test', name: 'マーシー', password: 'man1test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man1.jpg"), filename:"man1.jpg")},
+    {email: 'man2@test', name: '小柳 久作', password: 'man2test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man2.jpg"), filename:"man2.jpg")},
+    {email: 'man3@test', name: 'てる', password: 'man3test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man3.jpg"), filename:"man3.jpg")},
+    {email: 'man4@test', name: '小出 佐十郎', password: 'man4test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man4.jpg"), filename:"man4.jpg")},
+    {email: 'man5@test', name: 'グレイテストショーイチ', password: 'man5test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man5.jpg"), filename:"man5.jpg")},
+    {email: 'man6@test', name: '青柳', password: 'man6test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man6.jpg"), filename:"man6.jpg")},
+    {email: 'man7@test', name: '幸博', password: 'man7test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man7.jpg"), filename:"man7.jpg")},
+    {email: 'man8@test', name: 'まっすう', password: 'man8test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man8.jpg"), filename:"man8.jpg")},
+    {email: 'man9@test', name: 'たばた', password: 'man9test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man9.jpg"), filename:"man9.jpg")},
+    {email: 'man10@test', name: 'うえだこー', password: 'man10test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man10.jpg"), filename:"man10.jpg")},
+    {email: 'man11@test', name: 'いまい　いまいち', password: 'man11test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man11.jpg"), filename:"man11.jpg")},
+    {email: 'man12@test', name: 'やまなかこうじ', password: 'man12test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man12.jpg"), filename:"man12.jpg")},
+    {email: 'man13@test', name: '高山 元信', password: 'man13test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/man13.jpg"), filename:"man13.jpg")},
+    {email: 'woman1@test', name: 'レイ', password: 'woman1test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman1.jpg"), filename:"woman1.jpg")},
+    {email: 'woman2@test', name: '中田 玲', password: 'woman2test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman2.jpg"), filename:"woman2.jpg")},
+    {email: 'woman3@test', name: 'ジュンジュリ', password: 'woman3test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman3.jpg"), filename:"woman3.jpg")},
+    {email: 'woman4@test', name: 'えーちゃん', password: 'woman4test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman4.jpg"), filename:"woman4.jpg")},
+    {email: 'woman5@test', name: '咲子', password: 'woman5test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman5.jpg"), filename:"woman5.jpg")},
+    {email: 'woman6@test', name: '西川 章子', password: 'woman6test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman6.jpg"), filename:"woman6.jpg")},
+    {email: 'woman7@test', name: 'つっちーさん', password: 'woman7test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman7.jpg"), filename:"woman7.jpg")},
+    {email: 'woman8@test', name: 'るりるり', password: 'woman8test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman8.jpg"), filename:"woman8.jpg")},
+    {email: 'woman9@test', name: 'がんこっこ', password: 'woman9test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman9.jpg"), filename:"woman9.jpg")},
+    {email: 'woman10@test', name: 'クリスティーナ', password: 'woman10test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman10.jpg"), filename:"woman10.jpg")},
+    {email: 'woman11@test', name: '東 順子', password: 'testwoman11', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman11.jpg"), filename:"woman11.jpg")},
+    {email: 'woman12@test', name: 'アドミニストれーこ', password: 'woman12test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman12.jpg"), filename:"woman12.jpg")},
+    {email: 'woman13@test', name: 'ゆうこはん', password: 'woman12test', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/woman13.jpg"), filename:"woman13.jpg")},
+    {email: 'manbaby@test', name: 'ゆうた', password: 'manbabytest', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/manbaby.jpg"), filename:"manbaby.jpg")},
+    {email: 'mancouple@test', name: 'パパおさん', password: 'mancoupletest', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/mancouple.jpg"), filename:"mancouple.jpg")},
+    {email: 'womancouple@test', name: 'ママこさん', password: 'womancoupletest', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/womancouple.jpg"), filename:"womancouple.jpg")}
   ]
 )
 
@@ -57,8 +57,8 @@ groups = Group.create!(
     # こちらは使用しないでください。(データが少量です)
     {name: 'testgroup', introduction: 'testgroupintroduction', owner_id: end_users[1].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/no_image.jpg"), filename:"no_image.jpg")},
 
-    # オーナー：てる、メール：man7@test.com、パスワード：testman7
-    {name: '祭だ！祭だ！！わっしょい！！', introduction: '祭が好きな人達で交流しましょう！絶賛メンバー募集中です！', owner_id: end_users[7].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.matsuri.matsurimusume.jpg"), filename:"group.matsuri.matsurimusume.jpg")},
+    # オーナー：、マーシー、メール：man1@test.com、パスワード：testman1
+    {name: '祭だ！祭だ！！わっしょい！！', introduction: '祭が好きな人達で交流しましょう！絶賛メンバー募集中です！', owner_id: end_users[1].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.matsuri.matsurimusume.jpg"), filename:"group.matsuri.matsurimusume.jpg")},
     # オーナー：高山 元信、メール：man13@test.com、パスワード：testman13
     {name: 'スポーツ好き集まれ！！', introduction: 'スポーツなら何でもOK！！みんなのスポーツをおしえて！！そしてお互いに高め合いましょう！！', owner_id: end_users[13].id, group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group.sports.roadbike.jpg"), filename:"group.sports.roadbike.jpg")},
     # オーナー：るりるり、メール：woman8@test.com、パスワード：testwoman8
@@ -78,7 +78,7 @@ groups = Group.create!(
 
 GroupUser.create!(
   [
-    {group_id: groups[1].id, end_user_id: end_users[7].id},
+    {group_id: groups[1].id, end_user_id: end_users[1].id},
     {group_id: groups[1].id, end_user_id: end_users[11].id},
     {group_id: groups[1].id, end_user_id: end_users[14].id},
     {group_id: groups[1].id, end_user_id: end_users[16].id},
@@ -215,6 +215,14 @@ GroupMemory.create!(
 memories = Memory.create!(
   [
     {title: 'testmemory', memo: 'testmemorymemo', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/no_image.jpg"), filename:"no_image.jpg"), end_user_id: end_users[1].id },
+    {title: 'ミツバチってね', memo: '同じ花に蜜を吸いに行くらしいよ！！たぶん。てへ', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.mitsubachi.jpg"), filename:"image.mitsubachi.jpg"), end_user_id: end_users[1].id },
+    {title: 'みずたまりの鏡', memo: 'みずたまりって雨が降ったあとしかないから、はなかいよな～。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.mizutamari.jpg"), filename:"image.mizutamari.jpg"), end_user_id: end_users[1].id },
+    {title: '紅葉', memo: 'いい感じ。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.momiji.jpg"), filename:"image.momiji.jpg"), end_user_id: end_users[1].id },
+    {title: 'ねじりんぼう', memo: 'れじりんぼう！！', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.nezirinbou.jpg"), filename:"image.nezirinbou.jpg"), end_user_id: end_users[1].id },
+    {title: 'このバラ素敵', memo: 'オレンジ色のバラなんてあるんですね！！素敵だったので皆さんに見てもらいたくて、投稿してみました。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.orangebara.jpg"), filename:"image.orangebara.jpg"), end_user_id: end_users[1].id },
+    {title: 'PCって映える', memo: 'なんか、良くないですか？分かる人コメントで教えてね！', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.pc.jpg"), filename:"image.pc.jpg"), end_user_id: end_users[1].id },
+    {title: 'うますぎる', memo: '疲れたときとかに食べるラーメンが最高過ぎる。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.ramen.jpg"), filename:"image.ramen.jpg"), end_user_id: end_users[1].id },
+    {title: '今日のおつまみ', memo: 'さきいか最高！！！酔ってきた～。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.sakiika.jpg"), filename:"image.sakiika.jpg"), end_user_id: end_users[1].id },
     {title: 'あ・か・べ・こ', memo: 'これ僕が作りました。どうですか？良かったらいいねしてね！', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.akabeko.jpg"), filename:"image.akabeko.jpg"), end_user_id: end_users[2].id },
     {title: '青い花', memo: 'よく知らない花だけど、素敵でした。なんていう花なんでしょう。教えてください。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.aoihana.jpg"), filename:"image.aoihana.jpg"), end_user_id: end_users[2].id },
     {title: 'めっちゃ痛いけど、', memo: '痛いけど、きもち～！！らしいです。彼女の足です。わら', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.ashitsubo.jpg"), filename:"image.ashitsubo.jpg"), end_user_id: end_users[3].id },
@@ -239,15 +247,7 @@ memories = Memory.create!(
     {title: 'ここに住みたい', memo: 'やばないこの景色。これを毎日見れる人が羨ましい。でも、住んでると飽きちゃうかな？', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.manshon.jpg"), filename:"image.manshon.jpg"), end_user_id: end_users[13].id },
     {title: '昭和感あふれる港', memo: 'こんな雰囲気がいい港があるのはうれしいです。港好きグループ作ろっかな？', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.minato.jpg"), filename:"image.minato.jpg"), end_user_id: end_users[13].id },
     {title: 'いい景色', memo: '最高や。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.minatomirai.jpg"), filename:"image.minatomirai.jpg"), end_user_id: end_users[13].id },
-    {title: 'うまい', memo: '結局味噌汁が一番うまい説。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.misoshiru.jpg"), filename:"image.misoshiru.jpg"), end_user_id: end_users[13].id },
-    {title: 'ミツバチってね', memo: '同じ花に蜜を吸いに行くらしいよ！！たぶん。てへ', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.mitsubachi.jpg"), filename:"image.mitsubachi.jpg"), end_user_id: end_users[14].id },
-    {title: 'みずたまりの鏡', memo: 'みずたまりって雨が降ったあとしかないから、はなかいよな～。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.mizutamari.jpg"), filename:"image.mizutamari.jpg"), end_user_id: end_users[14].id },
-    {title: '紅葉', memo: 'いい感じ。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.momiji.jpg"), filename:"image.momiji.jpg"), end_user_id: end_users[14].id },
-    {title: 'ねじりんぼう', memo: 'れじりんぼう！！', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.nezirinbou.jpg"), filename:"image.nezirinbou.jpg"), end_user_id: end_users[14].id },
-    {title: 'このバラ素敵', memo: 'オレンジ色のバラなんてあるんですね！！素敵だったので皆さんに見てもらいたくて、投稿してみました。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.orangebara.jpg"), filename:"image.orangebara.jpg"), end_user_id: end_users[14].id },
-    {title: 'PCって映える', memo: 'なんか、良くないですか？分かる人コメントで教えてね！', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.pc.jpg"), filename:"image.pc.jpg"), end_user_id: end_users[14].id },
-    {title: 'うますぎる', memo: '疲れたときとかに食べるラーメンが最高過ぎる。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.ramen.jpg"), filename:"image.ramen.jpg"), end_user_id: end_users[14].id },
-    {title: '今日のおつまみ', memo: 'さきいか最高！！！酔ってきた～。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.sakiika.jpg"), filename:"image.sakiika.jpg"), end_user_id: end_users[15].id },
+    {title: 'うまい', memo: '結局味噌汁が一番うまい説。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.misoshiru.jpg"), filename:"image.misoshiru.jpg"), end_user_id: end_users[14].id },
     {title: 'もうこんな時期か～', memo: '出会いと別れの季節ですね。出会いに感謝です。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.sakuranoki.jpg"), filename:"image.sakuranoki.jpg"), end_user_id: end_users[15].id },
     {title: 'うちの近所の商店街', memo: '実はもう少しでこの商店街が無くなります。新しくここにビルが建つそうです。私の大好きな場所をいつまでも忘れないように。Famoriesに残します。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.shoutengai.jpg"), filename:"image.shoutengai.jpg"), end_user_id: end_users[15].id },
     {title: 'ソバの花', memo: '初めて知った。', memory_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image.sobanohana.jpg"), filename:"image.sobanohana.jpg"), end_user_id: end_users[15].id },
