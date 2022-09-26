@@ -46,8 +46,8 @@ class Public::EndUsersController < ApplicationController
   private
 
   def ensure_correct_end_user
-    @end_user = EndUser.find(params[:id])
-    unless @end_user == current_end_user
+    end_user = EndUser.find(params[:id])
+    unless end_user == current_end_user
       redirect_to end_user_path(current_end_user), alert: '本人のみ利用可能です。'
     end
   end

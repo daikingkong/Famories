@@ -28,9 +28,9 @@ class Public::JoinRequestsController < ApplicationController
   private
 
   def ensure_correct_group_owner
-    @group = Group.find(params[:group_id])
-    unless @group.owner_id == current_end_user.id
-      redirect_to group_path(@group), alert: 'オーナーのみ利用可能です'
+    group = Group.find(params[:group_id])
+    unless group.owner_id == current_end_user.id
+      redirect_to group_path(group), alert: 'オーナーのみ利用可能です'
     end
   end
 

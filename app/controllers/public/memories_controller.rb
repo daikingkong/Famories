@@ -9,7 +9,6 @@ class Public::MemoriesController < ApplicationController
     @memory = Memory.new
   end
 
-
   # メモリーとタグの紐づけ（送られてきたタグ名が新しければタグ新規作成も）を同時に行いたい
   # save_tagメソッドをMemoires.rbに記述しています。
   def create
@@ -18,7 +17,6 @@ class Public::MemoriesController < ApplicationController
     tag_list = tag_list.uniq
     if memory.save
       if memory.save_tag(tag_list)
-        @end_user = memory.end_user
         redirect_to memory_path(memory), notice: "メモリーを作成しました。"
       end
     else
@@ -76,9 +74,9 @@ class Public::MemoriesController < ApplicationController
   private
 
   def ensure_correct_end_user
-    @memory = Memory.find(params[:id])
-    unless @memory.end_user_id == current_end_user.id
-      redirect_to memory_path(@memory), alert: '自分以外のメモリーの編集はできません'
+    memory = Memory.find(params[:id])
+    unless memory.end_user_id == current_end_user.id
+      redirect_to memory_path(memory), alert: '自分のメモリーの以外は編集できません'
     end
   end
 

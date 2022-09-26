@@ -1,41 +1,40 @@
-    <div class="row d-flex flex-wrap justify-content-center">
-      <div class="col-7">
-
-        <table class="table table-borderless text-truncate table-active text-left">
-          <tbody>
-            <tr>
-              <th><%= f.label :group_image, "グループ画像" %></th>
-              <td colspan="2" class="text-light"><%= f.file_field :group_image, accept: "image/*" %></td>
-            </tr>
-            <tr>
-              <th><%= f.label :name, "グループ名" %></th>
-              <td class="text-light"><%= f.text_field :name, placeholder:"３０文字以内", style:"width: 100%;", class:" rounded" %></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th><%= f.label :introduction, "グループ紹介" %></th>
-              <td class="text-light"><%= f.text_area :introduction, placeholder:"５０文字以内", style:"width: 100%; height: 150px;", class:" rounded" %></td>
-              <td></td>
-            </tr>
-            <% if local_assigns[:@group] %>
-              <tr>
-                <td></td>
-                <td class="text-light"><%= f.submit "グループ作成", class:"btn btn-success rounded-pill border border-warning", style:"width: 100%;" %></td>
-                <td></td>
-              </tr>
-            <% else%>
-              <tr>
-                <td></td>
-                <td class="text-light"><%= f.submit "更新する", class:"btn btn-primary rounded-pill border border-warning", style:"width: 100%;" %></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td class="text-light"><%= link_to "グループページに戻る", group_path(group), class:"btn btn-secondary rounded-pill border border-warning", style:"width: 100%;" %></td>
-                <td></td>
-              </tr>
-            <% end%>
-          </tbody>
-        </table>
-      </div>
-    </div>
+<div class="row d-flex flex-wrap justify-content-center">
+  <div class="col-7">
+    <table class="table table-borderless text-break table-active text-left">
+      <tbody>
+        <tr>
+          <th><%= f.label :group_image, "グループ画像" %></th>
+          <td colspan="2" class="text-light"><%= f.file_field :group_image, accept: "image/*", class:"form-group" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :name, "グループ名" %></th>
+          <td class="text-light"><%= f.text_field :name, placeholder:"３０文字以内", class:"form-group rounded" %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><%= f.label :introduction, "グループ紹介" %></th>
+          <td class="text-light"><%= f.text_area :introduction, placeholder:"５０文字以内", class:"form-area form-group rounded" %></td>
+          <td></td>
+        </tr>
+        <% if local_assigns[:group] %>
+          <tr>
+            <td></td>
+            <td class="text-light"><%= f.submit "更新する", class:"form-group btn btn-primary rounded-pill border border-warning" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="text-light"><%= link_to "グループページに戻る", group_path(group), class:"form-group btn btn-secondary rounded-pill border border-warning" %></td>
+            <td></td>
+          </tr>
+        <% else%>
+          <tr>
+            <td></td>
+            <td class="text-light"><%= f.submit "グループ作成", class:"form-group btn btn-success rounded-pill border border-warning" %></td>
+            <td></td>
+          </tr>
+        <% end%>
+      </tbody>
+    </table>
+  </div>
+</div>

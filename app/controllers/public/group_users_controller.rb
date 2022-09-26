@@ -4,9 +4,8 @@ class Public::GroupUsersController < ApplicationController
   before_action :ensure_correct_group_user
 
   layout "public_application"
-  before_action :ensure_guest_user
 
-  # リクエスト承認でグループに加入し、そのリクエストを削除
+  # リクエスト承認でグループに加入し、そのリクエストを削除するため
   def approve
     group = Group.find(params[:group_id])
     join_request = group.join_requests.find_by(group_id: group.id)
@@ -16,7 +15,7 @@ class Public::GroupUsersController < ApplicationController
     redirect_to request.referer, notice: "#{group.name}に『#{request_user.name}さん』が加入しました。"
   end
 
-
+  # リクエスト拒否で、その加入リクエストを削除するため
   def refuse
     group = Group.find(params[:group_id])
     join_request = group.join_requests.find_by(group_id: group.id)
@@ -53,9 +52,9 @@ class Public::GroupUsersController < ApplicationController
 
 
   def ensure_correct_group_user
-    @group = Group.find(params[:group_id])
-    @group_user = GroupUser.where(group_id: @group, end_user_id: current_end_user.id)
-    if @group_user.present?
+    group = Group.find(params[:group_id])
+    group_user = GroupUser.where(group_id: group, end_user_id: current_end_user.id)
+    if group_user.present?
     else
       redirect_to end_user_path(current_end_user), alert: "グループのメンバーのみ利用可能です。"
     end

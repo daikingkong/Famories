@@ -1,6 +1,6 @@
 <div class="d-flex flex-wrap">
   <% memories.each do |memory| %>
-    <div class="mx-auto mb-3" style="width: 230px;">
+    <div class="index-memory-box mx-auto mb-3">
       <%= link_to memory_path(memory) do %>
         <%= image_tag memory.get_memory_image, size: "200x150", class:"post-memory" %>
       <% end %>
@@ -10,12 +10,10 @@
             <td>タイトル</td>
             <td class="text-light"><span><%= memory.title %></span></td>
           </tr>
-
           <tr>
             <td>投稿者</td>
             <td class="text-light"><span><%= memory.end_user.name %></span></td>
           </tr>
-
           <tr>
             <td>いいね</td>
             <td><span class="text-light"><%= memory.memory_favorites.count %>件</span></td>

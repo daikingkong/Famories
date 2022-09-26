@@ -9,30 +9,24 @@
       <th>リクエスト</th>
     </tr>
   </thead>
-
   <tbody class="text-light">
     <% groups.each do |group| %>
       <tr>
         <td>
           <%= image_tag group.get_group_image, size: "50x50" %>
         </td>
-
         <td class="overflow-auto">
           <%= group.name %>
         </td>
-
         <td class="overflow-auto">
           <%= group.owner.pop %>
         </td>
-
         <td class="overflow-auto">
           <%= group.introduction %>
         </td>
-
         <td>
           <%= group.end_users.count %>名
         </td>
-
         <% if current_end_user.name == "guestuser" %>
         <% else %>
           <% if group.already_joined?(current_end_user) %>

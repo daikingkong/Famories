@@ -1,49 +1,45 @@
-<div class="container text-center">
-  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
-    <b>ログイン</b>
-  </h6>
-
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="row d-flex flex-wrap justify-content-center">
-      <div class="col-7">
-
-        <table class="table table-borderless text-truncate table-active text-left">
-          <tbody>
+<h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+  <b>ログイン</b>
+</h6>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="row d-flex flex-wrap justify-content-center">
+    <div class="col-7">
+      <table class="table table-borderless text-break table-active text-left">
+        <tbody>
+          <tr>
+            <th><%= f.label :email, "メールアドレス" %></th>
+            <td><%= f.email_field :email, placeholder:"登録済みメールアドレス", autofocus: true, autocomplete: "email", class:"form-group rounded" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th><%= f.label :password, "パスワード" %></th>
+            <td><%= f.password_field :password, placeholder:"登録済みパスワード", autocomplete: "current-password", class:"form-group rounded" %></td>
+            <td></td>
+          </tr>
+          <% if devise_mapping.rememberable? %>
             <tr>
-              <th><%= f.label :email, "メールアドレス" %></th>
-              <td><%= f.email_field :email, placeholder:"登録済みメールアドレス", autofocus: true, autocomplete: "email" %></td>
+              <th><%= f.label :remember_me, "ログイン状態を維持する" %></th>
+              <td><%= f.check_box :remember_me %></td>
               <td></td>
             </tr>
-            <tr>
-              <th><%= f.label :password, "パスワード" %></th>
-              <td><%= f.password_field :password, placeholder:"登録済みパスワード", autocomplete: "current-password", style:"width: 100%;", class:" rounded" %></td>
-              <td></td>
-            </tr>
-            <% if devise_mapping.rememberable? %>
-              <tr>
-                <th><%= f.label :remember_me, "ログイン状態を維持する", class:" rounded" %></th>
-                <td><%= f.check_box :remember_me %></td>
-                <td></td>
-              </tr>
-            <% end %>
-            <tr>
-              <td></td>
-              <td class="text-light"><%= f.submit "ログイン", class: "btn btn-primary rounded-pill border border-warning", style:"width: 100%;" %></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th>登録がお済みでない方はこちらから</th>
-              <td class="text-right"> <%= render "public/shared/links"%></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th>お試しの際はこちらから</th>
-              <td class="text-right"> <%= link_to "ゲストログイン(閲覧用)" , end_user_guest_sign_in_path, method: :post, class:"text-light"  %></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          <% end %>
+          <tr>
+            <td></td>
+            <td class="text-light"><%= f.submit "ログイン", class:"form-group btn btn-primary rounded-pill border border-warning" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="test-truncate">登録がお済みでない方は</th>
+            <td> <%= render "public/shared/links" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>お試しの際は</th>
+            <td> <%= link_to "ゲストログイン(閲覧用)" , end_user_guest_sign_in_path, method: :post, class:"text-light"  %></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

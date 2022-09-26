@@ -12,9 +12,11 @@
 
   <body>
     <%= render "layouts/public_header" %>
-    <p class="text-light bg-success text-center mx-auto w-25 rounded"><%= notice %></p>
-    <p class="text-warning bg-danger text-center mx-auto w-25 rounded"><%= alert %></p>
-    <%= yield %>
+    <div class="container text-center">
+      <p class="text-light bg-success text-center mx-auto w-25 rounded"><%= notice %></p>
+      <p class="text-warning bg-danger text-center mx-auto w-25 rounded"><%= alert %></p>
+      <%= yield %>
+    </div>
   </body>
   <footer></footer>
 </html>

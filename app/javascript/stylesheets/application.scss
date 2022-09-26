@@ -25,11 +25,24 @@ body {
 }
 
 // メイン
+.about-bg {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 1000px;
+}
 
 .page-title {
   width: 320px;
   height: 30px;
   line-height: 30px;
+}
+
+.form-group {
+  max-width: 100%;
+  width: 100%;
+}
+
+.form-area {
+  height: 150px;
 }
 
 .post-memory, .group-index, .user-index, .user-profile, .group-profile {
@@ -38,10 +51,43 @@ body {
   background-color: #cccccc;
 }
 
+.group-index, .user-index {
+  height: 625px;
+  width: 100%;
+  background-color: #393939;
+}
+
+.index-memory-box {
+  width: 230px;
+}
+
+.index-btn {
+  width: 90%;
+  background-color: #e8dece;
+}
+
+.index-btn-dummy {
+  max-width: 100%;
+  min-height: 39.2px;
+  background-color: #e8dece;
+}
+
 .table {
   table-layout:fixed;
  }
 
+.post-memory {
+  max-width: 100%;
+  max-height: 100%;
+ }
+
+.memory-tags-bg {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.memory-tags-index {
+  background-color: #e8dece;
+}
 // フッター
 footer {
   background-image: url("../images/wall.2.jpg");

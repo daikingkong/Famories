@@ -7,9 +7,7 @@ class EndUser < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :join_requests, dependent: :destroy
   has_many :groups, through: :group_users
-
   has_many :group_memories, dependent: :destroy
-
   has_many :memories, dependent: :destroy
   has_many :memories, dependent: :destroy
   has_many :memory_favorites, dependent: :destroy

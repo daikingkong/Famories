@@ -1,28 +1,24 @@
-<div class="container text-center">
-  <h6 class="page-title mb-4 mt-3 mx-auto bg-secondary border border-primary rounded text-light">
-    <b>コメント一覧</b>
-  </h6>
-
-  <div class="row d-flex flex-wrap justify-content-center">
-    <table class="table text-break table-borderless table-striped table-active">
-      <tbody>
-        <tr>
-          <th>コメント投稿者</th>
-          <th>コメント</th>
-          <th></th>
-        </tr>
-
-        <% @memory_comments.each do |memory_comment| %>
-        <tr>
-          <td><%= memory_comment.end_user.name %></td>
-          <td><%= memory_comment.comment %></td>
-          <td><%= link_to "削除", admin_memory_comment_path(memory_comment), class:"btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
-      <%= paginate @memory_comments %>
-    </div>
+<h6 class="page-title mb-4 mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+  <b>コメント一覧</b>
+</h6>
+<div class="row d-flex flex-wrap justify-content-center">
+  <table class="table text-break table-borderless table-striped table-active">
+    <tbody>
+      <tr>
+        <th>コメント投稿者</th>
+        <th>コメント</th>
+        <th></th>
+      </tr>
+      <% @memory_comments.each do |memory_comment| %>
+      <tr>
+        <td><%= memory_comment.end_user.name %></td>
+        <td><%= memory_comment.comment %></td>
+        <td><%= link_to "削除", admin_memory_comment_path(memory_comment), class:"btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
+    <%= paginate @memory_comments %>
   </div>
 </div>

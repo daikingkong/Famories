@@ -1,14 +1,11 @@
-<div class="container text-center">
-  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
-    <b>退会確認</b>
-  </h6>
-
-  <div>
-    <h1 class="text-danger"><b>注意！！</b></h1>
-    <h3>退会するとこれまで投稿したメモリーを含む</h3>
-    <h3>すべてのデータが削除されます。</h3>
-    <h3>本当に退会しますか？</h3>
-  </div>
-  <%= link_to "退会しない", end_user_path(@end_user), class:"btn btn-primary w-25 mt-2 rounded-pill border-warning" %><br>
-  <%= link_to "退会する", end_user_path(@end_user), class:"btn btn-danger w-25 mt-3 rounded-pill border-warning", method: :delete %>
+<h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+  <b>退会確認</b>
+</h6>
+<div>
+  <h1 class="text-danger"><b>注意！！</b></h1>
+  <h3>退会するとこれまで投稿したメモリーを含む</h3>
+  <h3>すべてのデータが削除されます。</h3>
+  <h3>本当に退会しますか？</h3>
 </div>
+<%= link_to "退会しない", end_user_path(@end_user), class:"btn btn-primary w-25 mt-2 rounded-pill border-warning" %><br>
+<%= link_to "退会する", end_user_path(@end_user), class:"btn btn-danger w-25 mt-3 rounded-pill border-warning", method: :delete %>

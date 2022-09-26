@@ -4,52 +4,44 @@
       <tr>
         <td><%= image_tag @group.get_group_image, size: "100x100", class:"group-profile" %></td>
       </tr>
-
       <tr>
         <td><b><%= @group.name %></b></td>
       </tr>
-
       <tr>
         <td><b><%= @group.introduction %></b></td>
       </tr>
-
       <% if current_end_user.name == @group.owner.pop %>
         <tr>
           <td><%= link_to "グループ編集", edit_group_path(@group), class:"btn btn-primary border-warning rounded-pill" %></td>
         </tr>
       <% end %>
-
       <% if current_end_user.name == @group.owner.pop %>
         <tr>
           <td>
             <%= link_to "メンバー編集", group_join_requests_path(@group), class:"btn btn-primary border-warning rounded-pill" %><br>
           </td>
         </tr>
-
         <tr>
           <td>
             加入リクエスト（<b class="text-light"><%= @group.join_requests.count %></b>件）
           </td>
         </tr>
       <% end %>
-
       <tr>
         <td>
         </td>
       </tr>
     </tbody>
   </table>
-
   <h5><strong>グループメンバー</strong></h5>
-  <div class="m-auto group-index overflow-auto" style="height:625px; width: 100%; background-color: #393939;">
+  <div class="m-auto user-index overflow-auto">
     <% @group_users.each do |group_user| %>
       <%= image_tag group_user.get_profile_image, size: "50x50", class:"mt-4"  %>
-      <p class="d-flex align-items-center justify-content-center text-break my-2 border mx-3 border-warning rounded-pill text-dark text-decoration-none" width:"100%" style="min-height: 39.2px; background-color: #e8dece;">
+      <p class="index-btn-dummy d-flex align-items-center justify-content-center text-break my-2 border mx-3 border-warning rounded-pill text-dark text-decoration-none">
         <%= group_user.name %>
       </p>
     <% end %>
   </div>
-
   <table>
     <tbody>
       <tr>

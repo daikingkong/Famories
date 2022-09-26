@@ -1,9 +1,6 @@
-<div class="container text-center">
-  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
-    <b>グループ編集</b>
-  </h6>
-
-  <%= form_with model:@group do |f| %>
-    <%= render 'form', f: f, group: @group %>
-  <% end %>
-</div>
+<h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+  <b>グループ編集</b>
+</h6>
+<%= form_with model:@group do |f| %>
+  <%= render 'form', f: f, group: @group %>
+<% end %>

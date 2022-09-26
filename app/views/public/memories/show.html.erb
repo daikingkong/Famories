@@ -1,104 +1,91 @@
-<div class="container text-center">
-  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
-    <b>メモリー詳細</b>
-  </h6>
-
-  <div class="row d-flex flex-wrap justify-content-center">
-    <div class="col-7">
-      <table class="table table-borderless text-break table-active">
-        <tbody>
-          <tr>
-            <td>投稿者</td>
-            <td colspan="3" class="text-light"><%= @memory.end_user.name %></td>
-          </tr>
-
-          <tr>
-            <td>タグ</td>
-            <td></td>
-            <td class="text-light" width:"100%" height:"100%" style="background-color: rgba(0, 0, 0, 0.2);">
-              <% @memory_tags.each do |tag| %>
-                <span class="mx-2">
-                  <%= link_to tag.name, memory_tag_tag_search_path(tag), class:"text-light" %>
-                </span>
+<h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+  <b>メモリー詳細</b>
+</h6>
+<div class="row d-flex flex-wrap justify-content-center">
+  <div class="col-7">
+    <table class="table table-borderless text-break table-active">
+      <tbody>
+        <tr>
+          <td>投稿者</td>
+          <td colspan="3" class="text-light"><%= @memory.end_user.name %></td>
+        </tr>
+        <tr>
+          <td>タグ</td>
+          <td></td>
+          <td class="memory-tags-bg text-light">
+            <% @memory_tags.each do |tag| %>
+              <span class="mx-2">
+                <%= link_to tag.name, memory_tag_tag_search_path(tag), class:"text-light" %>
+              </span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>メモリー画像</td>
+          <td colspan="3" class="text-light"><%= image_tag @memory.get_memory_image, class:"post-memory" %></td>
+        </tr>
+        <tr>
+          <td>メモリータイトル</td>
+          <td colspan="3" class="text-light"><%= @memory.title %></td>
+        </tr>
+        <tr>
+          <td>メモ</td>
+          <td colspan="3" class="text-light"><%= @memory.memo %></td>
+        </tr>
+        <tr>
+          <td>いいね<b class="text-light">　<%= @memory.memory_favorites.count %></b> 件</td>
+          <td colspan="3" class="text-light">
+            <% if @memory.memory_favorited_by?(current_end_user) %>
+              <%= link_to memory_memory_favorites_path(@memory), class:"text-danger", method: :delete do %>
+              <h1><i class="fas fa-heart"></i></h1>
               <% end %>
-            </td>
-          </tr>
-
-          <tr>
-            <td>メモリー画像</td>
-            <td colspan="3" class="text-light"><%= image_tag @memory.get_memory_image, width:"100%", height:"100%",class:"post-memory" %></td>
-          </tr>
-
-          <tr>
-            <td>メモリータイトル</td>
-            <td colspan="3" class="text-light"><%= @memory.title %></td>
-          </tr>
-
-          <tr>
-            <td>メモ</td>
-            <td colspan="3" class="text-light"><%= @memory.memo %></td>
-          </tr>
-
-          <tr>
-            <td>いいね<b class="text-light">　<%= @memory.memory_favorites.count %></b> 件</td>
+            <% else %>
+              <%= link_to memory_memory_favorites_path(@memory),  class:"text-danger", method: :post do %>
+              <h1><i class="far fa-heart"></i></h1>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <% if @memory.end_user == current_end_user %>
             <td colspan="3" class="text-light">
-              <% if @memory.memory_favorited_by?(current_end_user) %>
-                <%= link_to memory_memory_favorites_path(@memory), class:"text-danger", method: :delete do %>
-                <h1><i class="fas fa-heart"></i></h1>
-                <% end %>
-              <% else %>
-                <%= link_to memory_memory_favorites_path(@memory),  class:"text-danger", method: :post do %>
-                <h1><i class="far fa-heart"></i></h1>
-                <% end %>
-              <% end %>
+              <%= link_to "メモリー編集", edit_memory_path(@memory), class:"btn btn-primary rounded-pill border border-warning" %>
             </td>
-          </tr>
-
-          <tr>
-            <td></td>
-            <% if @memory.end_user == current_end_user %>
-              <td colspan="3" class="text-light">
-                <%= link_to "メモリー編集", edit_memory_path(@memory), class:"btn btn-primary rounded-pill border border-warning" %>
-              </td>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-
-    <div class="col-5">
-      <table class="table table-borderless table-striped table-active text-break">
-        <tbody>
-          <tr>
-            <th>コメント投稿者</th>
-            <th>コメント</th>
-            <th></th>
-          </tr>
-
-          <% @memory_comments.each do |memory_comment| %>
-          <tr class="text-light">
-            <td><%= memory_comment.end_user.name %></td>
-            <td><%= memory_comment.comment %></td>
-            <% if memory_comment.end_user == current_end_user %>
-              <td><%= link_to "削除", memory_memory_comment_path(memory_comment), class:"btn btn-danger rounded-pill border border-warning", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
-            <% end %>
-          </tr>
           <% end %>
-        </tbody>
-      </table>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-      <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
-        <%= paginate @memory_comments %>
-      </div>
-
-      <div class="mt-3">
-        <%= form_with model:@memory_comment, url:memory_memory_comments_path(@memory.id), method: :post do |f| %>
-          <%= f.label :comment, "コメント投稿" %>
-          <%= f.text_field :comment, placeholder:"５０文字以内", class:"rounded" %>
-          <%= f.submit "コメント投稿", class:"btn btn-success rounded-pill border border-warning" %>
+  <div class="col-5">
+    <table class="table table-borderless table-striped table-active text-break">
+      <tbody>
+        <tr>
+          <th>コメント投稿者</th>
+          <th>コメント</th>
+          <th></th>
+        </tr>
+        <% @memory_comments.each do |memory_comment| %>
+        <tr class="text-light">
+          <td><%= memory_comment.end_user.name %></td>
+          <td><%= memory_comment.comment %></td>
+          <% if memory_comment.end_user == current_end_user %>
+            <td><%= link_to "削除", memory_memory_comment_path(memory_comment), class:"btn btn-danger rounded-pill border border-warning", method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+          <% end %>
+        </tr>
         <% end %>
-      </div>
+      </tbody>
+    </table>
+    <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
+      <%= paginate @memory_comments %>
+    </div>
+    <div class="mt-3">
+      <%= form_with model:@memory_comment, url:memory_memory_comments_path(@memory.id), method: :post do |f| %>
+        <%= f.label :comment, "コメント投稿" %>
+        <%= f.text_field :comment, placeholder:"５０文字以内", class:"rounded" %>
+        <%= f.submit "コメント投稿", class:"btn btn-success rounded-pill border border-warning" %>
+      <% end %>
     </div>
   </div>
 </div>

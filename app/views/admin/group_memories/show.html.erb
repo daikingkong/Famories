@@ -1,11 +1,8 @@
-<div class="container text-center">
-  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
-    <b>グループメモリー詳細</b>
-  </h6>
-
-  <div class="row d-flex flex-wrap justify-content-center">
-    <div class="col-7">
-      <%= render 'admin/memories/memories', memory: @memory, group: @group %>
-    </div>
+<h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+  <b>グループメモリー詳細</b>
+</h6>
+<div class="row d-flex flex-wrap justify-content-center">
+  <div class="col-7">
+    <%= render 'admin/memories/memory', memory: @memory, group: @group %>
   </div>
 </div>

@@ -1,13 +1,10 @@
-<div class="container text-center">
-  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
-    <b>グループ退会確認</b>
-  </h6>
-
-  <div>
-    <h1 class="text-danger"><b>注意！！</b></h1>
-    <h3>退会すると再び加入リクエストが承認されない限り入室できません。</h3>
-    <h3>本当にグループを退会しますか？</h3>
-  </div>
-  <%= link_to "退会しない", group_path(@group), class:"btn btn-primary w-25 mt-2 border border-warning rounded-pill" %><br>
-  <%= link_to "退会する", group_group_user_path(@group, current_end_user.id), class:"btn btn-danger w-25 mt-3 border border-warning rounded-pill", method: :delete, data: {confirm: "『最終確認』"} %>
+<h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+  <b>グループ退会確認</b>
+</h6>
+<div>
+  <h1 class="text-danger"><b>注意！！</b></h1>
+  <h3>退会すると再び加入リクエストが承認されない限り入室できません。</h3>
+  <h3>本当にグループを退会しますか？</h3>
 </div>
+<%= link_to "退会しない", group_path(@group), class:"btn btn-primary w-25 mt-2 border border-warning rounded-pill" %><br>
+<%= link_to "退会する", group_group_user_path(@group, current_end_user.id), class:"btn btn-danger w-25 mt-3 border border-warning rounded-pill", method: :delete, data: {confirm: "『最終確認』"} %>

@@ -1,42 +1,37 @@
-<div class="container text-center">
-  <h6 class="page-title text-truncate px-3 mb-4 mt-3 mx-auto bg-secondary border border-primary rounded text-light">
-    <b>グループページ『<%= "#{@group.name}" %>』</b>
-  </h6>
-  <%= link_to "グループメモリー作成", new_group_group_memory_path(@group), class:"btn btn-success w-25 h-25 mb-4 border border-warning rounded-pill text-light" %>
-
-  <div class="row">
-    <div class="col-12 d-flex flex-wrap justify-content-center">
-      <div class="col-4">
-        <%= render "group_info", group: @group, group_users: @group_users %>
+<h6 class="page-title text-truncate px-3 mb-4 mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+  <b>グループページ『<%= "#{@group.name}" %>』</b>
+</h6>
+<%= link_to "グループメモリー作成", new_group_group_memory_path(@group), class:"btn btn-success w-25 h-25 mb-4 border border-warning rounded-pill text-light" %>
+<div class="row">
+  <div class="col-12 d-flex flex-wrap justify-content-center">
+    <div class="col-4">
+      <%= render "group_info", group: @group, group_users: @group_users %>
+    </div>
+      <div class="col-8 d-flex flex-wrap">
+        <div class="d-flex flex-wrap">
+        <% @memories.each do |memory| %>
+          <div class="index-memory-box mx-auto mb-3">
+            <%= link_to group_group_memory_path(@group, memory) do %>
+              <%= image_tag memory.get_memory_image, size: "200x150", class:"post-memory" %>
+            <% end %>
+            <table class="table table-borderless table-sm text-truncate">
+              <tbody>
+                <tr>
+                  <td>タイトル</td>
+                  <td class="text-light"><span><%= memory.title %></span></td>
+                </tr>
+                <tr>
+                  <td>投稿者</td>
+                  <td class="text-light"><span><%= memory.end_user.name %></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
       </div>
-
-        <div class="col-8 d-flex flex-wrap">
-          <div class="d-flex flex-wrap">
-          <% @memories.each do |memory| %>
-            <div class="mx-auto mb-3" style="width: 230px;">
-              <%= link_to group_group_memory_path(@group, memory) do %>
-                <%= image_tag memory.get_memory_image, size: "200x150", class:"post-memory" %>
-              <% end %>
-              <table class="table table-borderless table-sm text-truncate">
-                <tbody>
-                  <tr>
-                    <td>タイトル</td>
-                    <td class="text-light"><span><%= memory.title %></span></td>
-                  </tr>
-
-                  <tr>
-                    <td>投稿者</td>
-                    <td class="text-light"><span><%= memory.end_user.name %></span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
-        <%= paginate @memories %>
-      </div>
+    </div>
+    <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
+      <%= paginate @memories %>
     </div>
   </div>
 </div>

@@ -1,52 +1,48 @@
-<div class="container text-center">
-  <h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
-    <b>新規登録</b>
-  </h6>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <div class="row d-flex flex-wrap justify-content-center">
-      <div class="col-7">
-
-        <table class="table table-borderless text-truncate table-active text-left">
-          <tbody>
+<h6 class="page-title mb-4  mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+  <b>新規登録</b>
+</h6>
+<%= render "public/shared/error_messages", resource: resource %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <div class="row d-flex flex-wrap justify-content-center">
+    <div class="col-7">
+      <table class="table table-borderless text-break table-active text-left">
+        <tbody>
+          <tr>
+            <th><%= f.label :name, "ニックネーム" %></th>
+            <td><%= f.text_field :name, placeholder:"３０文字以内", autofocus: true, autocomplete: "name", class:"form-group rounded" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th><%= f.label :email, "メールアドレス" %></th>
+            <td><%= f.email_field :email, autocomplete: "email", placeholder:"famories@example.com", class:"form-group rounded" %></td>
+            <td></td>
+          </tr>
+          <% if devise_mapping.rememberable? %>
             <tr>
-              <th><%= f.label :name, "ニックネーム" %></th>
-              <td><%= f.text_field :name, placeholder:"３０文字以内", autofocus: true, autocomplete: "name", style:"width: 100%;", class:" rounded" %></td>
+              <th>
+                <%= f.label :password, "パスワード"%>
+              </th>
+              <td><%= f.password_field :password, placeholder:"６文字以上", autocomplete: "new-password", class:"form-group rounded" %></td>
               <td></td>
             </tr>
-            <tr>
-              <th><%= f.label :email, "メールアドレス" %></th>
-              <td><%= f.email_field :email, autocomplete: "email", placeholder:"famories@example.com", style:"width: 100%;", class:" rounded" %></td>
-              <td></td>
-            </tr>
-            <% if devise_mapping.rememberable? %>
-              <tr>
-                <th>
-                  <%= f.label :password, "パスワード"%>
-                </th>
-                <td><%= f.password_field :password, placeholder:"６文字以上", autocomplete: "new-password", style:"width: 100%;", class:" rounded" %></td>
-                <td></td>
-              </tr>
-            <tr>
-              <th><%= f.label :password_confirmation, "パスワード(確認)"  %></th>
-              <td><%= f.password_field :password_confirmation, autocomplete: "new-password", style:"width: 100%;", class:" rounded" %></td>
-              <td></td>
-            </tr>
-            <% end %>
-            <tr>
-              <td></td>
-              <td class="text-light"><%= f.submit "新規登録", class: "btn btn-success rounded-pill border border-warning", style:"width: 100%;"%></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th>登録がお済みの方はこちらから</th>
-              <td class="text-right"><%= render "public/shared/links", class:"text-light" %></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          <tr>
+            <th><%= f.label :password_confirmation, "パスワード(確認)"  %></th>
+            <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-group rounded" %></td>
+            <td></td>
+          </tr>
+          <% end %>
+          <tr>
+            <td></td>
+            <td><%= f.submit "新規登録", class:"form-group btn btn-success rounded-pill border border-warning" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>登録がお済みの方は</th>
+            <td><%= render "public/shared/links", class:"text-light" %></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

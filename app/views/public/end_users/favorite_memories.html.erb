@@ -1,20 +1,17 @@
-<div class="container text-center">
-  <h6 class="page-title mb-4 mt-3 mx-auto bg-secondary border border-primary rounded text-light">
-    <b>マイいいね一覧</b>
-  </h6>
-  <%= link_to "メモリー作成", new_memory_path, class:"btn btn-success w-25 h-25 mb-4 border border-warning rounded-pill text-light" %>
-
-  <div class="row">
-    <div class="col-12 d-flex flex-wrap justify-content-center">
-      <div class="col-4">
-        <%= render "user_info",user_groups: @user_groups, end_user: @end_user %>
-      </div>
-      <div class="col-8 d-flex flex-wrap">
-        <%= render "memories", memories: @memories %>
-      </div>
-      <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
-        <%= paginate @memories %>
-      </div>
+<h6 class="page-title mb-4 mt-3 mx-auto bg-secondary border border-primary rounded text-light">
+  <b>マイいいね一覧</b>
+</h6>
+<%= link_to "メモリー作成", new_memory_path, class:"btn btn-success w-25 h-25 mb-4 border border-warning rounded-pill text-light" %>
+<div class="row">
+  <div class="col-12 d-flex flex-wrap justify-content-center">
+    <div class="col-4">
+      <%= render "user_info",user_groups: @user_groups, end_user: @end_user %>
+    </div>
+    <div class="col-8 d-flex flex-wrap">
+      <%= render "memories", memories: @memories %>
+    </div>
+    <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
+      <%= paginate @memories %>
     </div>
   </div>
 </div>
