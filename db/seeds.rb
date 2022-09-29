@@ -130,13 +130,13 @@ GroupUser.create!(
 
 JoinRequest.create!(
   [
-    {group_id: groups[1].id, end_user_id: end_users[6].id},
-    {group_id: groups[1].id, end_user_id: end_users[12].id},
-    {group_id: groups[1].id, end_user_id: end_users[15].id},
-    {group_id: groups[1].id, end_user_id: end_users[17].id},
-    {group_id: groups[1].id, end_user_id: end_users[16].id},
-    {group_id: groups[1].id, end_user_id: end_users[21].id},
-    {group_id: groups[1].id, end_user_id: end_users[25].id},
+    {group_id: groups[2].id, end_user_id: end_users[6].id},
+    {group_id: groups[2].id, end_user_id: end_users[12].id},
+    {group_id: groups[2].id, end_user_id: end_users[15].id},
+    {group_id: groups[2].id, end_user_id: end_users[17].id},
+    {group_id: groups[2].id, end_user_id: end_users[16].id},
+    {group_id: groups[2].id, end_user_id: end_users[21].id},
+    {group_id: groups[2].id, end_user_id: end_users[25].id},
     {group_id: groups[2].id, end_user_id: end_users[12].id},
     {group_id: groups[2].id, end_user_id: end_users[11].id},
     {group_id: groups[2].id, end_user_id: end_users[19].id},

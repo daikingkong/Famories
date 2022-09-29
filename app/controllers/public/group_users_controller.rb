@@ -8,7 +8,7 @@ class Public::GroupUsersController < ApplicationController
   # リクエスト承認でグループに加入し、そのリクエストを削除するため
   def approve
     group = Group.find(params[:group_id])
-    join_request = group.join_requests.find_by(group_id: group.id)
+    join_request = group.join_requests.find_by(group_id: group)
     request_user = join_request.end_user
     group.end_users << request_user
     join_request.destroy
