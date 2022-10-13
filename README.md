@@ -5,9 +5,9 @@
 家族(**ファミリー**)や友達と、日々の記憶(**メモリー**)を**アルバムのように記録として残すことができるコミュニティサイトです。**
 
 ### テーマを選んだ理由
-<課題>  
-独立すると、家族や友達との思い出を作る機会や、どのように生活を送っているかを知ることが減ってしまいます。コロナ禍においては、より一層減ってしまったため、このようなことを解決したいと思いこのテーマを選びました。  
-<解決方法>  
+<課題>
+独立すると、家族や友達との思い出を作る機会や、どのように生活を送っているかを知ることが減ってしまいます。コロナ禍においては、より一層減ってしまったため、このようなことを解決したいと思いこのテーマを選びました。
+<解決方法>
 日々の記憶を共有できるサイトがあれば、大切な人達を身近に感じられることで課題を解決できると考えました。また、このサイトで投稿したものから出会いが生まれることで、家族のような新しいコミュニティを築くきっかけになると嬉しいと思いました。
 
 ### ターゲットユーザー
@@ -46,15 +46,15 @@
 
 #### ポートフォリオ閲覧用アカウント
 ##### 会員側
-**<メールアドレス>**  
-man1@test  
-**<パスワード>**  
-man1test  
+**<メールアドレス>**
+man1@test
+**<パスワード>**
+man1test
 ##### 管理者側
-**<メールアドレス>**  
-admin@test  
-**<パスワード>**  
-admintest  
+**<メールアドレス>**
+admin@test
+**<パスワード>**
+admintest
 
 #### 用語
 - 『メモリー』　＝　『投稿するモノ』
@@ -120,23 +120,23 @@ admintest
 |管理機能（管理者）|会員、投稿、コメント、グループの一覧や登録内容を確認するため<br>不正な手段での登録や、不適切な会員、投稿、コメント、グループを削除する為|
 
 ## 設計書
-<ER図>  
-https://app.diagrams.net/#G1JIAJgUSbkrsXWfWw97QQTlq1919VYqsH  
-<ワイヤーフレーム>  
-https://app.diagrams.net/#G1hFt_NmH7EEFFgGcrTsNPhXC7eJ1Yq3a9  
-<テーブル定義書>  
-https://docs.google.com/spreadsheets/d/1cJMW7VXLuyWXPGkhj_p-Izn8aQdHMlpe/edit#gid=84123752  
-<アプリケーション詳細設計書>  
-https://docs.google.com/spreadsheets/d/1RmEvgz8LOZeDwnjbla_48xN599ectGs4hsayGn4rGbk/edit#gid=549108681  
-<UIflow図>  
-https://app.diagrams.net/#G1vA9gfDRCupGEYa61Iisbdd8psgNsNYU8  
+<ER図>
+https://app.diagrams.net/#G1JIAJgUSbkrsXWfWw97QQTlq1919VYqsH
+<ワイヤーフレーム>
+https://app.diagrams.net/#G1hFt_NmH7EEFFgGcrTsNPhXC7eJ1Yq3a9
+<テーブル定義書>
+https://docs.google.com/spreadsheets/d/1cJMW7VXLuyWXPGkhj_p-Izn8aQdHMlpe/edit#gid=84123752
+<アプリケーション詳細設計書>
+https://docs.google.com/spreadsheets/d/1RmEvgz8LOZeDwnjbla_48xN599ectGs4hsayGn4rGbk/edit#gid=549108681
+<UIflow図>
+https://app.diagrams.net/#G1vA9gfDRCupGEYa61Iisbdd8psgNsNYU8
 
 ## テスト
-<テスト仕様書>  
+<テスト仕様書>
 https://docs.google.com/spreadsheets/d/1zZa2pEWJMQTzsR-H80QbidU-hVVZksBC/edit#gid=1511467858
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux release 2 (Karoo)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
