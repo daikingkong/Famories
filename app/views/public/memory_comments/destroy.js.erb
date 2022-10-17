@@ -1,0 +1,2 @@
+$('#memory_comments_index_<%= @memory.id %>').html("<%= j(render partial: 'public/memory_comments/index', locals: {memory: @memory, memory_comments: @memory_comments}) %>");
+$('input[type=text]').val("")

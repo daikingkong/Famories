@@ -1,0 +1,5 @@
+<%= form_with model:memory_comment, url:memory_memory_comments_path(memory.id), method: :post, local: false do |f| %>
+  <%= f.label :comment, "コメント投稿" %>
+  <%= f.text_field :comment, placeholder:"５０文字以内", class:"rounded" %>
+  <%= f.submit "コメント投稿", class:"btn btn-success rounded-pill border border-warning" %>
+<% end %>
