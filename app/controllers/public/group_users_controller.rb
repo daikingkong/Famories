@@ -12,7 +12,8 @@ class Public::GroupUsersController < ApplicationController
     request_user = join_request.end_user
     group.end_users << request_user
     join_request.destroy
-    redirect_to request.referer, notice: "#{group.name}に『#{request_user.name}さん』が加入しました。"
+    @join_requests = group.join_requests.page(params[:page]).per(12)
+    # redirect_to request.referer, notice: "#{group.name}に『#{request_user.name}さん』が加入しました。"
   end
 
   # リクエスト拒否で、その加入リクエストを削除するため
@@ -20,7 +21,8 @@ class Public::GroupUsersController < ApplicationController
     group = Group.find(params[:group_id])
     join_request = group.join_requests.find_by(group_id: group.id)
     join_request.destroy
-    redirect_to request.referer, notice: "加入リクエストを拒否しました。"
+    @join_requests = group.join_requests.page(params[:page]).per(12)
+    # redirect_to request.referer, notice: "加入リクエストを拒否しました。"
   end
 
 

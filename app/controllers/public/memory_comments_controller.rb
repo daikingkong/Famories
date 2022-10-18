@@ -9,6 +9,11 @@ class Public::MemoryCommentsController < ApplicationController
     @memory_comment.end_user_id = current_end_user.id
     @memory_comment.memory_id = @memory.id
     @memory_comment.save
+    # if @memory_comment.save
+      # redirect_to memory_path(@memory), notice: "コメントを投稿しました。"
+    # else
+    #   # redirect_to memory_path(@memory), alert: "コメントの投稿に失敗しました。"
+    # end
   end
 
   def destroy
