@@ -21,16 +21,8 @@
           </tbody>
         </table>
         <h5><strong>グループメンバー</strong></h5>
-        <div class="m-auto group-index overflow-auto">
-          <% @group_users.each do |group_user| %>
-            <%= image_tag group_user.get_profile_image, size: "50x50", class:"mt-4"  %>
-            <p class="index-btn-dummy d-flex align-items-center justify-content-center text-break my-2 border mx-3 border-warning rounded-pill text-dark text-decoration-none">
-            <%= link_to group_group_user_path(@group, group_user), method: :delete, data: {confirm: "本当に『#{group_user.name}さん』を退出させますか？" }, class:"text-danger text-decoration-none" do %>
-              <i class="fas fa-minus-circle"></i>
-            <% end %>
-              <%= group_user.name %>
-            </p>
-          <% end %>
+        <div id="group_menber_index" class="m-auto group-index overflow-auto">
+          <%= render "public/group_users/group_member", group_users: @group_users, group: @group %>
         </div>
       </div>
     </div>
