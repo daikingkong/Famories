@@ -1,0 +1,22 @@
+<table class="table text-break table-borderless table-striped table-active">
+  <tbody>
+    <tr>
+      <th>コメント投稿者</th>
+      <th>コメント</th>
+      <th></th>
+    </tr>
+    <% memory_comments.each do |memory_comment| %>
+    <tr>
+      <td><%= memory_comment.end_user.name %></td>
+      <td><%= memory_comment.comment %></td>
+      <td><%= link_to "削除",admin_memory_comment_path(memory_comment), class:"btn btn-danger rounded-pill border border-warning", method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%if local_assigns[:memory] %>
+<% else %>
+  <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
+    <%= paginate memory_comments %>
+  </div>
+<% end %>

@@ -7,20 +7,24 @@ class Public::GroupUsersController < ApplicationController
 
   # リクエスト承認でグループに加入し、そのリクエストを削除するため
   def approve
-    group = Group.find(params[:group_id])
-    join_request = group.join_requests.find_by(group_id: group)
+    @group = Group.find(params[:group_id])
+    join_request = @group.join_requests.find_by(group_id: @group)
     request_user = join_request.end_user
-    group.end_users << request_user
+    @group.end_users << request_user
     join_request.destroy
-    redirect_to request.referer, notice: "#{group.name}に『#{request_user.name}さん』が加入しました。"
+    @join_requests = @group.join_requests.page(params[:page]).per(12)
+    @group_users = @group.end_users
+    # redirect_to request.referer, notice: "#{group.name}に『#{request_user.name}さん』が加入しました。"
   end
 
   # リクエスト拒否で、その加入リクエストを削除するため
   def refuse
-    group = Group.find(params[:group_id])
-    join_request = group.join_requests.find_by(group_id: group.id)
+    @group = Group.find(params[:group_id])
+    join_request = @group.join_requests.find_by(group_id: @group.id)
     join_request.destroy
-    redirect_to request.referer, notice: "加入リクエストを拒否しました。"
+    @join_requests = @group.join_requests.page(params[:page]).per(12)
+    @group_users = @group.end_users
+    # redirect_to request.referer, notice: "加入リクエストを拒否しました。"
   end
 
 

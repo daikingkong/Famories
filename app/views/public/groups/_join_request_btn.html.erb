@@ -36,11 +36,11 @@
           <% else %>
             <% if group.already_requested?(current_end_user) %>
               <td>
-                <%= link_to "申請解除", group_join_request_path(group, group.join_requests), class:"btn btn-danger rounded-pill border border-warning", method: :delete %>
+                <%= link_to "申請解除", group_join_request_path(group, group.join_requests), class:"btn btn-danger rounded-pill border border-warning", method: :delete, remote: true %>
               </td>
             <% else %>
               <td>
-                <%= link_to "加入申請", group_join_requests_path(group), class:"btn btn-primary rounded-pill border border-warning", method: :post %>
+                <%= link_to "加入申請", group_join_requests_path(group), class:"btn btn-primary rounded-pill border border-warning", method: :post, remote: true %>
               </td>
             <% end %>
           <% end %>

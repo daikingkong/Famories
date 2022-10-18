@@ -1,0 +1,21 @@
+<table class="table text-break table-borderless table-striped table-active">
+  <tbody>
+    <tr>
+      <th>ユーザー画像</th>
+      <th>ユーザ名</th>
+      <th colspan="2" class="col-3">リクエスト</th>
+    </tr>
+    <% join_requests.each do |join_request| %>
+      <tr>
+        <td><%= image_tag join_request.end_user.get_profile_image, size: "50x50" %></td>
+        <td><%= join_request.end_user.name %></td>
+        <td>
+          <%= link_to "承認", group_group_user_approve_path(join_request.group, join_request.end_user_id), class:"btn btn-primary rounded-pill border border-warning", method: :post, remote: true %>
+        </td>
+        <td>
+          <%= link_to "拒否", group_group_user_refuse_path(join_request.group, join_request.end_user_id), class:"btn btn-danger rounded-pill border border-warning", method: :delete, remote: true, date: {confirm: "本当に拒否しますか？"} %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

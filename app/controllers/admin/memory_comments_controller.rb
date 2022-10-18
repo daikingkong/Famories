@@ -8,9 +8,11 @@ class Admin::MemoryCommentsController < ApplicationController
   end
 
   def destroy
+    @memory_comments = MemoryComment.page(params[:page]).per(20).order("created_at DESC")
     memory_comment = MemoryComment.find(params[:id])
+    @memory = memory_comment.memory
     memory_comment.destroy
-    redirect_to request.referer, notice: "コメントを削除しました。"
+    # redirect_to request.referer, notice: "コメントを削除しました。"
   end
 
 end

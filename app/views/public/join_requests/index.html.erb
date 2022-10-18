@@ -21,41 +21,13 @@
           </tbody>
         </table>
         <h5><strong>グループメンバー</strong></h5>
-        <div class="m-auto group-index overflow-auto">
-          <% @group_users.each do |group_user| %>
-            <%= image_tag group_user.get_profile_image, size: "50x50", class:"mt-4"  %>
-            <p class="index-btn-dummy d-flex align-items-center justify-content-center text-break my-2 border mx-3 border-warning rounded-pill text-dark text-decoration-none">
-            <%= link_to group_group_user_path(@group, group_user), method: :delete, data: {confirm: "本当に『#{group_user.name}さん』を退出させますか？" }, class:"text-danger text-decoration-none" do %>
-              <i class="fas fa-minus-circle"></i>
-            <% end %>
-              <%= group_user.name %>
-            </p>
-          <% end %>
+        <div id="group_menber_index" class="m-auto group-index overflow-auto">
+          <%= render "public/group_users/group_member", group_users: @group_users, group: @group %>
         </div>
       </div>
     </div>
-    <div class="col-8">
-      <table class="table text-break table-borderless table-striped table-active">
-        <tbody>
-          <tr>
-            <th>ユーザー画像</th>
-            <th>ユーザ名</th>
-            <th colspan="2" class="col-3">リクエスト</th>
-          </tr>
-          <% @join_requests.each do |join_request| %>
-            <tr>
-              <td><%= image_tag join_request.end_user.get_profile_image, size: "50x50" %></td>
-              <td><%= join_request.end_user.name %></td>
-              <td>
-                <%= link_to "承認", group_group_user_approve_path(join_request.group, join_request.end_user_id), class:"btn btn-primary rounded-pill border border-warning", method: :post %>
-              </td>
-              <td>
-                <%= link_to "拒否", group_group_user_refuse_path(join_request.group, join_request.end_user_id), class:"btn btn-danger rounded-pill border border-warning", method: :delete, date: {confirm: "本当に拒否しますか？"} %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div id="response_btn_index" class="col-8">
+      <%= render "public/join_requests/response_btn", join_requests: @join_requests %>
     </div>
     <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
       <%= paginate @join_requests %>

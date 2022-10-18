@@ -1,0 +1,2 @@
+$('#admin_memory_comments_index').html("<%= j(render partial: 'admin/memory_comments/index', locals: {memory_comments: @memory_comments}) %>");
+$('#admin_memory_comments_index_<%= @memory.id %>').html("<%= j(render partial: 'admin/memory_comments/index', locals: {memory: @memory, memory_comments: @memory.memory_comments}) %>");
