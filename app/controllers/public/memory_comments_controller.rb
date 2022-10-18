@@ -19,8 +19,8 @@ class Public::MemoryCommentsController < ApplicationController
   def destroy
     @memory = Memory.find(params[:memory_id])
     @memory_comments = @memory.memory_comments.page(params[:page]).per(10).order("created_at DESC")
-    @memorycomment = MemoryComment.find(params[:id])
-    @memorycomment.destroy
+    @memory_comment = MemoryComment.find(params[:id])
+    @memory_comment.destroy
     # redirect_to memory_path(@memory),  notice: "コメントを削除しました。"
   end
 
