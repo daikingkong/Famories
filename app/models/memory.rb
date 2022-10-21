@@ -10,7 +10,7 @@ class Memory < ApplicationRecord
 
    scope :latest, -> {order(created_at: :desc)}
    scope :old, -> {order(created_at: :asc)}
-   scope :memory_favorite_count, -> {order(memory_favorite: :desc)}
+   scope :memory_favorite_count, -> { includes(:memory_favorites).sort {|a,b| b.memory_favorites.size <=> a.memory_favorites.size}}
 
   has_one_attached :memory_image
 

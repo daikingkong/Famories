@@ -24,14 +24,15 @@ class Public::MemoriesController < ApplicationController
     end
   end
 
-
+  # 選択された一覧の並び替え方法によってif分岐
   def index
     if params[:latest]
       @memories = Memory.latest.page(params[:page]).per(12)
     elsif params[:old]
       @memories = Memory.old.page(params[:page]).per(12)
-    elsif params[:memory_favorite]
-      @memories = Memory.memory_favorite.page(params[:page]).per(12)
+    elsif params[:memory_favorite_count]
+      memories = Memory.memory_favorite_count
+      @memories =  Kaminari.paginate_array(memories).page(params[:page]).per(12)
     else
       @memories = Memory.page(params[:page]).per(12).order("created_at DESC")
     end
