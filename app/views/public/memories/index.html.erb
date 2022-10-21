@@ -2,6 +2,12 @@
   <b>メモリー一覧</b>
 </h6>
 <%= link_to "メモリー作成", new_memory_path, class:"btn btn-success w-25 h-25 mb-4 border border-warning rounded-pill text-light" %>
+<p>
+  並び順
+  | <%= link_to '新着順', memories_path(latest: "true") %>
+  | <%= link_to '古い順', memories_path(old: "true") %>
+  | <%= link_to 'いいねの多い順', memories_path(memory_favorites_count: "true") %>
+</p>
 <div class="row">
   <div class="col-12 d-flex flex-wrap justify-content-center">
     <div class="col-4">

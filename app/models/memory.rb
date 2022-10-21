@@ -8,6 +8,10 @@ class Memory < ApplicationRecord
   validates :title, length: {minimum: 1, maximum: 30 }
   validates :memo, length: {maximum: 400 }
 
+   scope :latest, -> {order(created_at: :desc)}
+   scope :old, -> {order(created_at: :asc)}
+   scope :memory_favorite_count, -> {order(memory_favorite: :desc)}
+
   has_one_attached :memory_image
 
   def get_memory_image

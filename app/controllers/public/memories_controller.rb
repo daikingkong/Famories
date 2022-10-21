@@ -26,7 +26,15 @@ class Public::MemoriesController < ApplicationController
 
 
   def index
-    @memories = Memory.page(params[:page]).per(12).order("created_at DESC")
+    if params[:latest]
+      @memories = Memory.latest.page(params[:page]).per(12)
+    elsif params[:old]
+      @memories = Memory.old.page(params[:page]).per(12)
+    elsif params[:memory_favorite]
+      @memories = Memory.memory_favorite.page(params[:page]).per(12)
+    else
+      @memories = Memory.page(params[:page]).per(12).order("created_at DESC")
+    end
     @end_user = current_end_user
     @user_groups = @end_user.groups.order("created_at DESC")
   end
