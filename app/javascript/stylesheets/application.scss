@@ -36,6 +36,14 @@ body {
   line-height: 30px;
 }
 
+.sort-bar a:hover {
+    color: white;
+}
+
+.sort-bar a:active {
+    color: deeppink;
+}
+
 .form-group {
   max-width: 100%;
   width: 100%;
