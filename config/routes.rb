@@ -51,6 +51,7 @@ Rails.application.routes.draw do
     get '' => 'homes#top'
     resources :end_users, only: [:index, :show, :destroy]
     resources :memories, only: [:show, :destroy]
+    resources :memory_tags, only: [:index, :destroy]
     resources :memory_comments, only: [:index, :destroy]
     resources :groups, only: [:index, :show, :destroy] do
       resources :group_memories, only: [:show, :destroy]
