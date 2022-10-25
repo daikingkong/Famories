@@ -14,9 +14,3 @@
     <% end %>
   </tbody>
 </table>
-<%if local_assigns[:memory] %>
-<% else %>
-  <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
-    <%= paginate memory_comments %>
-  </div>
-<% end %>

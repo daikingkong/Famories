@@ -43,7 +43,7 @@ class Public::MemoriesController < ApplicationController
   def show
     @memory = Memory.find(params[:id])
     @memory_tags = @memory.memory_tags
-    @memory_comments = @memory.memory_comments.page(params[:page]).per(10).order("created_at DESC")
+    @memory_comments = @memory.memory_comments.order("created_at DESC")
     @memory_comment = MemoryComment.new
   end
 
