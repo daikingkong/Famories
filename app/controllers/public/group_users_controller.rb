@@ -5,7 +5,7 @@ class Public::GroupUsersController < ApplicationController
 
   layout "public_application"
 
-  # リクエスト承認でグループに加入し、そのリクエストを削除するため
+# 加入リクエストの承認でグループに加入し、さらに不要になったその加入リクエストを削除するため
   def approve
     @group = Group.find(params[:group_id])
     join_request = @group.join_requests.find_by(group_id: @group)
@@ -14,22 +14,21 @@ class Public::GroupUsersController < ApplicationController
     join_request.destroy
     @join_requests = @group.join_requests.page(params[:page]).per(12)
     @group_users = @group.end_users
-    # redirect_to request.referer, notice: "#{group.name}に『#{request_user.name}さん』が加入しました。"
   end
 
-  # リクエスト拒否で、その加入リクエストを削除するため
+
+# 加入リクエストの承認でグループに加入し、さらに不要になったその加入リクエストを削除するため
   def refuse
     @group = Group.find(params[:group_id])
     join_request = @group.join_requests.find_by(group_id: @group.id)
     join_request.destroy
     @join_requests = @group.join_requests.page(params[:page]).per(12)
     @group_users = @group.end_users
-    # redirect_to request.referer, notice: "加入リクエストを拒否しました。"
   end
 
 
-  # オーナーは自身以外のグループユーザーを削除できる。
-  # メンバー自身が退会すると、マイページに遷移する。
+# オーナーは自身以外のグループユーザーを削除できる。
+# メンバー自身が退会すると、マイページに遷移する。
   def destroy
     group = Group.find(params[:group_id])
     end_user = EndUser.find(params[:id])
