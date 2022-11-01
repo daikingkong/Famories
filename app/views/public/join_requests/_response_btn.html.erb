@@ -10,10 +10,10 @@
         <td><%= image_tag join_request.end_user.get_profile_image, size: "50x50" %></td>
         <td><%= join_request.end_user.name %></td>
         <td>
-          <%= link_to "承認", group_group_user_approve_path(group_id: join_request.group, group_user_id: GroupUser.where(group_id: join_request.group_id, end_user_id: join_request.end_user)), class:"btn btn-primary rounded-pill border border-warning", method: :post, remote: true %>
+          <%= link_to "承認", group_group_user_approve_path(group_id: join_request.group.id, group_user_id: join_request.end_user.id), class:"btn btn-primary rounded-pill border border-warning", method: :post, remote: true %>
         </td>
         <td>
-          <%= link_to "拒否", group_group_user_refuse_path(group_id: join_request.group, group_user_id: GroupUser.where(group_id: join_request.group_id, end_user_id: join_request.end_user_id)), class:"btn btn-danger rounded-pill border border-warning", method: :delete, remote: true, date: {confirm: "本当に拒否しますか？"} %>
+          <%= link_to "拒否", group_group_user_refuse_path(group_id: join_request.group, group_user_id: join_request.end_user.id), class:"btn btn-danger rounded-pill border border-warning", method: :delete, remote: true, date: {confirm: "本当に拒否しますか？"} %>
         </td>
       </tr>
     <% end %>

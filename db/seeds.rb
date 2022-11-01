@@ -76,102 +76,26 @@ groups = Group.create!(
   ]
 )
 
-GroupUser.create!(
-  [
-    {group_id: groups[1].id, end_user_id: end_users[1].id},
-    {group_id: groups[1].id, end_user_id: end_users[11].id},
-    {group_id: groups[1].id, end_user_id: end_users[14].id},
-    {group_id: groups[1].id, end_user_id: end_users[16].id},
-    {group_id: groups[1].id, end_user_id: end_users[18].id},
-    {group_id: groups[1].id, end_user_id: end_users[19].id},
-    {group_id: groups[1].id, end_user_id: end_users[22].id},
-    {group_id: groups[1].id, end_user_id: end_users[26].id},
-    {group_id: groups[2].id, end_user_id: end_users[13].id},
-    {group_id: groups[2].id, end_user_id: end_users[12].id},
-    {group_id: groups[2].id, end_user_id: end_users[20].id},
-    {group_id: groups[2].id, end_user_id: end_users[7].id},
-    {group_id: groups[2].id, end_user_id: end_users[6].id},
-    {group_id: groups[2].id, end_user_id: end_users[4].id},
-    {group_id: groups[2].id, end_user_id: end_users[15].id},
-    {group_id: groups[2].id, end_user_id: end_users[9].id},
-    {group_id: groups[2].id, end_user_id: end_users[23].id},
-    {group_id: groups[2].id, end_user_id: end_users[25].id},
-    {group_id: groups[3].id, end_user_id: end_users[21].id},
-    {group_id: groups[3].id, end_user_id: end_users[10].id},
-    {group_id: groups[3].id, end_user_id: end_users[17].id},
-    {group_id: groups[3].id, end_user_id: end_users[24].id},
-    {group_id: groups[4].id, end_user_id: end_users[23].id},
-    {group_id: groups[4].id, end_user_id: end_users[11].id},
-    {group_id: groups[4].id, end_user_id: end_users[22].id},
-    {group_id: groups[4].id, end_user_id: end_users[1].id},
-    {group_id: groups[4].id, end_user_id: end_users[4].id},
-    {group_id: groups[4].id, end_user_id: end_users[7].id},
-    {group_id: groups[4].id, end_user_id: end_users[9].id},
-    {group_id: groups[4].id, end_user_id: end_users[20].id},
-    {group_id: groups[4].id, end_user_id: end_users[12].id},
-    {group_id: groups[4].id, end_user_id: end_users[16].id},
-    {group_id: groups[5].id, end_user_id: end_users[10].id},
-    {group_id: groups[5].id, end_user_id: end_users[15].id},
-    {group_id: groups[5].id, end_user_id: end_users[18].id},
-    {group_id: groups[6].id, end_user_id: end_users[2].id},
-    {group_id: groups[6].id, end_user_id: end_users[20].id},
-    {group_id: groups[6].id, end_user_id: end_users[28].id},
-    {group_id: groups[6].id, end_user_id: end_users[29].id},
-    {group_id: groups[6].id, end_user_id: end_users[3].id},
-    {group_id: groups[6].id, end_user_id: end_users[11].id},
-    {group_id: groups[7].id, end_user_id: end_users[29].id},
-    {group_id: groups[7].id, end_user_id: end_users[28].id},
-    {group_id: groups[7].id, end_user_id: end_users[27].id},
-    {group_id: groups[7].id, end_user_id: end_users[17].id},
-    {group_id: groups[7].id, end_user_id: end_users[11].id},
-    {group_id: groups[8].id, end_user_id: end_users[8].id}
-  ]
-)
 
-JoinRequest.create!(
-  [
-    {group_id: groups[2].id, end_user_id: end_users[6].id},
-    {group_id: groups[2].id, end_user_id: end_users[12].id},
-    {group_id: groups[2].id, end_user_id: end_users[15].id},
-    {group_id: groups[2].id, end_user_id: end_users[17].id},
-    {group_id: groups[2].id, end_user_id: end_users[16].id},
-    {group_id: groups[2].id, end_user_id: end_users[21].id},
-    {group_id: groups[2].id, end_user_id: end_users[25].id},
-    {group_id: groups[2].id, end_user_id: end_users[12].id},
-    {group_id: groups[2].id, end_user_id: end_users[11].id},
-    {group_id: groups[2].id, end_user_id: end_users[19].id},
-    {group_id: groups[2].id, end_user_id: end_users[6].id},
-    {group_id: groups[2].id, end_user_id: end_users[5].id},
-    {group_id: groups[2].id, end_user_id: end_users[3].id},
-    {group_id: groups[2].id, end_user_id: end_users[14].id},
-    {group_id: groups[2].id, end_user_id: end_users[8].id},
-    {group_id: groups[2].id, end_user_id: end_users[22].id},
-    {group_id: groups[2].id, end_user_id: end_users[24].id},
-    {group_id: groups[3].id, end_user_id: end_users[20].id},
-    {group_id: groups[3].id, end_user_id: end_users[9].id},
-    {group_id: groups[3].id, end_user_id: end_users[16].id},
-    {group_id: groups[3].id, end_user_id: end_users[23].id},
-    {group_id: groups[4].id, end_user_id: end_users[22].id},
-    {group_id: groups[4].id, end_user_id: end_users[10].id},
-    {group_id: groups[4].id, end_user_id: end_users[21].id},
-    {group_id: groups[4].id, end_user_id: end_users[2].id},
-    {group_id: groups[4].id, end_user_id: end_users[3].id},
-    {group_id: groups[4].id, end_user_id: end_users[6].id},
-    {group_id: groups[4].id, end_user_id: end_users[8].id},
-    {group_id: groups[4].id, end_user_id: end_users[19].id},
-    {group_id: groups[4].id, end_user_id: end_users[11].id},
-    {group_id: groups[4].id, end_user_id: end_users[15].id},
-    {group_id: groups[5].id, end_user_id: end_users[9].id},
-    {group_id: groups[5].id, end_user_id: end_users[14].id},
-    {group_id: groups[5].id, end_user_id: end_users[17].id},
-    {group_id: groups[6].id, end_user_id: end_users[1].id},
-    {group_id: groups[6].id, end_user_id: end_users[19].id},
-    {group_id: groups[6].id, end_user_id: end_users[26].id},
-    {group_id: groups[6].id, end_user_id: end_users[25].id},
-    {group_id: groups[6].id, end_user_id: end_users[2].id},
-    {group_id: groups[6].id, end_user_id: end_users[10].id}
-  ]
-)
+group_ids = [*1..6]
+end_user_ids = [*1..29]
+
+
+group_ids.each do |group_id|
+  end_user_ids.sample(20).each do |end_user_id|
+    attributes = { group_id: group_id, end_user_id: end_user_id }
+    if end_user_id.odd?
+      JoinRequest.create!(attributes)
+    else
+      GroupUser.create!(attributes)
+    end
+  end
+end
+
+group_owner_attributes = Group.pluck(:id, :owner_id).map{|o|{group_id: o[0], end_user_id: o[1]}}
+group_owner_attributes.each do |att|
+  GroupUser.find_or_create_by(att)
+end
 
 GroupMemory.create!(
   [

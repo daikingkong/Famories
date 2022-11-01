@@ -8,10 +8,10 @@ class Public::GroupUsersController < ApplicationController
 # 加入リクエストの承認でグループに加入し、さらに不要になったその加入リクエストを削除するため
   def approve
     @group = Group.find(params[:group_id])
-    join_request = @group.join_requests.find_by(group_id: @group)
-    request_user = join_request.end_user
-    @group.end_users << request_user
-    join_request.destroy
+    end_user = EndUser.find(params[:group_user_id])
+    join_request = @group.join_requests.find_by(end_user_id: end_user.id)
+    @group.end_users << end_user unless @group.end_users.include?(end_user)
+    join_request.destroy if join_request
     @join_requests = @group.join_requests.page(params[:page]).per(12)
     @group_users = @group.end_users
   end
@@ -20,8 +20,9 @@ class Public::GroupUsersController < ApplicationController
 # 加入リクエストの承認でグループに加入し、さらに不要になったその加入リクエストを削除するため
   def refuse
     @group = Group.find(params[:group_id])
-    join_request = @group.join_requests.find_by(group_id: @group.id)
-    join_request.destroy
+    end_user = EndUser.find(params[:group_user_id])
+    join_request = @group.join_requests.find_by(end_user_id: end_user.id)
+    join_request.destroy if join_request
     @join_requests = @group.join_requests.page(params[:page]).per(12)
     @group_users = @group.end_users
   end

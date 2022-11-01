@@ -5,6 +5,7 @@ class CreateJoinRequests < ActiveRecord::Migration[6.1]
       t.integer :group_id, null: false
 
       t.timestamps
+      t.index [:group_id, :end_user_id], unique: true
     end
   end
 end

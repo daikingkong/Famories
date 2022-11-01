@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2022_09_09_132949) do
     t.integer "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id", "end_user_id"], name: "index_group_users_on_group_id_and_end_user_id", unique: true
   end
 
   create_table "groups", force: :cascade do |t|
@@ -94,6 +95,7 @@ ActiveRecord::Schema.define(version: 2022_09_09_132949) do
     t.integer "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id", "end_user_id"], name: "index_join_requests_on_group_id_and_end_user_id", unique: true
   end
 
   create_table "memories", force: :cascade do |t|
