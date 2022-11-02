@@ -7,6 +7,7 @@ class CreateGroupMemories < ActiveRecord::Migration[6.1]
       t.text :memo, null: false
 
       t.timestamps
+      t.index [:group_id, :end_user_id]
     end
   end
 end

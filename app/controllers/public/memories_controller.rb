@@ -34,7 +34,7 @@ class Public::MemoriesController < ApplicationController
       memories = Memory.memory_favorite_count
       @memories =  Kaminari.paginate_array(memories).page(params[:page]).per(12)
     else
-      @memories = Memory.page(params[:page]).per(12).order("created_at DESC")
+      @memories = Memory.page(params[:page]).per(12)
     end
     @end_user = current_end_user
     @user_groups = @end_user.groups.order("created_at DESC")
@@ -77,7 +77,7 @@ class Public::MemoriesController < ApplicationController
     @end_user = current_end_user
     @user_groups = @end_user.groups
     @memory_tag = MemoryTag.find(params[:memory_tag_id])
-    @memories = @memory_tag.memories.page(params[:page]).per(12).order("created_at DESC")
+    @memories = @memory_tag.memories.page(params[:page]).per(12)
   end
 
   private

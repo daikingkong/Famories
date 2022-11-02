@@ -6,6 +6,7 @@ class CreateMemories < ActiveRecord::Migration[6.1]
       t.text :memo, null: false
 
       t.timestamps
+      t.index [:end_user_id, :title]
     end
   end
 end

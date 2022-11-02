@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2022_09_09_132949) do
     t.text "memo", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id", "end_user_id"], name: "index_group_memories_on_group_id_and_end_user_id"
   end
 
   create_table "group_users", force: :cascade do |t|
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(version: 2022_09_09_132949) do
     t.integer "owner_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_groups_on_name"
   end
 
   create_table "join_requests", force: :cascade do |t|
@@ -104,6 +106,7 @@ ActiveRecord::Schema.define(version: 2022_09_09_132949) do
     t.text "memo", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["end_user_id", "title"], name: "index_memories_on_end_user_id_and_title"
   end
 
   create_table "memory_comments", force: :cascade do |t|
@@ -112,6 +115,7 @@ ActiveRecord::Schema.define(version: 2022_09_09_132949) do
     t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["memory_id", "end_user_id"], name: "index_memory_comments_on_memory_id_and_end_user_id"
   end
 
   create_table "memory_favorites", force: :cascade do |t|
@@ -119,6 +123,7 @@ ActiveRecord::Schema.define(version: 2022_09_09_132949) do
     t.integer "memory_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["end_user_id", "memory_id"], name: "index_memory_favorites_on_end_user_id_and_memory_id", unique: true
   end
 
   create_table "memory_search_tags", force: :cascade do |t|
