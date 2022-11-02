@@ -10,7 +10,7 @@ class Admin::GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @group_users = @group.end_users.page(params[:page]).per(10).order("created_at DESC")
-    @memories = @group.group_memories.page(params[:page]).per(12).order("created_at DESC")
+    @memories = @group.group_memories.page(params[:page]).per(12)
   end
 
   def destroy
