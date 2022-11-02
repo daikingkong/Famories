@@ -6,6 +6,8 @@ class Group < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 1, maximum: 30 }
   validates :introduction, length: {maximum: 150 }
+  
+  default_scope -> { order(created_at: :desc) }
 
   has_one_attached :group_image
 

@@ -4,7 +4,7 @@ class Admin::EndUsersController < ApplicationController
   layout "admin_application"
 
   def index
-    @end_users = EndUser.page(params[:page]).per(20).order("created_at DESC")
+    @end_users = EndUser.page(params[:page]).per(20)
   end
 
   def show

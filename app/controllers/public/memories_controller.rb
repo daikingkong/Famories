@@ -37,13 +37,13 @@ class Public::MemoriesController < ApplicationController
       @memories = Memory.page(params[:page]).per(12)
     end
     @end_user = current_end_user
-    @user_groups = @end_user.groups.order("created_at DESC")
+    @user_groups = @end_user.groups
   end
 
   def show
     @memory = Memory.find(params[:id])
     @memory_tags = @memory.memory_tags
-    @memory_comments = @memory.memory_comments.order("created_at DESC")
+    @memory_comments = @memory.memory_comments
     @memory_comment = MemoryComment.new
   end
 

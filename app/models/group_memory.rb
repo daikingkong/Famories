@@ -4,6 +4,8 @@ class GroupMemory < ApplicationRecord
 
   validates :title, length: {minimum: 1, maximum: 30 }
   validates :memo, length: {maximum: 400 }
+  
+  default_scope -> { order(created_at: :desc) }
 
   # 部分テンプレートで使用するので命名はこのままにすること
   has_one_attached :memory_image

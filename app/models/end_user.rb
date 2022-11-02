@@ -16,6 +16,8 @@ class EndUser < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true
 
+  default_scope -> { order(created_at: :desc) }
+
   has_one_attached :profile_image
 
   def get_profile_image
