@@ -8,9 +8,7 @@
       <%= render "public/end_users/user_info",user_groups: @user_groups, end_user: @end_user %>
     </div>
     <div class="col-8">
-      <div id="groups_index_join_request_btn">
-        <%= render "public/groups/join_request_btn", groups: @groups %>
-      </div>
+      <%= render "public/groups/join_request_btn", groups: @groups %>
     </div>
     <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
       <%= paginate @groups %>
