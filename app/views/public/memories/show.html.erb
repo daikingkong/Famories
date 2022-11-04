@@ -33,7 +33,9 @@
           <td colspan="3" class="text-light"><%= @memory.memo %></td>
         </tr>
         <tr>
-          <td>いいね<b class="text-light">　<%= @memory.memory_favorites.count %></b> 件</td>
+          <td id="favorite_count_<%= @memory.id %>">
+            <%= render "public/memory_favorites/favorite-count", memory: @memory %>
+          </td>
           <td id="favorite_btn_<%= @memory.id %>" colspan="3" class="text-light">
             <%= render "public/memory_favorites/favorite-btn", memory: @memory %>
           </td>

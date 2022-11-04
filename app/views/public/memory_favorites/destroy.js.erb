@@ -1,1 +1,2 @@
 $('#favorite_btn_<%= @memory.id %>').html("<%= j(render 'public/memory_favorites/favorite-btn', memory: @memory_favorite.memory ) %>")
+$('#favorite_count_<%= @memory.id %>').html("<%= j(render 'public/memory_favorites/favorite-count', memory: @memory_favorite.memory ) %>")
