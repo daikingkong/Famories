@@ -77,7 +77,7 @@ groups = Group.create!(
 )
 
 
-group_ids = [*1..6]
+group_ids = [*1..8]
 end_user_ids = [*1..29]
 
 
