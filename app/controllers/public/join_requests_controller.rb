@@ -16,6 +16,7 @@ class Public::JoinRequestsController < ApplicationController
     join_request = current_end_user.join_requests.new(group_id: group.id)
     join_request.save
     @groups = Group.page(params[:page]).per(12)
+    redirect_to request.referer
   end
 
   def destroy
@@ -23,6 +24,7 @@ class Public::JoinRequestsController < ApplicationController
     join_request = current_end_user.join_requests.find_by(group_id: group.id)
     join_request.destroy
     @groups = Group.page(params[:page]).per(12)
+    redirect_to request.referer
   end
 
   private

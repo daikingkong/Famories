@@ -15,7 +15,7 @@
       <% if @model == 'memory' %>
         <%= render "public/end_users/memories", memories: @records %>
       <% elsif @model == 'group' %>
-        <%= render 'public/groups/index', groups: @records %>
+        <%= render 'public/groups/join_request_btn', groups: @records %>
       <% end %>
     </div>
     <div class="text-light bg-dark rounded-pill w-25 d-flex justify-content-center">
