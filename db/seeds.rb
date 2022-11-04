@@ -77,7 +77,7 @@ groups = Group.create!(
 )
 
 
-group_ids = [*1..6]
+group_ids = [*1..8]
 end_user_ids = [*1..29]
 
 
@@ -274,90 +274,15 @@ MemoryComment.create!(
   ]
 )
 
-MemoryFavorite.create!(
-  [
-    {end_user_id: end_users[1].id, memory_id: memories[1].id},
-    {end_user_id: end_users[2].id, memory_id: memories[11].id},
-    {end_user_id: end_users[3].id, memory_id: memories[21].id},
-    {end_user_id: end_users[4].id, memory_id: memories[31].id},
-    {end_user_id: end_users[5].id, memory_id: memories[41].id},
-    {end_user_id: end_users[6].id, memory_id: memories[42].id},
-    {end_user_id: end_users[7].id, memory_id: memories[32].id},
-    {end_user_id: end_users[8].id, memory_id: memories[22].id},
-    {end_user_id: end_users[9].id, memory_id: memories[22].id},
-    {end_user_id: end_users[10].id, memory_id: memories[12].id},
-    {end_user_id: end_users[11].id, memory_id: memories[2].id},
-    {end_user_id: end_users[12].id, memory_id: memories[3].id},
-    {end_user_id: end_users[13].id, memory_id: memories[13].id},
-    {end_user_id: end_users[14].id, memory_id: memories[23].id},
-    {end_user_id: end_users[15].id, memory_id: memories[33].id},
-    {end_user_id: end_users[16].id, memory_id: memories[43].id},
-    {end_user_id: end_users[17].id, memory_id: memories[44].id},
-    {end_user_id: end_users[18].id, memory_id: memories[34].id},
-    {end_user_id: end_users[19].id, memory_id: memories[24].id},
-    {end_user_id: end_users[21].id, memory_id: memories[14].id},
-    {end_user_id: end_users[22].id, memory_id: memories[4].id},
-    {end_user_id: end_users[23].id, memory_id: memories[5].id},
-    {end_user_id: end_users[24].id, memory_id: memories[15].id},
-    {end_user_id: end_users[25].id, memory_id: memories[25].id},
-    {end_user_id: end_users[26].id, memory_id: memories[35].id},
-    {end_user_id: end_users[27].id, memory_id: memories[45].id},
-    {end_user_id: end_users[28].id, memory_id: memories[46].id},
-    {end_user_id: end_users[29].id, memory_id: memories[36].id},
-    {end_user_id: end_users[29].id, memory_id: memories[26].id},
-    {end_user_id: end_users[28].id, memory_id: memories[16].id},
-    {end_user_id: end_users[27].id, memory_id: memories[6].id},
-    {end_user_id: end_users[26].id, memory_id: memories[7].id},
-    {end_user_id: end_users[25].id, memory_id: memories[17].id},
-    {end_user_id: end_users[24].id, memory_id: memories[27].id},
-    {end_user_id: end_users[23].id, memory_id: memories[37].id},
-    {end_user_id: end_users[22].id, memory_id: memories[47].id},
-    {end_user_id: end_users[21].id, memory_id: memories[38].id},
-    {end_user_id: end_users[20].id, memory_id: memories[28].id},
-    {end_user_id: end_users[19].id, memory_id: memories[18].id},
-    {end_user_id: end_users[18].id, memory_id: memories[8].id},
-    {end_user_id: end_users[17].id, memory_id: memories[9].id},
-    {end_user_id: end_users[16].id, memory_id: memories[19].id},
-    {end_user_id: end_users[15].id, memory_id: memories[29].id},
-    {end_user_id: end_users[14].id, memory_id: memories[39].id},
-    {end_user_id: end_users[13].id, memory_id: memories[40].id},
-    {end_user_id: end_users[12].id, memory_id: memories[30].id},
-    {end_user_id: end_users[11].id, memory_id: memories[20].id},
-    {end_user_id: end_users[10].id, memory_id: memories[10].id},
-    {end_user_id: end_users[9].id, memory_id: memories[12].id},
-    {end_user_id: end_users[8].id, memory_id: memories[23].id},
-    {end_user_id: end_users[7].id, memory_id: memories[34].id},
-    {end_user_id: end_users[6].id, memory_id: memories[45].id},
-    {end_user_id: end_users[5].id, memory_id: memories[13].id},
-    {end_user_id: end_users[4].id, memory_id: memories[24].id},
-    {end_user_id: end_users[3].id, memory_id: memories[35].id},
-    {end_user_id: end_users[2].id, memory_id: memories[46].id},
-    {end_user_id: end_users[1].id, memory_id: memories[14].id},
-    {end_user_id: end_users[1].id, memory_id: memories[25].id},
-    {end_user_id: end_users[3].id, memory_id: memories[36].id},
-    {end_user_id: end_users[5].id, memory_id: memories[47].id},
-    {end_user_id: end_users[7].id, memory_id: memories[15].id},
-    {end_user_id: end_users[9].id, memory_id: memories[26].id},
-    {end_user_id: end_users[11].id, memory_id: memories[37].id},
-    {end_user_id: end_users[13].id, memory_id: memories[16].id},
-    {end_user_id: end_users[15].id, memory_id: memories[27].id},
-    {end_user_id: end_users[17].id, memory_id: memories[38].id},
-    {end_user_id: end_users[19].id, memory_id: memories[17].id},
-    {end_user_id: end_users[21].id, memory_id: memories[28].id},
-    {end_user_id: end_users[23].id, memory_id: memories[39].id},
-    {end_user_id: end_users[25].id, memory_id: memories[18].id},
-    {end_user_id: end_users[27].id, memory_id: memories[29].id},
-    {end_user_id: end_users[29].id, memory_id: memories[19].id},
-    {end_user_id: end_users[2].id, memory_id: memories[47].id},
-    {end_user_id: end_users[4].id, memory_id: memories[46].id},
-    {end_user_id: end_users[6].id, memory_id: memories[45].id},
-    {end_user_id: end_users[8].id, memory_id: memories[44].id},
-    {end_user_id: end_users[10].id, memory_id: memories[43].id},
-    {end_user_id: end_users[12].id, memory_id: memories[42].id},
-    {end_user_id: end_users[14].id, memory_id: memories[41].id},
-    {end_user_id: end_users[15].id, memory_id: memories[40].id}
-  ]
-)
+memory_ids = [*1..48]
+end_user_ids = [*1..29]
+
+memory_ids.each do |memory_id|
+  end_user_ids.sample(15).each do |end_user_id|
+    attributes = { memory_id: memory_id, end_user_id: end_user_id }
+    MemoryFavorite.create!({ memory_id: memory_id, end_user_id: end_user_id })
+  end
+end
 
 memory_tags = MemoryTag.create!(
   [

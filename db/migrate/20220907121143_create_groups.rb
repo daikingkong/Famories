@@ -6,6 +6,7 @@ class CreateGroups < ActiveRecord::Migration[6.1]
       t.integer :owner_id, null: false
 
       t.timestamps
+      t.index [:name]
     end
   end
 end

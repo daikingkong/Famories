@@ -4,13 +4,13 @@ class Admin::EndUsersController < ApplicationController
   layout "admin_application"
 
   def index
-    @end_users = EndUser.page(params[:page]).per(20).order("created_at DESC")
+    @end_users = EndUser.page(params[:page]).per(20)
   end
 
   def show
     @end_user = EndUser.find(params[:id])
     @user_groups = @end_user.groups
-    @memories = @end_user.memories.page(params[:page]).per(12).order("created_at DESC")
+    @memories = @end_user.memories.page(params[:page]).per(12)
   end
 
   def destroy

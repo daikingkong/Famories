@@ -4,13 +4,13 @@ class Admin::GroupsController < ApplicationController
   layout "admin_application"
 
   def index
-    @groups = Group.page(params[:page]).per(10).order("created_at DESC")
+    @groups = Group.page(params[:page]).per(10)
   end
 
   def show
     @group = Group.find(params[:id])
-    @group_users = @group.end_users.page(params[:page]).per(10).order("created_at DESC")
-    @memories = @group.group_memories.page(params[:page]).per(12).order("created_at DESC")
+    @group_users = @group.end_users.page(params[:page]).per(10)
+    @memories = @group.group_memories.page(params[:page]).per(12)
   end
 
   def destroy

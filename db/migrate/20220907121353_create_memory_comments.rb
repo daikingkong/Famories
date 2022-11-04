@@ -6,6 +6,7 @@ class CreateMemoryComments < ActiveRecord::Migration[6.1]
       t.text :comment, null:false
 
       t.timestamps
+      t.index [:memory_id, :end_user_id]
     end
   end
 end

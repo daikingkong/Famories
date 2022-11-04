@@ -4,7 +4,7 @@ class Public::MemoryCommentsController < ApplicationController
 
   def create
     @memory = Memory.find(params[:memory_id])
-    @memory_comments = @memory.memory_comments.order("created_at DESC")
+    @memory_comments = @memory.memory_comments
     @memory_comment = MemoryComment.new(memory_comment_params)
     @memory_comment.end_user_id = current_end_user.id
     @memory_comment.memory_id = @memory.id
@@ -13,7 +13,7 @@ class Public::MemoryCommentsController < ApplicationController
 
   def destroy
     @memory = Memory.find(params[:memory_id])
-    @memory_comments = @memory.memory_comments.order("created_at DESC")
+    @memory_comments = @memory.memory_comments
     @memory_comment = MemoryComment.find(params[:id])
     if @memory_comment.end_user_id == current_end_user.id
       @memory_comment.destroy

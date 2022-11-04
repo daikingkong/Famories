@@ -3,5 +3,7 @@ class MemoryTag < ApplicationRecord
   has_many :memories, through: :memory_search_tags
 
   validates :name, presence: true
+  
+  default_scope -> { order(created_at: :desc) }
 
 end
